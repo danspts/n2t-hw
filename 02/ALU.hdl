@@ -42,25 +42,23 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-	Not16(in[0..15]=zx[0], out=notzx);
-   	// And16(a=x, b[0..15]=notzx, out=X1);
-	// Not16(in=x, out=X2);
-	// Mux16(a=x, b=X2, sel=nx, out= X);
+	Not16(in=x, out=negX);
+	Mux4Way16(a=x, b= negX, c[0..15]=false, d[0..15]= true,  sel[1]=zx, sel[0]=nx, out= X);
 
-   	//And16(a=y, b[0..15]=zy,  out=Y1);
-	//Not16(in=y, out=Y2);
-	//Mux16(a=y, b=Y2, sel=ny, out= Y);
+	Not16(in=y, out=negY);
+	Mux4Way16(a=y, b= negY, c[0..15]=false, d[0..15]= true,  sel[1]=zy, sel[0]=ny, out= Y);
 
-	//Add16(a=X, b=Y, out=sum);
-	//And16(a=X, b=Y, out=bitwiseAnd);
-	//Mux16(a= bitwiseAnd, b= sum, sel=f, out= output);
-	//Not16(in=output, out=negOutput);
-	//Mux16(a= output, b= negOutput, sel=no, out=out);
 
-	//Or8Way(in=out[8..15], out=upper);
-	//Or8Way(in=out[0..7], out=lower);
-	//Or(a=upper, b=lower, out=negNg);
-	//Not(in=negNg, out=zr);
+	Add16(a=X, b=Y, out=sum);
+	And16(a=X, b=Y, out=bitwiseAnd);
+	Mux16(a= bitwiseAnd, b= sum, sel=f, out= output);
+	Not16(in=output, out=negOutput);
+	Mux16(a= output, b= negOutput, sel=no, out=out, out[0..7]=outLow, out[8..15]=outHigh, out[15]=ng);
+
+	Or8Way(in=outHigh, out=upper);
+	Or8Way(in=outLow, out=lower);
+	Or(a=upper, b=lower, out=negNg);
+	Not(in=negNg, out=zr);
 	
 }
 
