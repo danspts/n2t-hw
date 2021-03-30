@@ -42,13 +42,14 @@ CHIP ALU {
         ng; // 1 if (out < 0),  0 otherwise
 
     PARTS:
-   	//And16(a=x, b[0..15]=zx, out=X1);
-	Not16(in=x, out=X2);
-	Mux16(a=x, b=X2, sel=nx, out= X);
+	Not16(in[0..15]=zx[0], out=notzx);
+   	// And16(a=x, b[0..15]=notzx, out=X1);
+	// Not16(in=x, out=X2);
+	// Mux16(a=x, b=X2, sel=nx, out= X);
 
    	//And16(a=y, b[0..15]=zy,  out=Y1);
-	Not16(in=y, out=Y2);
-	Mux16(a=y, b=Y2, sel=ny, out= Y);
+	//Not16(in=y, out=Y2);
+	//Mux16(a=y, b=Y2, sel=ny, out= Y);
 
 	//Add16(a=X, b=Y, out=sum);
 	//And16(a=X, b=Y, out=bitwiseAnd);
