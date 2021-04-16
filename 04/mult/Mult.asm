@@ -9,4 +9,40 @@
 // This program only needs to handle arguments that satisfy
 // R0 >= 0, R1 >= 0, and R0*R1 < 32768.
 
-// Put your code here.
+// num1 * num2 = num1 + num1 + ... + num1, num2 times
+    // i = 0
+    @i
+    M=0
+    // sum = 0
+    @sum
+    M=0
+(LOOP)
+    // if R2 - i == 0 , jump to END
+    @R1
+    D=M
+    @i
+    D=D-M
+    @END
+    D;JEQ
+    // sum += R1
+    @sum
+    D=M
+    @R0
+    D=D+M
+    @sum
+    M=D
+    // i += 1
+    @i
+    M=M+1
+    // jump to start
+    @LOOP
+    0;JMP
+(END)
+    // R2 = sum
+    @sum
+    D=M
+    @R2
+    M=D
+(REALEND)
+    @REALEND
+    0;JMP //infinite loop
