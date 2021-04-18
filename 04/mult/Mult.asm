@@ -17,14 +17,14 @@
     @sum
     M=0
 (LOOP)
-    // if R2 - i == 0 , jump to END
+    // if R1 - i == 0 , jump to END (if R1 == i jump to END)
     @R1
     D=M
     @i
     D=D-M
     @END
     D;JEQ
-    // sum += R1
+    // sum += R0 (will add R0 to sum R1 times, the "actual" multipication)
     @sum
     D=M
     @R0
