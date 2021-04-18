@@ -15,65 +15,86 @@
 
 
 (INIT)
+
+	// Set Default color as white aka 00...00
+
+	@color
+
+	M=0
+
+	// Get the screen address
+
+	@SCREEN
+
+	D=A
+	
+	// copying that address which is a pointer to the first pixel
+ 
+	@pxl
+
+	M=D
+
+	// check for a keyboard input
+
 	@KBD	
 
 	D=M
 
-	@White
+	@DRAW
+
+	// if there is none jump to the drawing block
 
 	D;JEQ
 
-(BLACK)
+	// Otherwise set color as black aka 11...11 = -1 and draw the black block
 
-	D=-1
+	@color
 
-	@SCREEN
+	M=-1
 
-	A=M
 
-	M=D
+(DRAW)
 
-	M=M+1
+	// Checks the color of the pixel
 
-	@KBD
+	@color
 
-	D = A
+	D=M
 
-	@SCREEN
+	// Load the first or next pixel
 
-	D=D-M
-
-	@BLACK
-
-	D;JGT
-
-	@INIT
-
-	0;JMP
-	
-
-(WHITE)
-	D=0
-
-	@SCREEN
+	@pxl
 
 	A=M
 
 	M=D
 
+	// Increment the next pixel
+
+	@pxl
+
 	M=M+1
+
+	// Check how far the pixel address is from the keyboard 
+	// (remember that the screen ends at address 24575 and 
+	//		keyboard starts at address 24576 )
 
 	@KBD
 
-	D = A
+	D=A
 
-	@SCREEN
+	@pxl
 
 	D=D-M
 
-	@WHITE
+	// If it is not done it continues on drawing
+
+	@DRAW
 
 	D;JGT
+
+
+	// Otherwise it goes back to the initial state
 
 	@INIT
 
