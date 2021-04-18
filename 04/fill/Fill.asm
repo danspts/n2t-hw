@@ -12,3 +12,73 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+
+
+(INIT)
+	@KBD	
+
+	D=M
+
+	@White
+
+	D;JEQ
+
+(BLACK)
+
+	D=-1
+
+	@SCREEN
+
+	A=M
+
+	M=D
+
+	M=M+1
+
+	@KBD
+
+	D = A
+
+	@SCREEN
+
+	D=D-M
+
+	@BLACK
+
+	D;JGT
+
+	@INIT
+
+	0;JMP
+	
+
+(WHITE)
+	D=0
+
+	@SCREEN
+
+	A=M
+
+	M=D
+
+	M=M+1
+
+	@KBD
+
+	D = A
+
+	@SCREEN
+
+	D=D-M
+
+	@WHITE
+
+	D;JGT
+
+	@INIT
+
+	0;JMP
+
+
+
+	
