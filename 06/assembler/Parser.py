@@ -7,7 +7,23 @@ class commandType(Enum):
 
 class Parser:
 
-    def __self__(self):
+    def __self__(self, file):
         pass
 
-    def
+    def has_more_commands(self):
+        pass
+
+    def advance(self):
+        pass
+
+    def symbol(self):
+        pass
+
+    def dest(self):
+        pass
+
+    def comp(self):
+        pass
+
+    def jump(self):
+        pass
