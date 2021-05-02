@@ -47,3 +47,8 @@ class SymbolTable:
 
     def get_address(self, symbol) -> int:
         return self.table.get(symbol, -1)
+
+    def get_new_address(self):
+        while str(self.data_address) in self.table:
+            self.data_address += 1
+        return self.data_address

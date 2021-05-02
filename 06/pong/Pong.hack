@@ -17,7 +17,6 @@ D;JNE
 @SP
 A=M-1
 M=-1
-(END_EQ)
 @R15
 A=M
 0;JMP
@@ -34,7 +33,6 @@ D;JLE
 @SP
 A=M-1
 M=-1
-(END_GT)
 @R15
 A=M
 0;JMP
@@ -51,7 +49,6 @@ D;JGE
 @SP
 A=M-1
 M=-1
-(END_LT)
 @R15
 A=M
 0;JMP
@@ -146,8 +143,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL0)
-(ball.new)
 @15
 D=A
 @SP
@@ -166,7 +161,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL1)
 @SP
 AM=M-1
 D=M
@@ -337,7 +331,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL2)
 @SP
 AM=M-1
 D=M
@@ -351,7 +344,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(ball.dispose)
 @ARG
 A=M
 D=M
@@ -382,7 +374,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL3)
 @SP
 AM=M-1
 D=M
@@ -394,7 +385,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ball.show)
 @ARG
 A=M
 D=M
@@ -426,7 +416,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL4)
 @SP
 AM=M-1
 D=M
@@ -450,7 +439,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL5)
 @SP
 AM=M-1
 D=M
@@ -462,7 +450,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ball.hide)
 @ARG
 A=M
 D=M
@@ -491,7 +478,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL6)
 @SP
 AM=M-1
 D=M
@@ -515,7 +501,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL7)
 @SP
 AM=M-1
 D=M
@@ -527,7 +512,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ball.draw)
 @ARG
 A=M
 D=M
@@ -602,7 +586,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL8)
 @SP
 AM=M-1
 D=M
@@ -614,7 +597,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ball.getleft)
 @ARG
 A=M
 D=M
@@ -636,7 +618,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(ball.getright)
 @ARG
 A=M
 D=M
@@ -669,10 +650,8 @@ A=A-1
 M=D+M
 @54
 0;JMP
-(ball.setdestination)
 @3
 D=A
-(LOOP_ball.setdestination)
 D=D-1
 @SP
 AM=M+1
@@ -766,7 +745,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL9)
 @SP
 AM=M-1
 D=M
@@ -794,7 +772,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL10)
 @SP
 AM=M-1
 D=M
@@ -819,7 +796,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT0)
 @THIS
 D=M
 @7
@@ -848,7 +824,6 @@ D=M
 D;JNE
 @ball.setdestination$if_false0
 0;JMP
-(ball.setdestination$if_true0)
 @LCL
 A=M
 D=M
@@ -909,7 +884,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT1)
 @THIS
 D=M
 @8
@@ -940,7 +914,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT2)
 @THIS
 D=M
 @9
@@ -955,7 +928,6 @@ A=M
 M=D
 @ball.setdestination$if_end0
 0;JMP
-(ball.setdestination$if_false0)
 @THIS
 A=M
 D=M
@@ -974,7 +946,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT3)
 @THIS
 D=M
 @8
@@ -1006,7 +977,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT4)
 @THIS
 D=M
 @9
@@ -1019,7 +989,6 @@ D=M
 @R13
 A=M
 M=D
-(ball.setdestination$if_end0)
 @2
 D=A
 @SP
@@ -1045,7 +1014,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL11)
 @LCL
 A=M
 D=M
@@ -1092,7 +1060,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL12)
 @SP
 AM=M-1
 D=M
@@ -1140,7 +1107,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL13)
 @SP
 AM=M-1
 D=M
@@ -1158,7 +1124,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ball.move)
 @ARG
 A=M
 D=M
@@ -1189,7 +1154,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL14)
 @SP
 AM=M-1
 D=M
@@ -1212,7 +1176,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT5)
 @SP
 AM=M-1
 D=M
@@ -1220,7 +1183,6 @@ D=M
 D;JNE
 @ball.move$if_false0
 0;JMP
-(ball.move$if_true0)
 @THIS
 D=M
 @4
@@ -1255,7 +1217,6 @@ A=A+1
 M=D
 @ball.move$if_end0
 0;JMP
-(ball.move$if_false0)
 @THIS
 D=M
 @4
@@ -1304,7 +1265,6 @@ D=M
 D;JNE
 @ball.move$if_false1
 0;JMP
-(ball.move$if_true1)
 @THIS
 D=M
 @7
@@ -1321,7 +1281,6 @@ D=M
 D;JNE
 @ball.move$if_false2
 0;JMP
-(ball.move$if_true2)
 @THIS
 A=M
 D=M
@@ -1348,7 +1307,6 @@ A=M
 M=D
 @ball.move$if_end2
 0;JMP
-(ball.move$if_false2)
 @THIS
 A=M+1
 D=M
@@ -1373,10 +1331,8 @@ D=M
 @THIS
 A=M+1
 M=D
-(ball.move$if_end2)
 @ball.move$if_end1
 0;JMP
-(ball.move$if_false1)
 @THIS
 D=M
 @7
@@ -1393,7 +1349,6 @@ D=M
 D;JNE
 @ball.move$if_false3
 0;JMP
-(ball.move$if_true3)
 @THIS
 A=M
 D=M
@@ -1420,7 +1375,6 @@ A=M
 M=D
 @ball.move$if_end3
 0;JMP
-(ball.move$if_false3)
 @THIS
 A=M+1
 D=M
@@ -1445,9 +1399,6 @@ D=M
 @THIS
 A=M+1
 M=D
-(ball.move$if_end3)
-(ball.move$if_end1)
-(ball.move$if_end0)
 @THIS
 D=M
 @8
@@ -1464,7 +1415,6 @@ D=M
 D;JNE
 @ball.move$if_false4
 0;JMP
-(ball.move$if_true4)
 @THIS
 D=M
 @7
@@ -1481,7 +1431,6 @@ D=M
 D;JNE
 @ball.move$if_false5
 0;JMP
-(ball.move$if_true5)
 @THIS
 A=M+1
 D=M
@@ -1508,7 +1457,6 @@ A=M+1
 M=D
 @ball.move$if_end5
 0;JMP
-(ball.move$if_false5)
 @THIS
 A=M
 D=M
@@ -1533,10 +1481,8 @@ D=M
 @THIS
 A=M
 M=D
-(ball.move$if_end5)
 @ball.move$if_end4
 0;JMP
-(ball.move$if_false4)
 @THIS
 D=M
 @7
@@ -1553,7 +1499,6 @@ D=M
 D;JNE
 @ball.move$if_false6
 0;JMP
-(ball.move$if_true6)
 @THIS
 A=M+1
 D=M
@@ -1580,7 +1525,6 @@ A=M+1
 M=D
 @ball.move$if_end6
 0;JMP
-(ball.move$if_false6)
 @THIS
 A=M
 D=M
@@ -1605,8 +1549,6 @@ D=M
 @THIS
 A=M
 M=D
-(ball.move$if_end6)
-(ball.move$if_end4)
 @THIS
 A=M
 D=M
@@ -1627,7 +1569,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT0)
 @SP
 A=M-1
 M=!M
@@ -1638,7 +1579,6 @@ D=M
 D;JNE
 @ball.move$if_false7
 0;JMP
-(ball.move$if_true7)
 @SP
 M=M+1
 A=M-1
@@ -1670,7 +1610,6 @@ D=M
 @THIS
 A=M
 M=D
-(ball.move$if_false7)
 @THIS
 A=M
 D=M
@@ -1691,7 +1630,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT6)
 @SP
 A=M-1
 M=!M
@@ -1702,7 +1640,6 @@ D=M
 D;JNE
 @ball.move$if_false8
 0;JMP
-(ball.move$if_true8)
 @2
 D=A
 @SP
@@ -1736,7 +1673,6 @@ D=M
 @THIS
 A=M
 M=D
-(ball.move$if_false8)
 @THIS
 A=M+1
 D=M
@@ -1757,7 +1693,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT1)
 @SP
 A=M-1
 M=!M
@@ -1768,7 +1703,6 @@ D=M
 D;JNE
 @ball.move$if_false9
 0;JMP
-(ball.move$if_true9)
 @3
 D=A
 @SP
@@ -1802,7 +1736,6 @@ D=M
 @THIS
 A=M+1
 M=D
-(ball.move$if_false9)
 @THIS
 A=M+1
 D=M
@@ -1823,7 +1756,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT7)
 @SP
 A=M-1
 M=!M
@@ -1834,7 +1766,6 @@ D=M
 D;JNE
 @ball.move$if_false10
 0;JMP
-(ball.move$if_true10)
 @4
 D=A
 @SP
@@ -1868,7 +1799,6 @@ D=M
 @THIS
 A=M+1
 M=D
-(ball.move$if_false10)
 @THIS
 D=M
 @SP
@@ -1887,7 +1817,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL15)
 @SP
 AM=M-1
 D=M
@@ -1904,10 +1833,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(ball.bounce)
 @5
 D=A
-(LOOP_ball.bounce)
 D=D-1
 @SP
 AM=M+1
@@ -1953,7 +1880,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL16)
 @SP
 AM=M-1
 D=M
@@ -1988,7 +1914,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL17)
 @SP
 AM=M-1
 D=M
@@ -2012,7 +1937,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ0)
 @SP
 AM=M-1
 D=M
@@ -2020,7 +1944,6 @@ D=M
 D;JNE
 @ball.bounce$if_false0
 0;JMP
-(ball.bounce$if_true0)
 @10
 D=A
 @SP
@@ -2038,7 +1961,6 @@ A=A+1
 M=D
 @ball.bounce$if_end0
 0;JMP
-(ball.bounce$if_false0)
 @THIS
 A=M+1
 A=A+1
@@ -2055,7 +1977,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT8)
 @SP
 A=M-1
 M=!M
@@ -2074,7 +1995,6 @@ M=1
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ1)
 @SP
 AM=M-1
 D=M
@@ -2096,7 +2016,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT9)
 @SP
 AM=M-1
 D=M
@@ -2121,7 +2040,6 @@ M=D+1
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ2)
 @SP
 AM=M-1
 D=M
@@ -2134,7 +2052,6 @@ D=M
 D;JNE
 @ball.bounce$if_false1
 0;JMP
-(ball.bounce$if_true1)
 @20
 D=A
 @SP
@@ -2152,7 +2069,6 @@ A=A+1
 M=D
 @ball.bounce$if_end1
 0;JMP
-(ball.bounce$if_false1)
 @5
 D=A
 @SP
@@ -2168,8 +2084,6 @@ A=A+1
 A=A+1
 A=A+1
 M=D
-(ball.bounce$if_end1)
-(ball.bounce$if_end0)
 @THIS
 D=M
 @14
@@ -2187,7 +2101,6 @@ M=1
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ3)
 @SP
 AM=M-1
 D=M
@@ -2195,7 +2108,6 @@ D=M
 D;JNE
 @ball.bounce$if_false2
 0;JMP
-(ball.bounce$if_true2)
 @506
 D=A
 @SP
@@ -2239,7 +2151,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL18)
 @LCL
 A=M+1
 A=A+1
@@ -2260,7 +2171,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL19)
 @SP
 AM=M-1
 D=M
@@ -2302,7 +2212,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL20)
 @SP
 AM=M-1
 D=M
@@ -2316,7 +2225,6 @@ A=M+1
 M=D
 @ball.bounce$if_end2
 0;JMP
-(ball.bounce$if_false2)
 @THIS
 D=M
 @14
@@ -2336,7 +2244,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ4)
 @SP
 AM=M-1
 D=M
@@ -2344,7 +2251,6 @@ D=M
 D;JNE
 @ball.bounce$if_false3
 0;JMP
-(ball.bounce$if_true3)
 @SP
 M=M+1
 A=M-1
@@ -2382,7 +2288,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL21)
 @LCL
 A=M+1
 A=A+1
@@ -2403,7 +2308,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL22)
 @SP
 AM=M-1
 D=M
@@ -2445,7 +2349,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL23)
 @SP
 AM=M-1
 D=M
@@ -2459,7 +2362,6 @@ A=M+1
 M=D
 @ball.bounce$if_end3
 0;JMP
-(ball.bounce$if_false3)
 @THIS
 D=M
 @14
@@ -2479,7 +2381,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ5)
 @SP
 AM=M-1
 D=M
@@ -2487,7 +2388,6 @@ D=M
 D;JNE
 @ball.bounce$if_false4
 0;JMP
-(ball.bounce$if_true4)
 @250
 D=A
 @SP
@@ -2530,7 +2430,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL24)
 @LCL
 D=M
 @3
@@ -2552,7 +2451,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL25)
 @SP
 AM=M-1
 D=M
@@ -2594,7 +2492,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL26)
 @SP
 AM=M-1
 D=M
@@ -2608,7 +2505,6 @@ A=M
 M=D
 @ball.bounce$if_end4
 0;JMP
-(ball.bounce$if_false4)
 @SP
 M=M+1
 A=M-1
@@ -2645,7 +2541,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL27)
 @LCL
 D=M
 @3
@@ -2667,7 +2562,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL28)
 @SP
 AM=M-1
 D=M
@@ -2709,7 +2603,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL29)
 @SP
 AM=M-1
 D=M
@@ -2721,9 +2614,6 @@ D=M
 @LCL
 A=M
 M=D
-(ball.bounce$if_end4)
-(ball.bounce$if_end3)
-(ball.bounce$if_end2)
 @THIS
 D=M
 @SP
@@ -2756,7 +2646,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL30)
 @SP
 AM=M-1
 D=M
@@ -2768,7 +2657,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.new)
 @5
 D=A
 @SP
@@ -2787,7 +2675,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL31)
 @SP
 AM=M-1
 D=M
@@ -2884,7 +2771,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL32)
 @SP
 AM=M-1
 D=M
@@ -2898,7 +2784,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(bat.dispose)
 @ARG
 A=M
 D=M
@@ -2929,7 +2814,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL33)
 @SP
 AM=M-1
 D=M
@@ -2941,7 +2825,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.show)
 @ARG
 A=M
 D=M
@@ -2973,7 +2856,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL34)
 @SP
 AM=M-1
 D=M
@@ -2997,7 +2879,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL35)
 @SP
 AM=M-1
 D=M
@@ -3009,7 +2890,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.hide)
 @ARG
 A=M
 D=M
@@ -3038,7 +2918,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL36)
 @SP
 AM=M-1
 D=M
@@ -3062,7 +2941,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL37)
 @SP
 AM=M-1
 D=M
@@ -3074,7 +2952,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.draw)
 @ARG
 A=M
 D=M
@@ -3154,7 +3031,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL38)
 @SP
 AM=M-1
 D=M
@@ -3166,7 +3042,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.setdirection)
 @ARG
 A=M
 D=M
@@ -3201,7 +3076,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.getleft)
 @ARG
 A=M
 D=M
@@ -3223,7 +3097,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(bat.getright)
 @ARG
 A=M
 D=M
@@ -3258,7 +3131,6 @@ A=A-1
 M=D+M
 @54
 0;JMP
-(bat.setwidth)
 @ARG
 A=M
 D=M
@@ -3289,7 +3161,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL39)
 @SP
 AM=M-1
 D=M
@@ -3327,7 +3198,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL40)
 @SP
 AM=M-1
 D=M
@@ -3339,7 +3209,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(bat.move)
 @ARG
 A=M
 D=M
@@ -3369,7 +3238,6 @@ M=1
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ6)
 @SP
 AM=M-1
 D=M
@@ -3377,7 +3245,6 @@ D=M
 D;JNE
 @bat.move$if_false0
 0;JMP
-(bat.move$if_true0)
 @THIS
 A=M
 D=M
@@ -3417,7 +3284,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT10)
 @SP
 AM=M-1
 D=M
@@ -3425,7 +3291,6 @@ D=M
 D;JNE
 @bat.move$if_false1
 0;JMP
-(bat.move$if_true1)
 @SP
 M=M+1
 A=M-1
@@ -3436,7 +3301,6 @@ D=M
 @THIS
 A=M
 M=D
-(bat.move$if_false1)
 @SP
 M=M+1
 A=M-1
@@ -3453,7 +3317,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL41)
 @SP
 AM=M-1
 D=M
@@ -3559,7 +3422,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL42)
 @SP
 AM=M-1
 D=M
@@ -3584,7 +3446,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL43)
 @SP
 AM=M-1
 D=M
@@ -3655,7 +3516,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL44)
 @SP
 AM=M-1
 D=M
@@ -3663,7 +3523,6 @@ D=M
 M=D
 @bat.move$if_end0
 0;JMP
-(bat.move$if_false0)
 @THIS
 A=M
 D=M
@@ -3718,7 +3577,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT2)
 @SP
 AM=M-1
 D=M
@@ -3726,7 +3584,6 @@ D=M
 D;JNE
 @bat.move$if_false2
 0;JMP
-(bat.move$if_true2)
 @511
 D=A
 @SP
@@ -3752,7 +3609,6 @@ D=M
 @THIS
 A=M
 M=D
-(bat.move$if_false2)
 @SP
 M=M+1
 A=M-1
@@ -3769,7 +3625,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL45)
 @SP
 AM=M-1
 D=M
@@ -3849,7 +3704,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL46)
 @SP
 AM=M-1
 D=M
@@ -3874,7 +3728,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL47)
 @SP
 AM=M-1
 D=M
@@ -3971,20 +3824,17 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL48)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(bat.move$if_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(main.main)
 @SP
 AM=M+1
 A=A-1
@@ -4001,7 +3851,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL49)
 @SP
 AM=M-1
 D=M
@@ -4019,7 +3868,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL50)
 @SP
 AM=M-1
 D=M
@@ -4045,7 +3893,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL51)
 @SP
 AM=M-1
 D=M
@@ -4070,7 +3917,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL52)
 @SP
 AM=M-1
 D=M
@@ -4082,7 +3928,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ponggame.new)
 @7
 D=A
 @SP
@@ -4101,7 +3946,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL53)
 @SP
 AM=M-1
 D=M
@@ -4119,7 +3963,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL54)
 @SP
 AM=M-1
 D=M
@@ -4181,7 +4024,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL55)
 @SP
 AM=M-1
 D=M
@@ -4232,7 +4074,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL56)
 @SP
 AM=M-1
 D=M
@@ -4268,7 +4109,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL57)
 @SP
 AM=M-1
 D=M
@@ -4308,7 +4148,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL58)
 @SP
 AM=M-1
 D=M
@@ -4336,7 +4175,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL59)
 @SP
 AM=M-1
 D=M
@@ -4360,7 +4198,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL60)
 @83
 D=A
 @SP
@@ -4379,7 +4216,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL61)
 @99
 D=A
 @SP
@@ -4398,7 +4234,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL62)
 @111
 D=A
 @SP
@@ -4417,7 +4252,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL63)
 @114
 D=A
 @SP
@@ -4436,7 +4270,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL64)
 @101
 D=A
 @SP
@@ -4455,7 +4288,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL65)
 @58
 D=A
 @SP
@@ -4474,7 +4306,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL66)
 @32
 D=A
 @SP
@@ -4493,7 +4324,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL67)
 @48
 D=A
 @SP
@@ -4512,7 +4342,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL68)
 @1
 D=A
 @R13
@@ -4525,7 +4354,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL69)
 @SP
 AM=M-1
 D=M
@@ -4589,7 +4417,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(ponggame.dispose)
 @ARG
 A=M
 D=M
@@ -4621,7 +4448,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL70)
 @SP
 AM=M-1
 D=M
@@ -4646,7 +4472,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL71)
 @SP
 AM=M-1
 D=M
@@ -4670,7 +4495,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL72)
 @SP
 AM=M-1
 D=M
@@ -4682,7 +4506,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ponggame.newinstance)
 @0
 D=A
 @R13
@@ -4695,7 +4518,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL73)
 @SP
 AM=M-1
 D=M
@@ -4707,7 +4529,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(ponggame.getinstance)
 @ponggame.0
 D=M
 @SP
@@ -4716,7 +4537,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(ponggame.run)
 @SP
 AM=M+1
 A=A-1
@@ -4733,7 +4553,6 @@ AM=M-1
 D=M
 @THIS
 M=D
-(ponggame.run$while_exp0)
 @THIS
 D=M
 @3
@@ -4754,7 +4573,6 @@ AM=M-1
 D=M
 @ponggame.run$while_end0
 D;JNE
-(ponggame.run$while_exp1)
 @LCL
 A=M
 D=M
@@ -4770,7 +4588,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ7)
 @THIS
 D=M
 @3
@@ -4808,7 +4625,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL74)
 @SP
 AM=M-1
 D=M
@@ -4834,7 +4650,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL75)
 @SP
 AM=M-1
 D=M
@@ -4858,7 +4673,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL76)
 @SP
 AM=M-1
 D=M
@@ -4866,7 +4680,6 @@ D=M
 M=D
 @ponggame.run$while_exp1
 0;JMP
-(ponggame.run$while_end1)
 @LCL
 A=M
 D=M
@@ -4884,7 +4697,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ8)
 @SP
 AM=M-1
 D=M
@@ -4892,7 +4704,6 @@ D=M
 D;JNE
 @ponggame.run$if_false0
 0;JMP
-(ponggame.run$if_true0)
 @THIS
 A=M
 D=M
@@ -4916,7 +4727,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL77)
 @SP
 AM=M-1
 D=M
@@ -4924,7 +4734,6 @@ D=M
 M=D
 @ponggame.run$if_end0
 0;JMP
-(ponggame.run$if_false0)
 @LCL
 A=M
 D=M
@@ -4942,7 +4751,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ9)
 @SP
 AM=M-1
 D=M
@@ -4950,7 +4758,6 @@ D=M
 D;JNE
 @ponggame.run$if_false1
 0;JMP
-(ponggame.run$if_true1)
 @THIS
 A=M
 D=M
@@ -4976,7 +4783,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL78)
 @SP
 AM=M-1
 D=M
@@ -4984,7 +4790,6 @@ D=M
 M=D
 @ponggame.run$if_end1
 0;JMP
-(ponggame.run$if_false1)
 @LCL
 A=M
 D=M
@@ -5002,7 +4807,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ10)
 @SP
 AM=M-1
 D=M
@@ -5010,7 +4814,6 @@ D=M
 D;JNE
 @ponggame.run$if_false2
 0;JMP
-(ponggame.run$if_true2)
 @SP
 M=M+1
 A=M-1
@@ -5026,10 +4829,6 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(ponggame.run$if_false2)
-(ponggame.run$if_end1)
-(ponggame.run$if_end0)
-(ponggame.run$while_exp2)
 @LCL
 A=M
 D=M
@@ -5045,7 +4844,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ11)
 @SP
 A=M-1
 M=!M
@@ -5086,7 +4884,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL79)
 @SP
 AM=M-1
 D=M
@@ -5112,7 +4909,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL80)
 @SP
 AM=M-1
 D=M
@@ -5136,7 +4932,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL81)
 @SP
 AM=M-1
 D=M
@@ -5144,10 +4939,8 @@ D=M
 M=D
 @ponggame.run$while_exp2
 0;JMP
-(ponggame.run$while_end2)
 @ponggame.run$while_exp0
 0;JMP
-(ponggame.run$while_end0)
 @THIS
 D=M
 @3
@@ -5164,7 +4957,6 @@ D=M
 D;JNE
 @ponggame.run$if_false3
 0;JMP
-(ponggame.run$if_true3)
 @10
 D=A
 @SP
@@ -5189,7 +4981,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL82)
 @SP
 AM=M-1
 D=M
@@ -5213,7 +5004,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL83)
 @71
 D=A
 @SP
@@ -5232,7 +5022,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL84)
 @97
 D=A
 @SP
@@ -5251,7 +5040,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL85)
 @109
 D=A
 @SP
@@ -5270,7 +5058,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL86)
 @101
 D=A
 @SP
@@ -5289,7 +5076,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL87)
 @32
 D=A
 @SP
@@ -5308,7 +5094,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL88)
 @79
 D=A
 @SP
@@ -5327,7 +5112,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL89)
 @118
 D=A
 @SP
@@ -5346,7 +5130,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL90)
 @101
 D=A
 @SP
@@ -5365,7 +5148,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL91)
 @114
 D=A
 @SP
@@ -5384,7 +5166,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL92)
 @1
 D=A
 @R13
@@ -5397,23 +5178,19 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL93)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(ponggame.run$if_false3)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(ponggame.moveball)
 @5
 D=A
-(LOOP_ponggame.moveball)
 D=D-1
 @SP
 AM=M+1
@@ -5452,7 +5229,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL94)
 @SP
 AM=M-1
 D=M
@@ -5476,7 +5252,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT3)
 @THIS
 A=M+1
 A=A+1
@@ -5498,7 +5273,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ12)
 @SP
 A=M-1
 M=!M
@@ -5514,7 +5288,6 @@ D=M
 D;JNE
 @ponggame.moveball$if_false0
 0;JMP
-(ponggame.moveball$if_true0)
 @THIS
 A=M+1
 A=A+1
@@ -5562,7 +5335,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL95)
 @SP
 AM=M-1
 D=M
@@ -5588,7 +5360,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL96)
 @SP
 AM=M-1
 D=M
@@ -5615,7 +5386,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL97)
 @SP
 AM=M-1
 D=M
@@ -5643,7 +5413,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL98)
 @SP
 AM=M-1
 D=M
@@ -5671,7 +5440,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ13)
 @SP
 AM=M-1
 D=M
@@ -5679,7 +5447,6 @@ D=M
 D;JNE
 @ponggame.moveball$if_false1
 0;JMP
-(ponggame.moveball$if_true1)
 @LCL
 A=M+1
 D=M
@@ -5700,7 +5467,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT4)
 @LCL
 A=M+1
 A=A+1
@@ -5722,7 +5488,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT11)
 @SP
 AM=M-1
 D=M
@@ -5755,7 +5520,6 @@ D=M
 D;JNE
 @ponggame.moveball$if_false2
 0;JMP
-(ponggame.moveball$if_true2)
 @LCL
 D=M
 @4
@@ -5787,7 +5551,6 @@ M=D+M
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT12)
 @SP
 AM=M-1
 D=M
@@ -5795,7 +5558,6 @@ D=M
 D;JNE
 @ponggame.moveball$if_false3
 0;JMP
-(ponggame.moveball$if_true3)
 @SP
 M=M+1
 A=M-1
@@ -5812,7 +5574,6 @@ A=M
 M=D
 @ponggame.moveball$if_end3
 0;JMP
-(ponggame.moveball$if_false3)
 @LCL
 D=M
 @3
@@ -5845,7 +5606,6 @@ M=M-D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT5)
 @SP
 AM=M-1
 D=M
@@ -5853,7 +5613,6 @@ D=M
 D;JNE
 @ponggame.moveball$if_false4
 0;JMP
-(ponggame.moveball$if_true4)
 @SP
 M=M+1
 A=M-1
@@ -5864,8 +5623,6 @@ D=M
 @LCL
 A=M
 M=D
-(ponggame.moveball$if_false4)
-(ponggame.moveball$if_end3)
 @THIS
 D=M
 @6
@@ -5925,7 +5682,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL99)
 @SP
 AM=M-1
 D=M
@@ -5982,7 +5738,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL100)
 @SP
 AM=M-1
 D=M
@@ -6009,14 +5764,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL101)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(ponggame.moveball$if_false2)
-(ponggame.moveball$if_false1)
 @THIS
 A=M+1
 D=M
@@ -6043,20 +5795,17 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL102)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(ponggame.moveball$if_false0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(array.new)
 @ARG
 A=M
 D=M
@@ -6072,7 +5821,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT6)
 @SP
 A=M-1
 M=!M
@@ -6083,7 +5831,6 @@ D=M
 D;JNE
 @array.new$if_false0
 0;JMP
-(array.new$if_true0)
 @2
 D=A
 @SP
@@ -6102,13 +5849,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL103)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(array.new$if_false0)
 @ARG
 A=M
 D=M
@@ -6128,10 +5873,8 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL104)
 @54
 0;JMP
-(array.dispose)
 @ARG
 A=M
 D=M
@@ -6162,7 +5905,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL105)
 @SP
 AM=M-1
 D=M
@@ -6174,14 +5916,12 @@ A=M-1
 M=0
 @54
 0;JMP
-(keyboard.init)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(keyboard.keypressed)
 @24576
 D=A
 @SP
@@ -6200,10 +5940,8 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL106)
 @54
 0;JMP
-(keyboard.readchar)
 @SP
 A=M
 M=0
@@ -6227,13 +5965,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL107)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(keyboard.readchar$while_exp0)
 @LCL
 A=M+1
 D=M
@@ -6249,7 +5985,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ14)
 @LCL
 A=M
 D=M
@@ -6265,7 +6000,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT7)
 @SP
 AM=M-1
 D=M
@@ -6291,7 +6025,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL108)
 @SP
 AM=M-1
 D=M
@@ -6313,7 +6046,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT8)
 @SP
 AM=M-1
 D=M
@@ -6321,7 +6053,6 @@ D=M
 D;JNE
 @keyboard.readchar$if_false0
 0;JMP
-(keyboard.readchar$if_true0)
 @LCL
 A=M
 D=M
@@ -6335,10 +6066,8 @@ D=M
 @LCL
 A=M+1
 M=D
-(keyboard.readchar$if_false0)
 @keyboard.readchar$while_exp0
 0;JMP
-(keyboard.readchar$while_end0)
 @0
 D=A
 @R13
@@ -6351,7 +6080,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL109)
 @1
 D=A
 @R13
@@ -6364,7 +6092,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL110)
 @SP
 AM=M-1
 D=M
@@ -6389,7 +6116,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL111)
 @SP
 AM=M-1
 D=M
@@ -6404,10 +6130,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(keyboard.readline)
 @5
 D=A
-(LOOP_keyboard.readline)
 D=D-1
 @SP
 AM=M+1
@@ -6433,7 +6157,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL112)
 @SP
 AM=M-1
 D=M
@@ -6461,7 +6184,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL113)
 @SP
 AM=M-1
 D=M
@@ -6479,7 +6201,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL114)
 @SP
 AM=M-1
 D=M
@@ -6498,7 +6219,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL115)
 @SP
 AM=M-1
 D=M
@@ -6506,7 +6226,6 @@ D=M
 A=M+1
 A=A+1
 M=D
-(keyboard.readline$while_exp0)
 @LCL
 D=M
 @4
@@ -6539,7 +6258,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL116)
 @SP
 AM=M-1
 D=M
@@ -6564,7 +6282,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ15)
 @SP
 AM=M-1
 D=M
@@ -6593,7 +6310,6 @@ D=M
 D;JNE
 @keyboard.readline$if_false0
 0;JMP
-(keyboard.readline$if_true0)
 @LCL
 A=M
 D=M
@@ -6613,7 +6329,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ16)
 @SP
 AM=M-1
 D=M
@@ -6621,7 +6336,6 @@ D=M
 D;JNE
 @keyboard.readline$if_false1
 0;JMP
-(keyboard.readline$if_true1)
 @LCL
 D=M
 @3
@@ -6643,7 +6357,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL117)
 @SP
 AM=M-1
 D=M
@@ -6651,7 +6364,6 @@ D=M
 M=D
 @keyboard.readline$if_end1
 0;JMP
-(keyboard.readline$if_false1)
 @LCL
 D=M
 @3
@@ -6680,7 +6392,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL118)
 @SP
 AM=M-1
 D=M
@@ -6689,11 +6400,8 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(keyboard.readline$if_end1)
-(keyboard.readline$if_false0)
 @keyboard.readline$while_exp0
 0;JMP
-(keyboard.readline$while_end0)
 @LCL
 D=M
 @3
@@ -6705,7 +6413,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(keyboard.readint)
 @SP
 A=M
 M=0
@@ -6732,7 +6439,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL119)
 @SP
 AM=M-1
 D=M
@@ -6758,7 +6464,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL120)
 @SP
 AM=M-1
 D=M
@@ -6784,7 +6489,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL121)
 @SP
 AM=M-1
 D=M
@@ -6799,7 +6503,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.init)
 @SP
 AM=M+1
 A=A-1
@@ -6822,7 +6525,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL122)
 @SP
 AM=M-1
 D=M
@@ -6846,7 +6548,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL123)
 @SP
 AM=M-1
 D=M
@@ -6893,7 +6594,6 @@ D=M
 @THAT
 A=M
 M=D
-(math.init$while_exp0)
 @LCL
 A=M
 D=M
@@ -6911,7 +6611,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT13)
 @SP
 A=M-1
 M=!M
@@ -7067,14 +6766,12 @@ A=M
 M=D
 @math.init$while_exp0
 0;JMP
-(math.init$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(math.abs)
 @ARG
 A=M
 D=M
@@ -7090,7 +6787,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT14)
 @SP
 AM=M-1
 D=M
@@ -7098,7 +6794,6 @@ D=M
 D;JNE
 @math.abs$if_false0
 0;JMP
-(math.abs$if_true0)
 @ARG
 A=M
 D=M
@@ -7116,7 +6811,6 @@ D=M
 @ARG
 A=M
 M=D
-(math.abs$if_false0)
 @ARG
 A=M
 D=M
@@ -7126,10 +6820,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.multiply)
 @5
 D=A
-(LOOP_math.multiply)
 D=D-1
 @SP
 AM=M+1
@@ -7152,7 +6844,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT15)
 @ARG
 A=M+1
 D=M
@@ -7168,7 +6859,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT9)
 @SP
 AM=M-1
 D=M
@@ -7189,7 +6879,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT10)
 @ARG
 A=M+1
 D=M
@@ -7205,7 +6894,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT16)
 @SP
 AM=M-1
 D=M
@@ -7244,7 +6932,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL124)
 @SP
 AM=M-1
 D=M
@@ -7270,7 +6957,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL125)
 @SP
 AM=M-1
 D=M
@@ -7295,7 +6981,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT17)
 @SP
 AM=M-1
 D=M
@@ -7303,7 +6988,6 @@ D=M
 D;JNE
 @math.multiply$if_false0
 0;JMP
-(math.multiply$if_true0)
 @ARG
 A=M
 D=M
@@ -7343,8 +7027,6 @@ D=M
 @ARG
 A=M+1
 M=D
-(math.multiply$if_false0)
-(math.multiply$while_exp0)
 @LCL
 A=M+1
 A=A+1
@@ -7364,7 +7046,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT18)
 @SP
 A=M-1
 M=!M
@@ -7425,7 +7106,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT11)
 @SP
 AM=M-1
 D=M
@@ -7433,7 +7113,6 @@ D=M
 D;JNE
 @math.multiply$if_false1
 0;JMP
-(math.multiply$if_true1)
 @LCL
 A=M
 D=M
@@ -7511,7 +7190,6 @@ D=M
 A=M+1
 A=A+1
 M=D
-(math.multiply$if_false1)
 @ARG
 A=M
 D=M
@@ -7565,7 +7243,6 @@ A=A+1
 M=D
 @math.multiply$while_exp0
 0;JMP
-(math.multiply$while_end0)
 @LCL
 D=M
 @4
@@ -7582,7 +7259,6 @@ D=M
 D;JNE
 @math.multiply$if_false2
 0;JMP
-(math.multiply$if_true2)
 @LCL
 A=M
 D=M
@@ -7600,7 +7276,6 @@ D=M
 @LCL
 A=M
 M=D
-(math.multiply$if_false2)
 @LCL
 A=M
 D=M
@@ -7610,10 +7285,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.divide)
 @4
 D=A
-(LOOP_math.divide)
 D=D-1
 @SP
 AM=M+1
@@ -7636,7 +7309,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ17)
 @SP
 AM=M-1
 D=M
@@ -7644,7 +7316,6 @@ D=M
 D;JNE
 @math.divide$if_false0
 0;JMP
-(math.divide$if_true0)
 @3
 D=A
 @SP
@@ -7663,13 +7334,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL126)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(math.divide$if_false0)
 @ARG
 A=M
 D=M
@@ -7685,7 +7354,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT19)
 @ARG
 A=M+1
 D=M
@@ -7701,7 +7369,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT12)
 @SP
 AM=M-1
 D=M
@@ -7722,7 +7389,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT13)
 @ARG
 A=M+1
 D=M
@@ -7738,7 +7404,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT20)
 @SP
 AM=M-1
 D=M
@@ -7790,7 +7455,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL127)
 @SP
 AM=M-1
 D=M
@@ -7832,14 +7496,12 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL128)
 @SP
 AM=M-1
 D=M
 @ARG
 A=M
 M=D
-(math.divide$while_exp0)
 @LCL
 D=M
 @3
@@ -7935,7 +7597,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT21)
 @SP
 AM=M-1
 D=M
@@ -7963,7 +7624,6 @@ D=M
 D;JNE
 @math.divide$if_false1
 0;JMP
-(math.divide$if_true1)
 @LCL
 A=M
 D=M
@@ -8128,7 +7788,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT14)
 @SP
 AM=M-1
 D=M
@@ -8156,7 +7815,6 @@ D=M
 D;JNE
 @math.divide$if_false2
 0;JMP
-(math.divide$if_true2)
 @LCL
 A=M
 D=M
@@ -8179,12 +7837,8 @@ D=M
 @LCL
 A=M
 M=D
-(math.divide$if_false2)
-(math.divide$if_false1)
 @math.divide$while_exp0
 0;JMP
-(math.divide$while_end0)
-(math.divide$while_exp1)
 @LCL
 A=M
 D=M
@@ -8204,7 +7858,6 @@ M=D+1
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT15)
 @SP
 A=M-1
 M=!M
@@ -8254,7 +7907,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT16)
 @SP
 A=M-1
 M=!M
@@ -8265,7 +7917,6 @@ D=M
 D;JNE
 @math.divide$if_false3
 0;JMP
-(math.divide$if_true3)
 @LCL
 A=M+1
 D=M
@@ -8362,7 +8013,6 @@ D=M
 @ARG
 A=M
 M=D
-(math.divide$if_false3)
 @LCL
 A=M
 D=M
@@ -8387,7 +8037,6 @@ A=M
 M=D
 @math.divide$while_exp1
 0;JMP
-(math.divide$while_end1)
 @LCL
 A=M+1
 A=A+1
@@ -8403,7 +8052,6 @@ D=M
 D;JNE
 @math.divide$if_false4
 0;JMP
-(math.divide$if_true4)
 @LCL
 A=M+1
 D=M
@@ -8421,7 +8069,6 @@ D=M
 @LCL
 A=M+1
 M=D
-(math.divide$if_false4)
 @LCL
 A=M+1
 D=M
@@ -8431,10 +8078,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.sqrt)
 @4
 D=A
-(LOOP_math.sqrt)
 D=D-1
 @SP
 AM=M+1
@@ -8457,7 +8102,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT22)
 @SP
 AM=M-1
 D=M
@@ -8465,7 +8109,6 @@ D=M
 D;JNE
 @math.sqrt$if_false0
 0;JMP
-(math.sqrt$if_true0)
 @4
 D=A
 @SP
@@ -8484,13 +8127,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL129)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(math.sqrt$if_false0)
 @7
 D=A
 @SP
@@ -8503,7 +8144,6 @@ D=M
 @LCL
 A=M
 M=D
-(math.sqrt$while_exp0)
 @LCL
 A=M
 D=M
@@ -8523,7 +8163,6 @@ M=D+1
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT17)
 @SP
 A=M-1
 M=!M
@@ -8608,7 +8247,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL130)
 @SP
 AM=M-1
 D=M
@@ -8635,7 +8273,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT18)
 @SP
 A=M-1
 M=!M
@@ -8655,7 +8292,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT23)
 @SP
 A=M-1
 M=!M
@@ -8671,7 +8307,6 @@ D=M
 D;JNE
 @math.sqrt$if_false1
 0;JMP
-(math.sqrt$if_true1)
 @LCL
 A=M+1
 D=M
@@ -8687,7 +8322,6 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(math.sqrt$if_false1)
 @LCL
 A=M
 D=M
@@ -8712,7 +8346,6 @@ A=M
 M=D
 @math.sqrt$while_exp0
 0;JMP
-(math.sqrt$while_end0)
 @LCL
 D=M
 @3
@@ -8724,7 +8357,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.max)
 @ARG
 A=M
 D=M
@@ -8743,7 +8375,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT19)
 @SP
 AM=M-1
 D=M
@@ -8751,7 +8382,6 @@ D=M
 D;JNE
 @math.max$if_false0
 0;JMP
-(math.max$if_true0)
 @ARG
 A=M
 D=M
@@ -8765,7 +8395,6 @@ D=M
 @ARG
 A=M+1
 M=D
-(math.max$if_false0)
 @ARG
 A=M+1
 D=M
@@ -8775,7 +8404,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(math.min)
 @ARG
 A=M
 D=M
@@ -8794,7 +8422,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT24)
 @SP
 AM=M-1
 D=M
@@ -8802,7 +8429,6 @@ D=M
 D;JNE
 @math.min$if_false0
 0;JMP
-(math.min$if_true0)
 @ARG
 A=M
 D=M
@@ -8816,7 +8442,6 @@ D=M
 @ARG
 A=M+1
 M=D
-(math.min$if_false0)
 @ARG
 A=M+1
 D=M
@@ -8826,7 +8451,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(memory.init)
 @SP
 M=M+1
 A=M-1
@@ -8932,7 +8556,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(memory.peek)
 @ARG
 A=M
 D=M
@@ -8965,7 +8588,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(memory.poke)
 @ARG
 A=M
 D=M
@@ -9019,7 +8641,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(memory.alloc)
 @SP
 AM=M+1
 A=A-1
@@ -9039,7 +8660,6 @@ M=1
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT25)
 @SP
 AM=M-1
 D=M
@@ -9047,7 +8667,6 @@ D=M
 D;JNE
 @memory.alloc$if_false0
 0;JMP
-(memory.alloc$if_true0)
 @5
 D=A
 @SP
@@ -9066,13 +8685,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL131)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(memory.alloc$if_false0)
 @2048
 D=A
 @SP
@@ -9085,7 +8702,6 @@ D=M
 @LCL
 A=M
 M=D
-(memory.alloc$while_exp0)
 @SP
 M=M+1
 A=M-1
@@ -9125,7 +8741,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT26)
 @SP
 A=M-1
 M=!M
@@ -9170,7 +8785,6 @@ A=M
 M=D
 @memory.alloc$while_exp0
 0;JMP
-(memory.alloc$while_end0)
 @LCL
 A=M
 D=M
@@ -9200,7 +8814,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT20)
 @SP
 AM=M-1
 D=M
@@ -9208,7 +8821,6 @@ D=M
 D;JNE
 @memory.alloc$if_false1
 0;JMP
-(memory.alloc$if_true1)
 @6
 D=A
 @SP
@@ -9227,13 +8839,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL132)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(memory.alloc$if_false1)
 @SP
 M=M+1
 A=M-1
@@ -9284,7 +8894,6 @@ M=D+M
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT21)
 @SP
 AM=M-1
 D=M
@@ -9292,7 +8901,6 @@ D=M
 D;JNE
 @memory.alloc$if_false2
 0;JMP
-(memory.alloc$if_true2)
 @ARG
 A=M
 D=M
@@ -9446,7 +9054,6 @@ M=D+M
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ18)
 @SP
 AM=M-1
 D=M
@@ -9454,7 +9061,6 @@ D=M
 D;JNE
 @memory.alloc$if_false3
 0;JMP
-(memory.alloc$if_true3)
 @ARG
 A=M
 D=M
@@ -9539,7 +9145,6 @@ A=M
 M=D
 @memory.alloc$if_end3
 0;JMP
-(memory.alloc$if_false3)
 @ARG
 A=M
 D=M
@@ -9620,7 +9225,6 @@ D=M
 @THAT
 A=M
 M=D
-(memory.alloc$if_end3)
 @SP
 M=M+1
 A=M-1
@@ -9689,7 +9293,6 @@ D=M
 @THAT
 A=M
 M=D
-(memory.alloc$if_false2)
 @SP
 M=M+1
 A=M-1
@@ -9752,7 +9355,6 @@ A=A-1
 M=D+M
 @54
 0;JMP
-(memory.dealloc)
 @SP
 A=M
 M=0
@@ -9854,7 +9456,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ19)
 @SP
 AM=M-1
 D=M
@@ -9862,7 +9463,6 @@ D=M
 D;JNE
 @memory.dealloc$if_false0
 0;JMP
-(memory.dealloc$if_true0)
 @SP
 M=M+1
 A=M-1
@@ -9954,7 +9554,6 @@ A=M
 M=D
 @memory.dealloc$if_end0
 0;JMP
-(memory.dealloc$if_false0)
 @SP
 M=M+1
 A=M-1
@@ -10116,7 +9715,6 @@ M=D+M
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ20)
 @SP
 AM=M-1
 D=M
@@ -10124,7 +9722,6 @@ D=M
 D;JNE
 @memory.dealloc$if_false1
 0;JMP
-(memory.dealloc$if_true1)
 @SP
 M=M+1
 A=M-1
@@ -10183,7 +9780,6 @@ A=M
 M=D
 @memory.dealloc$if_end1
 0;JMP
-(memory.dealloc$if_false1)
 @SP
 M=M+1
 A=M-1
@@ -10250,15 +9846,12 @@ D=M
 @THAT
 A=M
 M=D
-(memory.dealloc$if_end1)
-(memory.dealloc$if_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.init)
 @16384
 D=A
 @SP
@@ -10320,7 +9913,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL133)
 @SP
 AM=M-1
 D=M
@@ -10338,7 +9930,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL134)
 @SP
 AM=M-1
 D=M
@@ -10356,7 +9947,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL135)
 @SP
 AM=M-1
 D=M
@@ -10368,7 +9958,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(output.initmap)
 @127
 D=A
 @SP
@@ -10387,7 +9976,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL136)
 @SP
 AM=M-1
 D=M
@@ -10471,7 +10059,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL137)
 @SP
 AM=M-1
 D=M
@@ -10539,7 +10126,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL138)
 @SP
 AM=M-1
 D=M
@@ -10623,7 +10209,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL139)
 @SP
 AM=M-1
 D=M
@@ -10697,7 +10282,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL140)
 @SP
 AM=M-1
 D=M
@@ -10781,7 +10365,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL141)
 @SP
 AM=M-1
 D=M
@@ -10869,7 +10452,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL142)
 @SP
 AM=M-1
 D=M
@@ -10951,7 +10533,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL143)
 @SP
 AM=M-1
 D=M
@@ -11037,7 +10618,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL144)
 @SP
 AM=M-1
 D=M
@@ -11111,7 +10691,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL145)
 @SP
 AM=M-1
 D=M
@@ -11197,7 +10776,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL146)
 @SP
 AM=M-1
 D=M
@@ -11283,7 +10861,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL147)
 @SP
 AM=M-1
 D=M
@@ -11361,7 +10938,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL148)
 @SP
 AM=M-1
 D=M
@@ -11439,7 +11015,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL149)
 @SP
 AM=M-1
 D=M
@@ -11513,7 +11088,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL150)
 @SP
 AM=M-1
 D=M
@@ -11583,7 +11157,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL151)
 @SP
 AM=M-1
 D=M
@@ -11655,7 +11228,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL152)
 @SP
 AM=M-1
 D=M
@@ -11735,7 +11307,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL153)
 @SP
 AM=M-1
 D=M
@@ -11821,7 +11392,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL154)
 @SP
 AM=M-1
 D=M
@@ -11907,7 +11477,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL155)
 @SP
 AM=M-1
 D=M
@@ -11993,7 +11562,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL156)
 @SP
 AM=M-1
 D=M
@@ -12079,7 +11647,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL157)
 @SP
 AM=M-1
 D=M
@@ -12165,7 +11732,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL158)
 @SP
 AM=M-1
 D=M
@@ -12251,7 +11817,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL159)
 @SP
 AM=M-1
 D=M
@@ -12337,7 +11902,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL160)
 @SP
 AM=M-1
 D=M
@@ -12423,7 +11987,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL161)
 @SP
 AM=M-1
 D=M
@@ -12509,7 +12072,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL162)
 @SP
 AM=M-1
 D=M
@@ -12595,7 +12157,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL163)
 @SP
 AM=M-1
 D=M
@@ -12671,7 +12232,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL164)
 @SP
 AM=M-1
 D=M
@@ -12749,7 +12309,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL165)
 @SP
 AM=M-1
 D=M
@@ -12831,7 +12390,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL166)
 @SP
 AM=M-1
 D=M
@@ -12903,7 +12461,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL167)
 @SP
 AM=M-1
 D=M
@@ -12985,7 +12542,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL168)
 @SP
 AM=M-1
 D=M
@@ -13071,7 +12627,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL169)
 @SP
 AM=M-1
 D=M
@@ -13155,7 +12710,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL170)
 @SP
 AM=M-1
 D=M
@@ -13241,7 +12795,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL171)
 @SP
 AM=M-1
 D=M
@@ -13327,7 +12880,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL172)
 @SP
 AM=M-1
 D=M
@@ -13413,7 +12965,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL173)
 @SP
 AM=M-1
 D=M
@@ -13499,7 +13050,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL174)
 @SP
 AM=M-1
 D=M
@@ -13585,7 +13135,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL175)
 @SP
 AM=M-1
 D=M
@@ -13671,7 +13220,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL176)
 @SP
 AM=M-1
 D=M
@@ -13757,7 +13305,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL177)
 @SP
 AM=M-1
 D=M
@@ -13843,7 +13390,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL178)
 @SP
 AM=M-1
 D=M
@@ -13929,7 +13475,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL179)
 @SP
 AM=M-1
 D=M
@@ -14015,7 +13560,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL180)
 @SP
 AM=M-1
 D=M
@@ -14101,7 +13645,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL181)
 @SP
 AM=M-1
 D=M
@@ -14187,7 +13730,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL182)
 @SP
 AM=M-1
 D=M
@@ -14273,7 +13815,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL183)
 @SP
 AM=M-1
 D=M
@@ -14359,7 +13900,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL184)
 @SP
 AM=M-1
 D=M
@@ -14445,7 +13985,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL185)
 @SP
 AM=M-1
 D=M
@@ -14531,7 +14070,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL186)
 @SP
 AM=M-1
 D=M
@@ -14619,7 +14157,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL187)
 @SP
 AM=M-1
 D=M
@@ -14705,7 +14242,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL188)
 @SP
 AM=M-1
 D=M
@@ -14791,7 +14327,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL189)
 @SP
 AM=M-1
 D=M
@@ -14877,7 +14412,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL190)
 @SP
 AM=M-1
 D=M
@@ -14963,7 +14497,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL191)
 @SP
 AM=M-1
 D=M
@@ -15049,7 +14582,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL192)
 @SP
 AM=M-1
 D=M
@@ -15135,7 +14667,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL193)
 @SP
 AM=M-1
 D=M
@@ -15221,7 +14752,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL194)
 @SP
 AM=M-1
 D=M
@@ -15307,7 +14837,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL195)
 @SP
 AM=M-1
 D=M
@@ -15393,7 +14922,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL196)
 @SP
 AM=M-1
 D=M
@@ -15479,7 +15007,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL197)
 @SP
 AM=M-1
 D=M
@@ -15559,7 +15086,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL198)
 @SP
 AM=M-1
 D=M
@@ -15645,7 +15171,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL199)
 @SP
 AM=M-1
 D=M
@@ -15719,7 +15244,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL200)
 @SP
 AM=M-1
 D=M
@@ -15789,7 +15313,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL201)
 @SP
 AM=M-1
 D=M
@@ -15863,7 +15386,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL202)
 @SP
 AM=M-1
 D=M
@@ -15943,7 +15465,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL203)
 @SP
 AM=M-1
 D=M
@@ -16029,7 +15550,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL204)
 @SP
 AM=M-1
 D=M
@@ -16109,7 +15629,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL205)
 @SP
 AM=M-1
 D=M
@@ -16195,7 +15714,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL206)
 @SP
 AM=M-1
 D=M
@@ -16275,7 +15793,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL207)
 @SP
 AM=M-1
 D=M
@@ -16361,7 +15878,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL208)
 @SP
 AM=M-1
 D=M
@@ -16445,7 +15961,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL209)
 @SP
 AM=M-1
 D=M
@@ -16531,7 +16046,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL210)
 @SP
 AM=M-1
 D=M
@@ -16615,7 +16129,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL211)
 @SP
 AM=M-1
 D=M
@@ -16701,7 +16214,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL212)
 @SP
 AM=M-1
 D=M
@@ -16787,7 +16299,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL213)
 @SP
 AM=M-1
 D=M
@@ -16873,7 +16384,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL214)
 @SP
 AM=M-1
 D=M
@@ -16953,7 +16463,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL215)
 @SP
 AM=M-1
 D=M
@@ -17033,7 +16542,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL216)
 @SP
 AM=M-1
 D=M
@@ -17113,7 +16621,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL217)
 @SP
 AM=M-1
 D=M
@@ -17195,7 +16702,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL218)
 @SP
 AM=M-1
 D=M
@@ -17277,7 +16783,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL219)
 @SP
 AM=M-1
 D=M
@@ -17357,7 +16862,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL220)
 @SP
 AM=M-1
 D=M
@@ -17437,7 +16941,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL221)
 @SP
 AM=M-1
 D=M
@@ -17523,7 +17026,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL222)
 @SP
 AM=M-1
 D=M
@@ -17603,7 +17105,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL223)
 @SP
 AM=M-1
 D=M
@@ -17683,7 +17184,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL224)
 @SP
 AM=M-1
 D=M
@@ -17763,7 +17263,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL225)
 @SP
 AM=M-1
 D=M
@@ -17843,7 +17342,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL226)
 @SP
 AM=M-1
 D=M
@@ -17925,7 +17423,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL227)
 @SP
 AM=M-1
 D=M
@@ -18005,7 +17502,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL228)
 @SP
 AM=M-1
 D=M
@@ -18091,7 +17587,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL229)
 @SP
 AM=M-1
 D=M
@@ -18177,7 +17672,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL230)
 @SP
 AM=M-1
 D=M
@@ -18263,7 +17757,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL231)
 @SP
 AM=M-1
 D=M
@@ -18337,7 +17830,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL232)
 @SP
 AM=M-1
 D=M
@@ -18349,7 +17841,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(output.create)
 @SP
 AM=M+1
 A=A-1
@@ -18372,7 +17863,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL233)
 @SP
 AM=M-1
 D=M
@@ -18964,10 +18454,8 @@ A=M-1
 M=0
 @54
 0;JMP
-(output.createshiftedmap)
 @4
 D=A
-(LOOP_output.createshiftedmap)
 D=D-1
 @SP
 AM=M+1
@@ -18993,7 +18481,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL234)
 @SP
 AM=M-1
 D=M
@@ -19010,7 +18497,6 @@ D=M
 A=M+1
 A=A+1
 M=D
-(output.createshiftedmap$while_exp0)
 @LCL
 A=M+1
 A=A+1
@@ -19029,7 +18515,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT27)
 @SP
 A=M-1
 M=!M
@@ -19093,7 +18578,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL235)
 @SP
 AM=M-1
 D=M
@@ -19160,7 +18644,6 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(output.createshiftedmap$while_exp1)
 @LCL
 D=M
 @3
@@ -19180,7 +18663,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT28)
 @SP
 A=M-1
 M=!M
@@ -19261,7 +18743,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL236)
 @SP
 AM=M-1
 D=M
@@ -19312,7 +18793,6 @@ A=A+1
 M=D
 @output.createshiftedmap$while_exp1
 0;JMP
-(output.createshiftedmap$while_end1)
 @LCL
 A=M+1
 A=A+1
@@ -19329,7 +18809,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ21)
 @SP
 AM=M-1
 D=M
@@ -19337,7 +18816,6 @@ D=M
 D;JNE
 @output.createshiftedmap$if_false0
 0;JMP
-(output.createshiftedmap$if_true0)
 @32
 D=A
 @SP
@@ -19353,7 +18831,6 @@ A=A+1
 M=D
 @output.createshiftedmap$if_end0
 0;JMP
-(output.createshiftedmap$if_false0)
 @LCL
 A=M+1
 A=A+1
@@ -19378,17 +18855,14 @@ D=M
 A=M+1
 A=A+1
 M=D
-(output.createshiftedmap$if_end0)
 @output.createshiftedmap$while_exp0
 0;JMP
-(output.createshiftedmap$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.getmap)
 @SP
 AM=M+1
 A=A-1
@@ -19410,7 +18884,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT29)
 @ARG
 A=M
 D=M
@@ -19428,7 +18901,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT22)
 @SP
 AM=M-1
 D=M
@@ -19441,7 +18913,6 @@ D=M
 D;JNE
 @output.getmap$if_false0
 0;JMP
-(output.getmap$if_true0)
 @SP
 M=M+1
 A=M-1
@@ -19452,7 +18923,6 @@ D=M
 @ARG
 A=M
 M=D
-(output.getmap$if_false0)
 @output.2
 D=M
 @SP
@@ -19466,7 +18936,6 @@ D=M
 D;JNE
 @output.getmap$if_false1
 0;JMP
-(output.getmap$if_true1)
 @ARG
 A=M
 D=M
@@ -19505,7 +18974,6 @@ A=M
 M=D
 @output.getmap$if_end1
 0;JMP
-(output.getmap$if_false1)
 @ARG
 A=M
 D=M
@@ -19542,7 +19010,6 @@ D=M
 @LCL
 A=M
 M=D
-(output.getmap$if_end1)
 @LCL
 A=M
 D=M
@@ -19552,10 +19019,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(output.drawchar)
 @4
 D=A
-(LOOP_output.drawchar)
 D=D-1
 @SP
 AM=M+1
@@ -19582,7 +19047,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL237)
 @SP
 AM=M-1
 D=M
@@ -19602,7 +19066,6 @@ D=M
 @LCL
 A=M
 M=D
-(output.drawchar$while_exp0)
 @LCL
 A=M+1
 D=M
@@ -19620,7 +19083,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT30)
 @SP
 A=M-1
 M=!M
@@ -19642,7 +19104,6 @@ D=M
 D;JNE
 @output.drawchar$if_false0
 0;JMP
-(output.drawchar$if_true0)
 @LCL
 A=M
 D=M
@@ -19698,7 +19159,6 @@ A=A+1
 M=D
 @output.drawchar$if_end0
 0;JMP
-(output.drawchar$if_false0)
 @LCL
 A=M
 D=M
@@ -19748,7 +19208,6 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(output.drawchar$if_end0)
 @LCL
 A=M
 D=M
@@ -19883,14 +19342,12 @@ A=M+1
 M=D
 @output.drawchar$while_exp0
 0;JMP
-(output.drawchar$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.movecursor)
 @ARG
 A=M
 D=M
@@ -19906,7 +19363,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT31)
 @ARG
 A=M
 D=M
@@ -19924,7 +19380,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT23)
 @SP
 AM=M-1
 D=M
@@ -19945,7 +19400,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT32)
 @SP
 AM=M-1
 D=M
@@ -19968,7 +19422,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT24)
 @SP
 AM=M-1
 D=M
@@ -19981,7 +19434,6 @@ D=M
 D;JNE
 @output.movecursor$if_false0
 0;JMP
-(output.movecursor$if_true0)
 @20
 D=A
 @SP
@@ -20000,13 +19452,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL238)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(output.movecursor$if_false0)
 @ARG
 A=M+1
 D=M
@@ -20032,7 +19482,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL239)
 @SP
 AM=M-1
 D=M
@@ -20069,7 +19518,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL240)
 @SP
 AM=M-1
 D=M
@@ -20122,12 +19570,10 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL241)
 @RET_ADDRESS_EQ22
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ22)
 @SP
 AM=M-1
 D=M
@@ -20151,7 +19597,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL242)
 @SP
 AM=M-1
 D=M
@@ -20163,7 +19608,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(output.printchar)
 @ARG
 A=M
 D=M
@@ -20183,12 +19627,10 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL243)
 @RET_ADDRESS_EQ23
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ23)
 @SP
 AM=M-1
 D=M
@@ -20196,7 +19638,6 @@ D=M
 D;JNE
 @output.printchar$if_false0
 0;JMP
-(output.printchar$if_true0)
 @0
 D=A
 @R13
@@ -20209,7 +19650,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL244)
 @SP
 AM=M-1
 D=M
@@ -20217,7 +19657,6 @@ D=M
 M=D
 @output.printchar$if_end0
 0;JMP
-(output.printchar$if_false0)
 @ARG
 A=M
 D=M
@@ -20237,12 +19676,10 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL245)
 @RET_ADDRESS_EQ24
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ24)
 @SP
 AM=M-1
 D=M
@@ -20250,7 +19687,6 @@ D=M
 D;JNE
 @output.printchar$if_false1
 0;JMP
-(output.printchar$if_true1)
 @0
 D=A
 @R13
@@ -20263,7 +19699,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL246)
 @SP
 AM=M-1
 D=M
@@ -20271,7 +19706,6 @@ D=M
 M=D
 @output.printchar$if_end1
 0;JMP
-(output.printchar$if_false1)
 @ARG
 A=M
 D=M
@@ -20291,7 +19725,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL247)
 @SP
 AM=M-1
 D=M
@@ -20313,7 +19746,6 @@ D=M
 D;JNE
 @output.printchar$if_false2
 0;JMP
-(output.printchar$if_true2)
 @output.0
 D=M
 @SP
@@ -20354,7 +19786,6 @@ AM=M-1
 D=M
 @output.1
 M=D
-(output.printchar$if_false2)
 @output.0
 D=M
 @SP
@@ -20371,7 +19802,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ25)
 @SP
 AM=M-1
 D=M
@@ -20379,7 +19809,6 @@ D=M
 D;JNE
 @output.printchar$if_false3
 0;JMP
-(output.printchar$if_true3)
 @0
 D=A
 @R13
@@ -20392,7 +19821,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL248)
 @SP
 AM=M-1
 D=M
@@ -20400,7 +19828,6 @@ D=M
 M=D
 @output.printchar$if_end3
 0;JMP
-(output.printchar$if_false3)
 @output.2
 D=M
 @SP
@@ -20415,16 +19842,12 @@ AM=M-1
 D=M
 @output.2
 M=D
-(output.printchar$if_end3)
-(output.printchar$if_end1)
-(output.printchar$if_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.printstring)
 @SP
 A=M
 M=0
@@ -20451,14 +19874,12 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL249)
 @SP
 AM=M-1
 D=M
 @LCL
 A=M+1
 M=D
-(output.printstring$while_exp0)
 @LCL
 A=M
 D=M
@@ -20477,7 +19898,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT33)
 @SP
 A=M-1
 M=!M
@@ -20512,7 +19932,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL250)
 @1
 D=A
 @R13
@@ -20525,7 +19944,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL251)
 @SP
 AM=M-1
 D=M
@@ -20555,14 +19973,12 @@ A=M
 M=D
 @output.printstring$while_exp0
 0;JMP
-(output.printstring$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.printint)
 @output.3
 D=M
 @SP
@@ -20588,7 +20004,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL252)
 @SP
 AM=M-1
 D=M
@@ -20612,7 +20027,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL253)
 @SP
 AM=M-1
 D=M
@@ -20624,7 +20038,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(output.println)
 @output.1
 D=M
 @SP
@@ -20695,7 +20108,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ26)
 @SP
 AM=M-1
 D=M
@@ -20703,7 +20115,6 @@ D=M
 D;JNE
 @output.println$if_false0
 0;JMP
-(output.println$if_true0)
 @32
 D=A
 @SP
@@ -20715,14 +20126,12 @@ AM=M-1
 D=M
 @output.1
 M=D
-(output.println$if_false0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(output.backspace)
 @output.2
 D=M
 @SP
@@ -20736,7 +20145,6 @@ D=M
 D;JNE
 @output.backspace$if_false0
 0;JMP
-(output.backspace$if_true0)
 @output.0
 D=M
 @SP
@@ -20751,7 +20159,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT25)
 @SP
 AM=M-1
 D=M
@@ -20759,7 +20166,6 @@ D=M
 D;JNE
 @output.backspace$if_false1
 0;JMP
-(output.backspace$if_true1)
 @output.0
 D=M
 @SP
@@ -20802,7 +20208,6 @@ D=M
 M=D
 @output.backspace$if_end1
 0;JMP
-(output.backspace$if_false1)
 @31
 D=A
 @SP
@@ -20830,7 +20235,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ27)
 @SP
 AM=M-1
 D=M
@@ -20838,7 +20242,6 @@ D=M
 D;JNE
 @output.backspace$if_false2
 0;JMP
-(output.backspace$if_true2)
 @8128
 D=A
 @SP
@@ -20850,7 +20253,6 @@ AM=M-1
 D=M
 @output.1
 M=D
-(output.backspace$if_false2)
 @output.1
 D=M
 @SP
@@ -20873,7 +20275,6 @@ AM=M-1
 D=M
 @output.1
 M=D
-(output.backspace$if_end1)
 @SP
 M=M+1
 A=M-1
@@ -20885,7 +20286,6 @@ D=M
 M=D
 @output.backspace$if_end0
 0;JMP
-(output.backspace$if_false0)
 @SP
 M=M+1
 A=M-1
@@ -20898,7 +20298,6 @@ AM=M-1
 D=M
 @output.2
 M=D
-(output.backspace$if_end0)
 @32
 D=A
 @SP
@@ -20917,7 +20316,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL254)
 @SP
 AM=M-1
 D=M
@@ -20929,7 +20327,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(screen.init)
 @SP
 AM=M+1
 A=A-1
@@ -20975,7 +20372,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL255)
 @SP
 AM=M-1
 D=M
@@ -21022,7 +20418,6 @@ D=M
 @THAT
 A=M
 M=D
-(screen.init$while_exp0)
 @LCL
 A=M
 D=M
@@ -21040,7 +20435,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT34)
 @SP
 A=M-1
 M=!M
@@ -21196,19 +20590,16 @@ A=M
 M=D
 @screen.init$while_exp0
 0;JMP
-(screen.init$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.clearscreen)
 @SP
 AM=M+1
 A=A-1
 M=0
-(screen.clearscreen$while_exp0)
 @LCL
 A=M
 D=M
@@ -21226,7 +20617,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT35)
 @SP
 A=M-1
 M=!M
@@ -21303,14 +20693,12 @@ A=M
 M=D
 @screen.clearscreen$while_exp0
 0;JMP
-(screen.clearscreen$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.updatelocation)
 @screen.2
 D=M
 @SP
@@ -21324,7 +20712,6 @@ D=M
 D;JNE
 @screen.updatelocation$if_false0
 0;JMP
-(screen.updatelocation$if_true0)
 @ARG
 A=M
 D=M
@@ -21409,7 +20796,6 @@ A=M
 M=D
 @screen.updatelocation$if_end0
 0;JMP
-(screen.updatelocation$if_false0)
 @ARG
 A=M
 D=M
@@ -21495,14 +20881,12 @@ D=M
 @THAT
 A=M
 M=D
-(screen.updatelocation$if_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.setcolor)
 @ARG
 A=M
 D=M
@@ -21521,10 +20905,8 @@ A=M-1
 M=0
 @54
 0;JMP
-(screen.drawpixel)
 @3
 D=A
-(LOOP_screen.drawpixel)
 D=D-1
 @SP
 AM=M+1
@@ -21547,7 +20929,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT36)
 @ARG
 A=M
 D=M
@@ -21565,7 +20946,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT26)
 @SP
 AM=M-1
 D=M
@@ -21586,7 +20966,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT37)
 @SP
 AM=M-1
 D=M
@@ -21609,7 +20988,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT27)
 @SP
 AM=M-1
 D=M
@@ -21622,7 +21000,6 @@ D=M
 D;JNE
 @screen.drawpixel$if_false0
 0;JMP
-(screen.drawpixel$if_true0)
 @7
 D=A
 @SP
@@ -21641,13 +21018,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL256)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawpixel$if_false0)
 @ARG
 A=M
 D=M
@@ -21673,7 +21048,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL257)
 @SP
 AM=M-1
 D=M
@@ -21712,7 +21086,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL258)
 @SP
 AM=M-1
 D=M
@@ -21749,7 +21122,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL259)
 @LCL
 A=M
 D=M
@@ -21819,7 +21191,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL260)
 @SP
 AM=M-1
 D=M
@@ -21831,7 +21202,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(screen.drawconditional)
 @ARG
 A=M+1
 A=A+1
@@ -21847,7 +21217,6 @@ D=M
 D;JNE
 @screen.drawconditional$if_false0
 0;JMP
-(screen.drawconditional$if_true0)
 @ARG
 A=M+1
 D=M
@@ -21874,7 +21243,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL261)
 @SP
 AM=M-1
 D=M
@@ -21882,7 +21250,6 @@ D=M
 M=D
 @screen.drawconditional$if_end0
 0;JMP
-(screen.drawconditional$if_false0)
 @ARG
 A=M
 D=M
@@ -21909,23 +21276,19 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL262)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawconditional$if_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.drawline)
 @11
 D=A
-(LOOP_screen.drawline)
 D=D-1
 @SP
 AM=M+1
@@ -21948,7 +21311,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT38)
 @ARG
 A=M+1
 A=A+1
@@ -21967,7 +21329,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT28)
 @SP
 AM=M-1
 D=M
@@ -21988,7 +21349,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT39)
 @SP
 AM=M-1
 D=M
@@ -22013,7 +21373,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT29)
 @SP
 AM=M-1
 D=M
@@ -22026,7 +21385,6 @@ D=M
 D;JNE
 @screen.drawline$if_false0
 0;JMP
-(screen.drawline$if_true0)
 @8
 D=A
 @SP
@@ -22045,13 +21403,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL263)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawline$if_false0)
 @ARG
 A=M+1
 A=A+1
@@ -22084,7 +21440,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL264)
 @SP
 AM=M-1
 D=M
@@ -22126,7 +21481,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL265)
 @SP
 AM=M-1
 D=M
@@ -22155,7 +21509,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT40)
 @SP
 AM=M-1
 D=M
@@ -22196,7 +21549,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT41)
 @SP
 AM=M-1
 D=M
@@ -22233,7 +21585,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT42)
 @SP
 AM=M-1
 D=M
@@ -22251,7 +21602,6 @@ D=M
 D;JNE
 @screen.drawline$if_false1
 0;JMP
-(screen.drawline$if_true1)
 @ARG
 A=M
 D=M
@@ -22346,7 +21696,6 @@ A=M+1
 A=A+1
 A=A+1
 M=D
-(screen.drawline$if_false1)
 @LCL
 D=M
 @6
@@ -22363,7 +21712,6 @@ D=M
 D;JNE
 @screen.drawline$if_false2
 0;JMP
-(screen.drawline$if_true2)
 @LCL
 D=M
 @3
@@ -22480,7 +21828,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT30)
 @LCL
 D=M
 @7
@@ -22495,7 +21842,6 @@ A=M
 M=D
 @screen.drawline$if_end2
 0;JMP
-(screen.drawline$if_false2)
 @ARG
 A=M
 D=M
@@ -22562,7 +21908,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT31)
 @LCL
 D=M
 @7
@@ -22575,7 +21920,6 @@ D=M
 @R13
 A=M
 M=D
-(screen.drawline$if_end2)
 @2
 D=A
 @SP
@@ -22602,7 +21946,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL266)
 @LCL
 D=M
 @3
@@ -22653,7 +21996,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL267)
 @LCL
 D=M
 @9
@@ -22706,7 +22048,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL268)
 @LCL
 D=M
 @10
@@ -22754,13 +22095,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL269)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawline$while_exp0)
 @LCL
 A=M+1
 D=M
@@ -22781,7 +22120,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT43)
 @SP
 A=M-1
 M=!M
@@ -22807,7 +22145,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT44)
 @SP
 AM=M-1
 D=M
@@ -22815,7 +22152,6 @@ D=M
 D;JNE
 @screen.drawline$if_false3
 0;JMP
-(screen.drawline$if_true3)
 @LCL
 D=M
 @5
@@ -22851,7 +22187,6 @@ A=A+1
 M=D
 @screen.drawline$if_end3
 0;JMP
-(screen.drawline$if_false3)
 @LCL
 D=M
 @5
@@ -22901,7 +22236,6 @@ D=M
 D;JNE
 @screen.drawline$if_false4
 0;JMP
-(screen.drawline$if_true4)
 @LCL
 A=M
 D=M
@@ -22926,7 +22260,6 @@ A=M
 M=D
 @screen.drawline$if_end4
 0;JMP
-(screen.drawline$if_false4)
 @LCL
 A=M
 D=M
@@ -22949,8 +22282,6 @@ D=M
 @LCL
 A=M
 M=D
-(screen.drawline$if_end4)
-(screen.drawline$if_end3)
 @LCL
 A=M+1
 D=M
@@ -23008,7 +22339,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL270)
 @SP
 AM=M-1
 D=M
@@ -23016,17 +22346,14 @@ D=M
 M=D
 @screen.drawline$while_exp0
 0;JMP
-(screen.drawline$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.drawrectangle)
 @9
 D=A
-(LOOP_screen.drawrectangle)
 D=D-1
 @SP
 AM=M+1
@@ -23053,7 +22380,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT32)
 @ARG
 A=M+1
 D=M
@@ -23074,7 +22400,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT33)
 @SP
 AM=M-1
 D=M
@@ -23095,7 +22420,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT45)
 @SP
 AM=M-1
 D=M
@@ -23119,7 +22443,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT34)
 @SP
 AM=M-1
 D=M
@@ -23140,7 +22463,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT46)
 @SP
 AM=M-1
 D=M
@@ -23165,7 +22487,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT35)
 @SP
 AM=M-1
 D=M
@@ -23178,7 +22499,6 @@ D=M
 D;JNE
 @screen.drawrectangle$if_false0
 0;JMP
-(screen.drawrectangle$if_true0)
 @9
 D=A
 @SP
@@ -23197,13 +22517,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL271)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawrectangle$if_false0)
 @ARG
 A=M
 D=M
@@ -23229,7 +22547,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL272)
 @SP
 AM=M-1
 D=M
@@ -23272,7 +22589,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL273)
 @SP
 AM=M-1
 D=M
@@ -23316,7 +22632,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL274)
 @SP
 AM=M-1
 D=M
@@ -23361,7 +22676,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL275)
 @SP
 AM=M-1
 D=M
@@ -23519,7 +22833,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL276)
 @LCL
 D=M
 @3
@@ -23570,7 +22883,6 @@ D=M
 A=M+1
 A=A+1
 M=D
-(screen.drawrectangle$while_exp0)
 @ARG
 A=M+1
 D=M
@@ -23591,7 +22903,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT36)
 @SP
 A=M-1
 M=!M
@@ -23645,7 +22956,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ28)
 @SP
 AM=M-1
 D=M
@@ -23653,7 +22963,6 @@ D=M
 D;JNE
 @screen.drawrectangle$if_false1
 0;JMP
-(screen.drawrectangle$if_true1)
 @LCL
 A=M
 D=M
@@ -23696,7 +23005,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL277)
 @SP
 AM=M-1
 D=M
@@ -23704,7 +23012,6 @@ D=M
 M=D
 @screen.drawrectangle$if_end1
 0;JMP
-(screen.drawrectangle$if_false1)
 @LCL
 A=M
 D=M
@@ -23733,7 +23040,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL278)
 @SP
 AM=M-1
 D=M
@@ -23761,7 +23067,6 @@ D=M
 @LCL
 A=M
 M=D
-(screen.drawrectangle$while_exp1)
 @LCL
 A=M
 D=M
@@ -23780,7 +23085,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT47)
 @SP
 A=M-1
 M=!M
@@ -23816,7 +23120,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL279)
 @SP
 AM=M-1
 D=M
@@ -23846,7 +23149,6 @@ A=M
 M=D
 @screen.drawrectangle$while_exp1
 0;JMP
-(screen.drawrectangle$while_end1)
 @LCL
 A=M+1
 D=M
@@ -23875,13 +23177,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL280)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawrectangle$if_end1)
 @ARG
 A=M+1
 D=M
@@ -23943,17 +23243,14 @@ A=M
 M=D
 @screen.drawrectangle$while_exp0
 0;JMP
-(screen.drawrectangle$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.drawhorizontal)
 @11
 D=A
-(LOOP_screen.drawhorizontal)
 D=D-1
 @SP
 AM=M+1
@@ -23988,7 +23285,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL281)
 @LCL
 D=M
 @7
@@ -24028,7 +23324,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL282)
 @LCL
 D=M
 @8
@@ -24060,7 +23355,6 @@ M=D+1
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT37)
 @ARG
 A=M
 D=M
@@ -24078,7 +23372,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT48)
 @SP
 AM=M-1
 D=M
@@ -24103,7 +23396,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT49)
 @SP
 AM=M-1
 D=M
@@ -24130,7 +23422,6 @@ M=D+1
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT38)
 @SP
 AM=M-1
 D=M
@@ -24143,7 +23434,6 @@ D=M
 D;JNE
 @screen.drawhorizontal$if_false0
 0;JMP
-(screen.drawhorizontal$if_true0)
 @LCL
 D=M
 @7
@@ -24169,7 +23459,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL283)
 @LCL
 D=M
 @7
@@ -24209,7 +23498,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL284)
 @LCL
 D=M
 @8
@@ -24249,7 +23537,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL285)
 @SP
 AM=M-1
 D=M
@@ -24290,7 +23577,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL286)
 @SP
 AM=M-1
 D=M
@@ -24335,7 +23621,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL287)
 @SP
 AM=M-1
 D=M
@@ -24378,7 +23663,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL288)
 @SP
 AM=M-1
 D=M
@@ -24534,7 +23818,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL289)
 @LCL
 A=M+1
 D=M
@@ -24630,7 +23913,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ29)
 @SP
 AM=M-1
 D=M
@@ -24638,7 +23920,6 @@ D=M
 D;JNE
 @screen.drawhorizontal$if_false1
 0;JMP
-(screen.drawhorizontal$if_true1)
 @LCL
 A=M
 D=M
@@ -24681,7 +23962,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL290)
 @SP
 AM=M-1
 D=M
@@ -24689,7 +23969,6 @@ D=M
 M=D
 @screen.drawhorizontal$if_end1
 0;JMP
-(screen.drawhorizontal$if_false1)
 @LCL
 A=M
 D=M
@@ -24718,7 +23997,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL291)
 @SP
 AM=M-1
 D=M
@@ -24746,7 +24024,6 @@ D=M
 @LCL
 A=M
 M=D
-(screen.drawhorizontal$while_exp0)
 @LCL
 A=M
 D=M
@@ -24767,7 +24044,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT50)
 @SP
 A=M-1
 M=!M
@@ -24803,7 +24079,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL292)
 @SP
 AM=M-1
 D=M
@@ -24833,7 +24108,6 @@ A=M
 M=D
 @screen.drawhorizontal$while_exp0
 0;JMP
-(screen.drawhorizontal$while_end0)
 @LCL
 D=M
 @3
@@ -24864,21 +24138,17 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL293)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawhorizontal$if_end1)
-(screen.drawhorizontal$if_false0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(screen.drawsymetric)
 @ARG
 A=M+1
 D=M
@@ -24952,7 +24222,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL294)
 @SP
 AM=M-1
 D=M
@@ -25031,7 +24300,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL295)
 @SP
 AM=M-1
 D=M
@@ -25111,7 +24379,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL296)
 @SP
 AM=M-1
 D=M
@@ -25191,7 +24458,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL297)
 @SP
 AM=M-1
 D=M
@@ -25203,10 +24469,8 @@ A=M-1
 M=0
 @54
 0;JMP
-(screen.drawcircle)
 @3
 D=A
-(LOOP_screen.drawcircle)
 D=D-1
 @SP
 AM=M+1
@@ -25229,7 +24493,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT51)
 @ARG
 A=M
 D=M
@@ -25247,7 +24510,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT39)
 @SP
 AM=M-1
 D=M
@@ -25268,7 +24530,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT52)
 @SP
 AM=M-1
 D=M
@@ -25291,7 +24552,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT40)
 @SP
 AM=M-1
 D=M
@@ -25304,7 +24564,6 @@ D=M
 D;JNE
 @screen.drawcircle$if_false0
 0;JMP
-(screen.drawcircle$if_true0)
 @12
 D=A
 @SP
@@ -25323,13 +24582,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL298)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawcircle$if_false0)
 @ARG
 A=M
 D=M
@@ -25358,7 +24615,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT53)
 @ARG
 A=M
 D=M
@@ -25389,7 +24645,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT41)
 @SP
 AM=M-1
 D=M
@@ -25423,7 +24678,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT54)
 @SP
 AM=M-1
 D=M
@@ -25459,7 +24713,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT42)
 @SP
 AM=M-1
 D=M
@@ -25472,7 +24725,6 @@ D=M
 D;JNE
 @screen.drawcircle$if_false1
 0;JMP
-(screen.drawcircle$if_true1)
 @13
 D=A
 @SP
@@ -25491,13 +24743,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL299)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawcircle$if_false1)
 @ARG
 A=M+1
 A=A+1
@@ -25576,13 +24826,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL300)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(screen.drawcircle$while_exp0)
 @LCL
 A=M+1
 D=M
@@ -25601,7 +24849,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT43)
 @SP
 A=M-1
 M=!M
@@ -25626,7 +24873,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT55)
 @SP
 AM=M-1
 D=M
@@ -25634,7 +24880,6 @@ D=M
 D;JNE
 @screen.drawcircle$if_false2
 0;JMP
-(screen.drawcircle$if_true2)
 @LCL
 A=M+1
 A=A+1
@@ -25668,7 +24913,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL301)
 @SP
 AM=M-1
 D=M
@@ -25694,7 +24938,6 @@ A=A+1
 M=D
 @screen.drawcircle$if_end2
 0;JMP
-(screen.drawcircle$if_false2)
 @LCL
 A=M+1
 A=A+1
@@ -25740,7 +24983,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL302)
 @SP
 AM=M-1
 D=M
@@ -25786,7 +25028,6 @@ D=M
 @LCL
 A=M+1
 M=D
-(screen.drawcircle$if_end2)
 @LCL
 A=M
 D=M
@@ -25849,7 +25090,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL303)
 @SP
 AM=M-1
 D=M
@@ -25857,14 +25097,12 @@ D=M
 M=D
 @screen.drawcircle$while_exp0
 0;JMP
-(screen.drawcircle$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(string.new)
 @3
 D=A
 @SP
@@ -25883,7 +25121,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL304)
 @SP
 AM=M-1
 D=M
@@ -25904,7 +25141,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT56)
 @SP
 AM=M-1
 D=M
@@ -25912,7 +25148,6 @@ D=M
 D;JNE
 @string.new$if_false0
 0;JMP
-(string.new$if_true0)
 @14
 D=A
 @SP
@@ -25931,13 +25166,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL305)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.new$if_false0)
 @ARG
 A=M
 D=M
@@ -25953,7 +25186,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT44)
 @SP
 AM=M-1
 D=M
@@ -25961,7 +25193,6 @@ D=M
 D;JNE
 @string.new$if_false1
 0;JMP
-(string.new$if_true1)
 @ARG
 A=M
 D=M
@@ -25981,14 +25212,12 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL306)
 @SP
 AM=M-1
 D=M
 @THIS
 A=M+1
 M=D
-(string.new$if_false1)
 @ARG
 A=M
 D=M
@@ -26021,7 +25250,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.dispose)
 @ARG
 A=M
 D=M
@@ -26049,7 +25277,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT45)
 @SP
 AM=M-1
 D=M
@@ -26057,7 +25284,6 @@ D=M
 D;JNE
 @string.dispose$if_false0
 0;JMP
-(string.dispose$if_true0)
 @THIS
 A=M+1
 D=M
@@ -26077,13 +25303,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL307)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.dispose$if_false0)
 @THIS
 D=M
 @SP
@@ -26102,7 +25326,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL308)
 @SP
 AM=M-1
 D=M
@@ -26114,7 +25337,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(string.length)
 @ARG
 A=M
 D=M
@@ -26137,7 +25359,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.charat)
 @ARG
 A=M
 D=M
@@ -26165,7 +25386,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT57)
 @ARG
 A=M+1
 D=M
@@ -26185,7 +25405,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT46)
 @SP
 AM=M-1
 D=M
@@ -26210,7 +25429,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ30)
 @SP
 AM=M-1
 D=M
@@ -26223,7 +25441,6 @@ D=M
 D;JNE
 @string.charat$if_false0
 0;JMP
-(string.charat$if_true0)
 @15
 D=A
 @SP
@@ -26242,13 +25459,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL309)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.charat$if_false0)
 @ARG
 A=M+1
 D=M
@@ -26282,7 +25497,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.setcharat)
 @ARG
 A=M
 D=M
@@ -26310,7 +25524,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT58)
 @ARG
 A=M+1
 D=M
@@ -26330,7 +25543,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT47)
 @SP
 AM=M-1
 D=M
@@ -26355,7 +25567,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ31)
 @SP
 AM=M-1
 D=M
@@ -26368,7 +25579,6 @@ D=M
 D;JNE
 @string.setcharat$if_false0
 0;JMP
-(string.setcharat$if_true0)
 @16
 D=A
 @SP
@@ -26387,13 +25597,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL310)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.setcharat$if_false0)
 @ARG
 A=M+1
 D=M
@@ -26449,7 +25657,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(string.appendchar)
 @ARG
 A=M
 D=M
@@ -26481,7 +25688,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ32)
 @SP
 AM=M-1
 D=M
@@ -26489,7 +25695,6 @@ D=M
 D;JNE
 @string.appendchar$if_false0
 0;JMP
-(string.appendchar$if_true0)
 @17
 D=A
 @SP
@@ -26508,13 +25713,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL311)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.appendchar$if_false0)
 @THIS
 A=M+1
 A=A+1
@@ -26596,7 +25799,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.eraselastchar)
 @ARG
 A=M
 D=M
@@ -26625,7 +25827,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ33)
 @SP
 AM=M-1
 D=M
@@ -26633,7 +25834,6 @@ D=M
 D;JNE
 @string.eraselastchar$if_false0
 0;JMP
-(string.eraselastchar$if_true0)
 @18
 D=A
 @SP
@@ -26652,13 +25852,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL312)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.eraselastchar$if_false0)
 @THIS
 A=M+1
 A=A+1
@@ -26689,10 +25887,8 @@ A=M-1
 M=0
 @54
 0;JMP
-(string.intvalue)
 @5
 D=A
-(LOOP_string.intvalue)
 D=D-1
 @SP
 AM=M+1
@@ -26728,7 +25924,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ34)
 @SP
 AM=M-1
 D=M
@@ -26736,14 +25931,12 @@ D=M
 D;JNE
 @string.intvalue$if_false0
 0;JMP
-(string.intvalue$if_true0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(string.intvalue$if_false0)
 @SP
 M=M+1
 A=M-1
@@ -26797,7 +25990,6 @@ M=D
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ35)
 @SP
 AM=M-1
 D=M
@@ -26805,7 +25997,6 @@ D=M
 D;JNE
 @string.intvalue$if_false1
 0;JMP
-(string.intvalue$if_true1)
 @SP
 M=M+1
 A=M-1
@@ -26832,8 +26023,6 @@ D=M
 @LCL
 A=M
 M=D
-(string.intvalue$if_false1)
-(string.intvalue$while_exp0)
 @LCL
 A=M
 D=M
@@ -26853,7 +26042,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT59)
 @LCL
 D=M
 @3
@@ -26941,7 +26129,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT60)
 @LCL
 A=M+1
 A=A+1
@@ -26960,7 +26147,6 @@ M=D
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT48)
 @SP
 AM=M-1
 D=M
@@ -26993,7 +26179,6 @@ D=M
 D;JNE
 @string.intvalue$if_false2
 0;JMP
-(string.intvalue$if_true2)
 @LCL
 A=M+1
 D=M
@@ -27019,7 +26204,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL313)
 @LCL
 A=M+1
 A=A+1
@@ -27061,10 +26245,8 @@ D=M
 @LCL
 A=M
 M=D
-(string.intvalue$if_false2)
 @string.intvalue$while_exp0
 0;JMP
-(string.intvalue$while_end0)
 @LCL
 D=M
 @4
@@ -27081,7 +26263,6 @@ D=M
 D;JNE
 @string.intvalue$if_false3
 0;JMP
-(string.intvalue$if_true3)
 @LCL
 A=M+1
 D=M
@@ -27099,7 +26280,6 @@ D=M
 @LCL
 A=M+1
 M=D
-(string.intvalue$if_false3)
 @LCL
 A=M+1
 D=M
@@ -27109,10 +26289,8 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.setint)
 @4
 D=A
-(LOOP_string.setint)
 D=D-1
 @SP
 AM=M+1
@@ -27147,7 +26325,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ36)
 @SP
 AM=M-1
 D=M
@@ -27155,7 +26332,6 @@ D=M
 D;JNE
 @string.setint$if_false0
 0;JMP
-(string.setint$if_true0)
 @19
 D=A
 @SP
@@ -27174,13 +26350,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL314)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.setint$if_false0)
 @6
 D=A
 @SP
@@ -27199,7 +26373,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL315)
 @SP
 AM=M-1
 D=M
@@ -27222,7 +26395,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT61)
 @SP
 AM=M-1
 D=M
@@ -27230,7 +26402,6 @@ D=M
 D;JNE
 @string.setint$if_false1
 0;JMP
-(string.setint$if_true1)
 @SP
 M=M+1
 A=M-1
@@ -27263,7 +26434,6 @@ D=M
 @ARG
 A=M+1
 M=D
-(string.setint$if_false1)
 @ARG
 A=M+1
 D=M
@@ -27277,7 +26447,6 @@ D=M
 @LCL
 A=M+1
 M=D
-(string.setint$while_exp0)
 @LCL
 A=M+1
 D=M
@@ -27293,7 +26462,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT49)
 @SP
 A=M-1
 M=!M
@@ -27327,7 +26495,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL316)
 @SP
 AM=M-1
 D=M
@@ -27392,7 +26559,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL317)
 @SP
 AM=M-1
 D=M
@@ -27462,7 +26628,6 @@ A=M+1
 M=D
 @string.setint$while_exp0
 0;JMP
-(string.setint$while_end0)
 @LCL
 D=M
 @3
@@ -27479,7 +26644,6 @@ D=M
 D;JNE
 @string.setint$if_false2
 0;JMP
-(string.setint$if_true2)
 @LCL
 A=M
 D=M
@@ -27550,7 +26714,6 @@ D=M
 @LCL
 A=M
 M=D
-(string.setint$if_false2)
 @THIS
 A=M
 D=M
@@ -27569,7 +26732,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT62)
 @SP
 AM=M-1
 D=M
@@ -27577,7 +26739,6 @@ D=M
 D;JNE
 @string.setint$if_false3
 0;JMP
-(string.setint$if_true3)
 @19
 D=A
 @SP
@@ -27596,13 +26757,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL318)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(string.setint$if_false3)
 @LCL
 A=M
 D=M
@@ -27618,7 +26777,6 @@ M=0
 D=A
 @6
 0;JMP
-(RET_ADDRESS_EQ37)
 @SP
 AM=M-1
 D=M
@@ -27626,7 +26784,6 @@ D=M
 D;JNE
 @string.setint$if_false4
 0;JMP
-(string.setint$if_true4)
 @SP
 M=M+1
 A=M-1
@@ -27684,7 +26841,6 @@ A=A+1
 M=D
 @string.setint$if_end4
 0;JMP
-(string.setint$if_false4)
 @SP
 M=M+1
 A=M-1
@@ -27696,7 +26852,6 @@ D=M
 A=M+1
 A=A+1
 M=D
-(string.setint$while_exp1)
 @THIS
 A=M+1
 A=A+1
@@ -27716,7 +26871,6 @@ M=D
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT63)
 @SP
 A=M-1
 M=!M
@@ -27847,8 +27001,6 @@ A=A+1
 M=D
 @string.setint$while_exp1
 0;JMP
-(string.setint$while_end1)
-(string.setint$if_end4)
 @LCL
 A=M+1
 A=A+1
@@ -27869,7 +27021,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL319)
 @SP
 AM=M-1
 D=M
@@ -27881,7 +27032,6 @@ A=M-1
 M=0
 @54
 0;JMP
-(string.newline)
 @128
 D=A
 @SP
@@ -27890,7 +27040,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.backspace)
 @129
 D=A
 @SP
@@ -27899,7 +27048,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(string.doublequote)
 @34
 D=A
 @SP
@@ -27908,7 +27056,6 @@ A=A-1
 M=D
 @54
 0;JMP
-(sys.init)
 @0
 D=A
 @R13
@@ -27921,7 +27068,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL320)
 @SP
 AM=M-1
 D=M
@@ -27939,7 +27085,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL321)
 @SP
 AM=M-1
 D=M
@@ -27957,7 +27102,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL322)
 @SP
 AM=M-1
 D=M
@@ -27975,7 +27119,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL323)
 @SP
 AM=M-1
 D=M
@@ -27993,7 +27136,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL324)
 @SP
 AM=M-1
 D=M
@@ -28011,7 +27153,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL325)
 @SP
 AM=M-1
 D=M
@@ -28029,14 +27170,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL326)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(sys.halt)
-(sys.halt$while_exp0)
 @SP
 M=M+1
 A=M-1
@@ -28054,8 +27192,6 @@ D=M
 D;JNE
 @sys.halt$while_exp0
 0;JMP
-(sys.halt$while_end0)
-(sys.wait)
 @SP
 AM=M+1
 A=A-1
@@ -28075,7 +27211,6 @@ M=0
 D=A
 @38
 0;JMP
-(RET_ADDRESS_LT64)
 @SP
 AM=M-1
 D=M
@@ -28083,7 +27218,6 @@ D=M
 D;JNE
 @sys.wait$if_false0
 0;JMP
-(sys.wait$if_true0)
 @SP
 M=M+1
 A=M-1
@@ -28100,14 +27234,11 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL327)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
-(sys.wait$if_false0)
-(sys.wait$while_exp0)
 @ARG
 A=M
 D=M
@@ -28123,7 +27254,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT50)
 @SP
 A=M-1
 M=!M
@@ -28144,7 +27274,6 @@ D=M
 @LCL
 A=M
 M=D
-(sys.wait$while_exp1)
 @LCL
 A=M
 D=M
@@ -28160,7 +27289,6 @@ M=0
 D=A
 @22
 0;JMP
-(RET_ADDRESS_GT51)
 @SP
 A=M-1
 M=!M
@@ -28193,7 +27321,6 @@ A=M
 M=D
 @sys.wait$while_exp1
 0;JMP
-(sys.wait$while_end1)
 @ARG
 A=M
 D=M
@@ -28218,14 +27345,12 @@ A=M
 M=D
 @sys.wait$while_exp0
 0;JMP
-(sys.wait$while_end0)
 @SP
 M=M+1
 A=M-1
 M=0
 @54
 0;JMP
-(sys.error)
 @3
 D=A
 @SP
@@ -28244,7 +27369,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL328)
 @69
 D=A
 @SP
@@ -28263,7 +27387,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL329)
 @82
 D=A
 @SP
@@ -28282,7 +27405,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL330)
 @82
 D=A
 @SP
@@ -28301,7 +27423,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL331)
 @1
 D=A
 @R13
@@ -28314,7 +27435,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL332)
 @SP
 AM=M-1
 D=M
@@ -28339,7 +27459,6 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL333)
 @SP
 AM=M-1
 D=M
@@ -28357,9 +27476,9 @@ M=D
 D=A
 @95
 0;JMP
-(RET_ADDRESS_CALL334)
 @SP
 AM=M-1
 D=M
 @R5
 M=D
+
