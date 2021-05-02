@@ -21,7 +21,6 @@ class Parser:
     def advance(self):
         read = self.reader.readline()
         current_line = Parser.reg_format.findall(read)
-        #print(current_line)
         self.__current_line = current_line[0].strip()
         if self.__current_line[:2] == "//" or (read and not self.__current_line):
             self.advance()
