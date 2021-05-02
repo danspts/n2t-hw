@@ -1,6 +1,6 @@
 class SymbolTable:
 
-    def __init__(self, load_predefined=False):
+    def __init__(self, load_predefined=True):
         self.table = {}
         self.data_address = 0
         self.program_address = 0

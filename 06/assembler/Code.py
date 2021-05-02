@@ -50,8 +50,7 @@ class Code:
             JGE="011",
             JLT="100",
             JNE="101",
-            JLE="110",
-
+            JLE="110"
         )
 
     def dest(self, string):
