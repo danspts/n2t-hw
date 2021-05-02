@@ -34,21 +34,25 @@ class SymbolTable:
             KBD=24576
         )
         self.data_address = 16
-        self.add_entries(entries)
-
-    def add_entry(self, symbol, address=None) -> None:
-        self.table[symbol] = address
-
-    def add_entries(self, entries: dict) -> None:
         self.table.update(entries)
+
+    def add_entry(self, symbol, address) -> None:
+        self.table[symbol] = address
 
     def contains(self, symbol) -> bool:
         return symbol in self.table
 
     def get_address(self, symbol) -> int:
-        return self.table.get(symbol, -1)
+        return self.table[symbol]
 
-    def get_new_address(self):
-        while str(self.data_address) in self.table:
-            self.data_address += 1
+    def get_program_address(self):
+        return self.program_address
+
+    def get_data_address(self):
         return self.data_address
+
+    def increment_data_address(self):
+        self.data_address += 1
+
+    def increment_address(self):
+        self.program_address += 1

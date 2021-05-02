@@ -15,7 +15,7 @@ class Code:
         self.comp_dict = {
             '0': '0101010',
             '1': '0111111',
-            '-1': '0011010',
+            '-1': '0111010',
             'D': "0001100",
             'A': "0110000",
             'M': "1110000",
@@ -50,14 +50,15 @@ class Code:
             JGE="011",
             JLT="100",
             JNE="101",
-            JLE="110"
+            JLE="110",
+            JMP="111"
         )
 
     def dest(self, string):
-        return self.dest_dict.getdefault(string, "000")
+        return self.dest_dict.get(string, "000")
 
     def comp(self, string):
-        return self.comp_dict.getdefault(string, "0000000")
+        return self.comp_dict.get(string, "0000000")
 
     def jump(self, string):
-        return self.jump_dict.getdefault(string, "000")
+        return self.jump_dict.get(string, "000")

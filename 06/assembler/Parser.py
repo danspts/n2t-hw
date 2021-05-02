@@ -9,8 +9,8 @@ class CommandType(Enum):
 
 
 class Parser:
-    reg_command_split = compile("([MDA]{1,2})\s*=\s*([1MD+A-]*)")
-    reg_jump_split = compile("([MDA]{1,2})\s*;'\s*(\S*)")
+    reg_command_split = compile("([MDA]{1,2})\s*=\s*([1&|M!0D+A-]*)")
+    reg_jump_split = compile("([MDA+0-1]{1,2})\s*;\s*(\S*)")
     reg_format = compile("([^/]*)")
 
     def __init__(self, file=None):
@@ -43,30 +43,32 @@ class Parser:
 
     def symbol(self):
         if self.command_type == CommandType.A_COMMAND:
-            return self.__current_line[1:]
+            return self.current_line[1:]
         elif self.command_type == CommandType.L_COMMAND:
-            return self.__current_line[1:-2]
+            return self.current_line[1:-2]
         else:
             raise ValueError
 
     def dest(self):
-        result = Parser.reg_command_split.findall(self.line_index)
+        result = Parser.reg_command_split.findall(self.current_line)
         if result:
             return result[0][0]
         else:
-            raise ValueError
+            return 'NULL'
 
     def comp(self):
-        result = Parser.reg_command_split.findall(self.line_index)
+        result_comm = Parser.reg_command_split.findall(self.current_line)
+        result_jump = Parser.reg_jump_split.findall(self.current_line)
+        if result_comm:
+            return result_comm[0][1]
+        elif result_jump:
+            return result_jump[0][0]
+        else:
+            return 'NULL'
+
+    def jump(self):
+        result = Parser.reg_jump_split.findall(self.current_line)
         if result:
             return result[0][1]
         else:
-            raise ValueError
-
-    def jump(self):
-        result = Parser.reg_command_split.findall(self.line_index)
-        if result:
-            return result[0][2]
-        else:
-            raise ValueError
-
+            return 'NULL'

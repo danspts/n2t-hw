@@ -7,60 +7,103 @@ import re
 
 def main(file_name):
     assembler = HackAssembler(file_name)
-    compiled_code = assembler.compile()
-    compiled_code = assembler.address_init(compiled_code)
-    compiled_code = assembler.parse_symbols(compiled_code)
-    print(compiled_code[:])
-    new_name = assembler.file_name.replace(".asm", ".hack")
-    with open(new_name, "w") as writer:
-        writer.write(compiled_code)
+    assembler.pre_process()
+    assembler.add_symbols()
+    assembler.replace_symbols()
+    assembler.compile_to_machine_hack()
 
 
 class HackAssembler:
 
     def __init__(self, file_name):
         self.file_name = file_name
+        self.new_name = self.file_name.replace(".asm", ".hack")
         self.code = Code()
         self.symbol_table = SymbolTable()
         self.parser = Parser(file_name)
 
-    def compile(self):
+    def compile_to_machine_hack(self):
+        self.parser = Parser(self.new_name)
         compiled_code = ""
         while self.parser.has_more_commands():
-            compiled_code += self.parser.current_line
+
+            if self.parser.command_type in [CommandType.A_COMMAND, CommandType.L_COMMAND]:
+                compiled_code += self.to_bin(self.parser.symbol()) + "\n"
+            else:
+                comp = self.parser.comp()
+                dest = self.parser.dest()
+                jump = self.parser.jump()
+                c_command = f"111{self.code.comp(comp)}{self.code.dest(dest)}{self.code.jump(jump)}"
+                compiled_code += c_command + "\n"
             self.parser.advance()
-        return compiled_code
 
-    def address_init(self, compiled_code):
-        index = 0
-        no_l_types = ""
-        for line in compiled_code.split('\n'):
-            if re.search('\((.+)\)', line):
-                self.symbol_table.add_entry(line[1:-1], index)
+        self.write(compiled_code)
+
+    @staticmethod
+    def to_bin(number):
+        binary = bin(int(number))[2:]
+        add_zero = 16 - len(binary)
+        return add_zero * '0' + binary
+
+    def write(self, input):
+        with open(self.new_name, "w") as writer:
+            writer.write(input)
+
+    def pre_process(self):
+        compiled_code = ""
+        while self.parser.has_more_commands():
+            if self.parser.current_line != "\n":
+                compiled_code += self.parser.current_line
+            self.parser.advance()
+        self.write(compiled_code)
+
+    def add_symbols(self):
+
+        #Substitutes the lables first
+        self.parser = Parser(self.new_name)
+        compiled_code = ""
+        while self.parser.has_more_commands():
+            if self.parser.command_type == CommandType.L_COMMAND:
+                address = self.symbol_table.get_program_address()
+                symbol = self.parser.symbol()
+                self.symbol_table.add_entry(symbol, address)
             else:
-                index += 1
-                no_l_types += line + '\n'
-        return no_l_types
+                compiled_code += self.parser.current_line
+                self.symbol_table.increment_address()
+            self.parser.advance()
+        self.write(compiled_code)
 
-    def parse_symbols(self, compiled_code):
-        symbol_less = ""
-        for line in compiled_code.split('\n'):
-            if '@' in line:
-                if line[1:].isnumeric():
-                    if not self.symbol_table.contains(line[1:]):
-                        self.symbol_table.add_entry(line[1:], int(line[1:]))
-                    symbol_less += line + '\n'
+        #Substitutes the first instance of
+        self.parser = Parser(self.new_name)
+        compiled_code = ""
+        while self.parser.has_more_commands():
+            if self.parser.command_type == CommandType.A_COMMAND:
+                symbol = self.parser.symbol().strip()
+                if not self.symbol_table.contains(symbol) and not symbol.isdigit():
+                    address = self.symbol_table.get_data_address()
+                    self.symbol_table.add_entry(symbol, address)
+                    compiled_code += f"@{address}\n"
+                    self.symbol_table.increment_data_address()
                 else:
-                    if self.symbol_table.contains(line[1:]):
-                        symbol_less += f'@{self.symbol_table.get_address(line[1:])}\n'
-                    else:
-                        address = self.symbol_table.get_new_address()
-                        self.symbol_table.add_entry(str(address), address)
-                        symbol_less += f'@{address}\n'
-            else:
-                symbol_less += line + '\n'
-        return symbol_less
+                    compiled_code += self.parser.current_line
 
+            else:
+                compiled_code += self.parser.current_line
+            self.parser.advance()
+        self.write(compiled_code)
+
+    def replace_symbols(self):
+        self.parser = Parser(self.new_name)
+        compiled_code = ""
+        while self.parser.has_more_commands():
+            if self.parser.command_type == CommandType.A_COMMAND:
+                symbol = self.parser.symbol().strip()
+                symbol = symbol if symbol.isdigit() else self.symbol_table.get_address(symbol)
+                compiled_code += f"@{symbol}\n"
+            else:
+                compiled_code += self.parser.current_line
+            self.parser.advance()
+        self.write(compiled_code)
 
 
 if __name__ == '__main__':
