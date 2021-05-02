@@ -10,7 +10,6 @@ def main(file_name):
     compiled_code = assembler.compile()
     compiled_code = assembler.address_init(compiled_code)
     compiled_code = assembler.parse_symbols(compiled_code)
-    compiled_code = assembler.to_binary(compiled_code)
     print(compiled_code[:])
     new_name = assembler.file_name.replace(".asm", ".hack")
     with open(new_name, "w") as writer:
@@ -62,11 +61,6 @@ class HackAssembler:
                 symbol_less += line + '\n'
         return symbol_less
 
-    def to_binary(self, compiled_code):
-        binary = ''
-        for line in compiled_code:
-
-        return binary
 
 
 if __name__ == '__main__':
