@@ -7,103 +7,87 @@ import re
 
 def main(file_name):
     assembler = HackAssembler(file_name)
-    assembler.pre_process()
-    assembler.add_symbols()
-    assembler.replace_symbols()
-    assembler.compile_to_machine_hack()
+    compiled_code = assembler.compile()
+    compiled_code = assembler.address_init(compiled_code)
+    compiled_code = assembler.parse_symbols(compiled_code)
+    print(compiled_code)
+    compiled_code = assembler.to_binary(compiled_code)
+    new_name = assembler.file_name.replace(".asm", ".hack")
+    with open(new_name, "w") as writer:
+        writer.write(compiled_code)
 
 
 class HackAssembler:
 
     def __init__(self, file_name):
         self.file_name = file_name
-        self.new_name = self.file_name.replace(".asm", ".hack")
         self.code = Code()
         self.symbol_table = SymbolTable()
         self.parser = Parser(file_name)
 
-    def compile_to_machine_hack(self):
-        self.parser = Parser(self.new_name)
+    def compile(self):
         compiled_code = ""
         while self.parser.has_more_commands():
+            compiled_code += self.parser.current_line
+            self.parser.advance()
+        return compiled_code
 
-            if self.parser.command_type in [CommandType.A_COMMAND, CommandType.L_COMMAND]:
-                compiled_code += self.to_bin(self.parser.symbol()) + "\n"
+    def address_init(self, compiled_code):
+        index = 0
+        no_l_types = ""
+        for line in compiled_code.split('\n'):
+            if re.search('\((.+)\)', line):
+                self.symbol_table.add_entry(line[1:-1], index)
             else:
-                comp = self.parser.comp()
-                dest = self.parser.dest()
-                jump = self.parser.jump()
-                c_command = f"111{self.code.comp(comp)}{self.code.dest(dest)}{self.code.jump(jump)}"
-                compiled_code += c_command + "\n"
-            self.parser.advance()
+                index += 1
+                no_l_types += line + '\n'
+        return no_l_types
 
-        self.write(compiled_code)
-
-    @staticmethod
-    def to_bin(number):
-        binary = bin(int(number))[2:]
-        add_zero = 16 - len(binary)
-        return add_zero * '0' + binary
-
-    def write(self, input):
-        with open(self.new_name, "w") as writer:
-            writer.write(input)
-
-    def pre_process(self):
-        compiled_code = ""
-        while self.parser.has_more_commands():
-            if self.parser.current_line != "\n":
-                compiled_code += self.parser.current_line
-            self.parser.advance()
-        self.write(compiled_code)
-
-    def add_symbols(self):
-
-        #Substitutes the lables first
-        self.parser = Parser(self.new_name)
-        compiled_code = ""
-        while self.parser.has_more_commands():
-            if self.parser.command_type == CommandType.L_COMMAND:
-                address = self.symbol_table.get_program_address()
-                symbol = self.parser.symbol()
-                self.symbol_table.add_entry(symbol, address)
-            else:
-                compiled_code += self.parser.current_line
-                self.symbol_table.increment_address()
-            self.parser.advance()
-        self.write(compiled_code)
-
-        #Substitutes the first instance of
-        self.parser = Parser(self.new_name)
-        compiled_code = ""
-        while self.parser.has_more_commands():
-            if self.parser.command_type == CommandType.A_COMMAND:
-                symbol = self.parser.symbol().strip()
-                if not self.symbol_table.contains(symbol) and not symbol.isdigit():
-                    address = self.symbol_table.get_data_address()
-                    self.symbol_table.add_entry(symbol, address)
-                    compiled_code += f"@{address}\n"
-                    self.symbol_table.increment_data_address()
+    def parse_symbols(self, compiled_code):
+        symbol_less = ""
+        for line in compiled_code.split('\n'):
+            if '@' in line:
+                if line[1:].isnumeric():
+                    # if not self.symbol_table.contains(line[1:]):
+                    #     self.symbol_table.add_entry(line[1:], int(line[1:]))
+                    symbol_less += line + '\n'
                 else:
-                    compiled_code += self.parser.current_line
-
+                    if self.symbol_table.contains(line[1:]):
+                        symbol_less += f'@{self.symbol_table.get_address(line[1:])}\n'
+                    else:
+                        address = self.symbol_table.get_new_address()
+                        self.symbol_table.add_entry(str(address), address)
+                        symbol_less += f'@{address}\n'
             else:
-                compiled_code += self.parser.current_line
-            self.parser.advance()
-        self.write(compiled_code)
+                symbol_less += line + '\n'
+        return symbol_less
 
-    def replace_symbols(self):
-        self.parser = Parser(self.new_name)
-        compiled_code = ""
-        while self.parser.has_more_commands():
-            if self.parser.command_type == CommandType.A_COMMAND:
-                symbol = self.parser.symbol().strip()
-                symbol = symbol if symbol.isdigit() else self.symbol_table.get_address(symbol)
-                compiled_code += f"@{symbol}\n"
+    def to_binary(self, compiled_code):
+        binary = ''
+        for line in compiled_code.strip().split('\n'):
+            if line[0] == '@':
+                bin_num = str(bin(int(line[1:])))[2:]
+                binary += (16 - len(bin_num)) * '0' + bin_num
             else:
-                compiled_code += self.parser.current_line
-            self.parser.advance()
-        self.write(compiled_code)
+                dest = 'NULL'
+                jump = 'NULL'
+                comp = line.split('=')
+                if len(comp) == 2:
+                    dest = comp[0]
+                    comp = comp[1]
+                else:
+                    comp = comp[0]
+                comp = comp.split(';')
+                if len(comp) == 2:
+                    jump = comp[1]
+                comp = comp[0]
+                binary += '111' + self.code.comp_dict[comp] + self.code.dest_dict[dest] + self.code.jump_dict[jump]
+            if binary[-16:] == '0000000000010001':
+                print('hi')
+
+            binary += '\n'
+
+        return binary
 
 
 if __name__ == '__main__':
