@@ -5,6 +5,7 @@ from Parser import Parser, CommandType
 import re
 
 
+
 def main(file_name):
     assembler = HackAssembler(file_name)
     assembler.pre_process()
