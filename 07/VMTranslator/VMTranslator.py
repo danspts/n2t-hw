@@ -171,6 +171,5 @@ class VMTranslator:
 
 
 if __name__ == '__main__':
-    # file_name = sys.argv[1]
-    file_name = r'D:\CS\CS2\2\nand2tetris\n2t-hw\07\StackArithmetic\StackTest\StackTest.vm'
+    file_name = sys.argv[1]
     main(file_name)
