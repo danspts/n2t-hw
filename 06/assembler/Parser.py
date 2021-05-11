@@ -1,7 +1,6 @@
 from enum import Enum
 from re import compile
 
-
 class CommandType(Enum):
     A_COMMAND = 0
     C_COMMAND = 1
