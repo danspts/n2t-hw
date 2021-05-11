@@ -2,7 +2,6 @@ import sys
 from Code import Code
 from SymbolTable import SymbolTable
 from Parser import Parser, CommandType
-import re
 
 
 def main(file_name):
