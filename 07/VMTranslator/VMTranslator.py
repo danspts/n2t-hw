@@ -16,6 +16,7 @@ class VMTranslator:
         self.code = CodeWriter(self.file_name)
 
     def translate(self):
+        self.code.write_init()
         while self.parser.has_more_commands():
             print(self.parser.command, self.parser.arg_1, self.parser.arg_2)
             self.write()
@@ -32,7 +33,7 @@ class VMTranslator:
             self.code.write_push_pop(self.parser.command, self.parser.arg_1, self.parser.arg_2)
         elif cmd == CommandType.C_LABEL:
             self.code.label(self.parser.arg_1)
-        # TODO HW8
+        # HW8
         elif cmd == CommandType.C_GOTO:
             self.code.write_goto(self.parser.arg_1)
         elif cmd == CommandType.C_IF:
