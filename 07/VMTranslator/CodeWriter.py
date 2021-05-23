@@ -15,10 +15,10 @@ class CodeWriter:
 
     def write_push_pop(self, command, arg_1, index):
         address = get_address(arg_1)
-        if arg_1 == 'constant':
-            self.address(index)
-        elif arg_1 == 'static':
+        if arg_1 == 'static':
             self.address(f"{self.name}.{index}")
+        elif arg_1 == 'constant':
+            self.address(index)
         elif arg_1 in ['pointer', 'temp']:
             self.label(f'R{address + int(index)}')
         elif arg_1 in ['local', 'argument', 'this', 'that']:
@@ -32,7 +32,7 @@ class CodeWriter:
             self.pop()
 
     def pop(self):
-        self.copy_memory_to_address(None, 'R15')
+        self.set_int_to_memory(None, 'R15')
         self.pop_D_from_stack()
         self.D_to_ram('R15')
 
@@ -94,7 +94,7 @@ class CodeWriter:
         self.address(copy_to)
         self.write('M=D')  # M[copy_to] = M[copy_from]
 
-    def set_int_to_memory(self, addr, value = None):
+    def set_int_to_memory(self, addr, value=None):
         if value:
             self.address(value)
         self.write('D=A')
@@ -200,7 +200,6 @@ class CodeWriter:
         self.write_goto(function_name)
         self.label(return_address)
         self.call_index += 1
-
 
     def label(self, label):
         self.write(f"({label})")

@@ -1,7 +1,9 @@
 import sys
 from CodeWriter import CodeWriter
 from Parser import Parser, CommandType
-from os import listdir, scandir
+from os import listdir
+import re
+
 
 
 def main(file_name):
@@ -10,13 +12,16 @@ def main(file_name):
 
 
 class VMTranslator:
+
+    get_dirname_re = re.compile(".*/(.*?)/?$")
+
     def __init__(self, file_name):
         self.file_name = file_name.replace(".vm", ".asm")
         self.parser = Parser(file_name)
         self.code = CodeWriter(self.file_name)
 
     def translate(self):
-        self.code.write_init()
+        # self.code.write_init()
         while self.parser.has_more_commands():
             print(self.parser.command, self.parser.arg_1, self.parser.arg_2)
             self.write()
@@ -46,26 +51,26 @@ class VMTranslator:
             self.code.write_call(self.parser.arg_1, self.parser.arg_2)
 
 
-def listdirs(rootdir):
-    for it in scandir(rootdir):
-        if it.is_dir():
-            listdirs(it)
-        dir_or_file(it.path, it.is_dir())
-
-
-def dir_or_file(argument, is_dir):
+def dir_or_file(argument):
     if argument[-3:] == ".vm":
         main(argument)
-    elif is_dir:
-        files = listdir(argument)
-        for file in files:
+    else:
+        # turn all vm files to asm
+        for file in listdir(argument):
             if file[-3:] == ".vm":
                 main(f"{argument}/{file}")
+        # concatenates all asm files
+        with open(f"{argument}/{VMTranslator.get_dirname_re.findall(argument)[0]}.asm", "w") as writer:
+            for file in listdir(argument):
+                if file[-4:] == ".asm":
+                    writer.write(open(f"{argument}/{file}", "r").read())
 
 
 if __name__ == '__main__':
-    if len(sys.argv) != 2:
+    if len(sys.argv) > 2:
         print(f"Usage: python VMTranslator {{file_name, directory_name}}")
+    elif len(sys.argv) == 1:
+        dir_or_file(".")
     else:
         file_name = sys.argv[1]
-        listdirs(file_name)
+        dir_or_file(file_name)
