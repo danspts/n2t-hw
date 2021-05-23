@@ -23,20 +23,20 @@ class CodeWriter:
             self.address(f"{self.name}.{index}")
         elif arg_1 == 'constant':
             self.address(index)
-        elif arg_1 in ['pointer', 'temp']:
-            self.label(f'R{address + int(index)}')
         elif arg_1 in ['local', 'argument', 'this', 'that']:
             self.address(address)
             self.write('D=M')
-            self.label(index)
+            self.address(index)
             self.write('A=D+A')
+        elif arg_1 in ['pointer', 'temp']:
+            self.address(f'R{address + int(index)}')
         if command == "push":
             self.push(arg_1)
         elif command == "pop":
             self.pop()
 
     def pop(self):
-        self.set_int_to_memory(None, 'R15')
+        self.set_int_to_memory('R15')
         self.pop_D_from_stack()
         self.D_to_ram('R15')
 
@@ -70,7 +70,6 @@ class CodeWriter:
         self.label(f'COMPARE_F_{self.bool_index}')
 
         # SP++
-        self.inc_sp()
         self.bool_index += 1
 
     def push_D_to_stack(self):
@@ -145,8 +144,6 @@ class CodeWriter:
             self.compare('JLT')
 
         self.inc_sp()
-
-
 
     def write_if(self, location):
         self.pop_D_from_stack()

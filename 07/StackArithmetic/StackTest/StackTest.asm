@@ -35,8 +35,6 @@ M=-1
 (COMPARE_F_0)
 @SP
 M=M+1
-@SP
-M=M+1
 @17
 D=A
 @SP
@@ -72,8 +70,6 @@ M=0
 A=M
 M=-1
 (COMPARE_F_1)
-@SP
-M=M+1
 @SP
 M=M+1
 @16
@@ -113,8 +109,6 @@ M=-1
 (COMPARE_F_2)
 @SP
 M=M+1
-@SP
-M=M+1
 @892
 D=A
 @SP
@@ -150,8 +144,6 @@ M=0
 A=M
 M=-1
 (COMPARE_F_3)
-@SP
-M=M+1
 @SP
 M=M+1
 @891
@@ -191,8 +183,6 @@ M=-1
 (COMPARE_F_4)
 @SP
 M=M+1
-@SP
-M=M+1
 @891
 D=A
 @SP
@@ -228,8 +218,6 @@ M=0
 A=M
 M=-1
 (COMPARE_F_5)
-@SP
-M=M+1
 @SP
 M=M+1
 @32767
@@ -269,8 +257,6 @@ M=-1
 (COMPARE_F_6)
 @SP
 M=M+1
-@SP
-M=M+1
 @32766
 D=A
 @SP
@@ -308,8 +294,6 @@ M=-1
 (COMPARE_F_7)
 @SP
 M=M+1
-@SP
-M=M+1
 @32766
 D=A
 @SP
@@ -345,8 +329,6 @@ M=0
 A=M
 M=-1
 (COMPARE_F_8)
-@SP
-M=M+1
 @SP
 M=M+1
 @57
