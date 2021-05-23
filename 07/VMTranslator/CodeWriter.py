@@ -10,6 +10,10 @@ class CodeWriter:
         self.bool_index = 0
         self.call_index = 0
 
+    def write_init(self):
+        self.set_int_to_memory("SP", value = 256)  # M[SP] = 256
+        self.write_call('Sys.init', 0)
+
     def write(self, line):
         self.compiled_code.write(line + "\n")
 
@@ -142,9 +146,7 @@ class CodeWriter:
 
         self.inc_sp()
 
-    def write_init(self):
-        self.copy_memory_to_address(256, "SP")  # M[SP] = 256
-        self.write_call('Sys.init', 0)
+
 
     def write_if(self, location):
         self.pop_D_from_stack()
@@ -152,7 +154,7 @@ class CodeWriter:
         self.write('D;JNE')  # if D == 0, jump to location else continue
 
     def write_goto(self, location):
-        self.label(location)
+        self.address(location)
         self.write('0;JMP')  # Jump to location
 
     def write_function(self, function_name, nb_locals):
@@ -183,7 +185,9 @@ class CodeWriter:
 
     def write_call(self, function_name, num_args):
         return_address = f"{function_name}.call.{self.call_index}"
-        self.copy_memory_to_address(copy_to=get_address('frame'), copy_from=get_address('local'))
+        self.address(return_address)
+        self.write('D=A')
+        self.push_D_to_stack()
 
         for reg in ['local', 'argument', "this", "that"]:
             self.address(get_address(reg))

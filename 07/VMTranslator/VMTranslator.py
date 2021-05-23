@@ -6,8 +6,8 @@ import re
 
 
 
-def main(file_name):
-    translator = VMTranslator(file_name)
+def main(file_name, first = False):
+    translator = VMTranslator(file_name, first = first)
     translator.translate()
 
 
@@ -15,13 +15,15 @@ class VMTranslator:
 
     get_dirname_re = re.compile(".*/(.*?)/?$")
 
-    def __init__(self, file_name):
+    def __init__(self, file_name, first = False):
         self.file_name = file_name.replace(".vm", ".asm")
         self.parser = Parser(file_name)
         self.code = CodeWriter(self.file_name)
+        self.first = first
 
     def translate(self):
-        # self.code.write_init()
+        if self.first:
+            self.code.write_init()
         while self.parser.has_more_commands():
             print(self.parser.command, self.parser.arg_1, self.parser.arg_2)
             self.write()
@@ -55,20 +57,27 @@ def dir_or_file(argument):
     if argument[-3:] == ".vm":
         main(argument)
     else:
+        first = True
         # turn all vm files to asm
-        for file in listdir(argument):
+        for file in listdir(argument)[::-1]:
             if file[-3:] == ".vm":
-                main(f"{argument}/{file}")
+                main(f"{argument}/{file}", first = first)
+                first = False
         # concatenates all asm files
-        with open(f"{argument}/{VMTranslator.get_dirname_re.findall(argument)[0]}.asm", "w") as writer:
+
+        file_name = f"{VMTranslator.get_dirname_re.findall(argument)[0]}.asm"
+
+        with open(f"{argument}/{file_name}", "w") as writer:
             for file in listdir(argument):
-                if file[-4:] == ".asm":
+                if file[-4:] == ".asm" and file != file_name:
+                    writer.write(f"//{file}\n")
+                    print(file, file_name)
                     writer.write(open(f"{argument}/{file}", "r").read())
 
 
 if __name__ == '__main__':
     if len(sys.argv) > 2:
-        print(f"Usage: python VMTranslator {{file_name, directory_name}}")
+        print("Usage: python VMTranslator {file_name, directory_name}")
     elif len(sys.argv) == 1:
         dir_or_file(".")
     else:
