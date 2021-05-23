@@ -48,26 +48,26 @@ class CodeWriter:
         self.write('D=M-D')
 
         # set the compare address and compare on true
-        self.address(f"COMPARE_T_{self.label_index}")
+        self.address(f"COMPARE_T_{self.bool_index}")
         self.write(f'D;{jump_cmd}')
         self.set_A_to_stack()
         self.write('M=0')
 
         # Otherwise compare on false
-        self.address(f"COMPARE_F_{self.label_index}")
+        self.address(f"COMPARE_F_{self.bool_index}")
         self.write('0;JMP')
 
         # True Label: continue
-        self.label(f'COMPARE_T_{self.label_index}')
+        self.label(f'COMPARE_T_{self.bool_index}')
         self.set_A_to_stack()
         self.write('M=-1')
 
         # False label: skip
-        self.label(f'COMPARE_F_{self.label_index}')
+        self.label(f'COMPARE_F_{self.bool_index}')
 
         # SP++
         self.inc_sp()
-        self.label_index += 1
+        self.bool_index += 1
 
     def push_D_to_stack(self):
         self.D_to_ram('SP')
@@ -194,7 +194,7 @@ class CodeWriter:
 
         self.address(int(num_args) + 5)
         self.write('D=D-A')
-        self.write(get_address('argument'))
+        self.address(get_address('argument'))
         self.write('M=D')
 
         self.write_goto(function_name)

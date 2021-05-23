@@ -39,7 +39,7 @@ D=M
 M=D
 @5
 D=D-A
-ARG
+@ARG
 M=D
 (Sys.init)
 0;JMP
