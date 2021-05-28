@@ -11,9 +11,9 @@ class SnakeGame {
 
    /** Constructs a new Snake Game. */
    constructor SnakeGame new() {
-      // Creates a Snake and positions it at the top-left
+      // Creates a Snake and positions it at the top-left, but not in the corner
       // of the screen.
-      let snake = Snake.new(0, 0);
+      let snake = Snake.new(30, 30);
       let direction = 2;  // initial state is down
       return this;
    }
