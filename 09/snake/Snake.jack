@@ -12,6 +12,18 @@ class Snake {
       return this;
    }
 
+   method int getX() {
+      return x;
+   }
+
+   method int getY() {
+      return y;
+   }
+
+   method int getSize() {
+      return size;
+   }
+
    /** Disposes this snake. */
    method void dispose() {
       do Memory.deAlloc(this);
