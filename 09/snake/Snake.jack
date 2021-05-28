@@ -1,0 +1,67 @@
+/** Implements a graphical snake. */
+class Snake {
+
+   field int x, y; // screen location of the snake's top-left corner
+   field int size = 30; // length of this snake, in pixels
+
+   /** Constructs a new snake with a given location. */
+   constructor Snake new(int Ax, int Ay) {
+      let x = Ax;
+      let y = Ay;
+      do draw();
+      return this;
+   }
+
+   /** Disposes this snake. */
+   method void dispose() {
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   /** Draws the snake on the screen. */
+   method void draw() {
+      do Screen.setColor(true);
+      do Screen.drawRectangle(x, y, x + size, y + size);
+      return;
+   }
+
+   /** Erases the snake from the screen. */
+   method void erase() {
+      do Screen.setColor(false);
+      do Screen.drawRectangle(x, y, x + size, y + size);
+      return;
+   }
+
+
+   /** Moves the snake up by 2 pixels. */
+   method void moveUp() {
+      do erase();
+      let y = y + size;
+      do draw();
+      return;
+   }
+
+   /** Moves the sqsnakeuare down by 2 pixels. */
+   method void moveDown() {
+      do erase();
+      let y = y - size;
+      do draw();
+      return;
+   }
+
+   /** Moves the snake left by 2 pixels. */
+   method void moveLeft() {
+      do erase();
+      let x = x - size;
+      do draw();
+      return;
+   }
+
+   /** Moves the snake right by 2 pixels. */
+   method void moveRight() {
+      do erase();
+      let x = x + size;
+      do draw();
+      return;
+   }
+}
