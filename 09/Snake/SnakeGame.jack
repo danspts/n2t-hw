@@ -1,0 +1,161 @@
+/**
+ * Implements the Snake Dance game.
+ * The 4 arrow keys are used to move the snake up, down, left, and right.
+ * The 'q' key is used to quit the game.
+ */
+
+class SnakeGame {
+   field Snake snake; // the snake of this game
+   field int direction; // the snake's current direction: 
+                        // 1=up, 2=down, 3=left, 4=right
+
+   /** Constructs a new Snake Game. */
+   constructor SnakeGame new() {
+      // Creates a Snake and positions it at the top-left, but not in the corner
+      // of the screen.
+      let snake = Snake.new(30, 30);
+      let direction = 2;  // initial state is down
+      return this;
+   }
+
+   /** Disposes this game. */
+   method void dispose() {
+      do snake.dispose();
+      do Memory.deAlloc(this);
+      return;
+   }
+
+   /** Moves the snake in the current direction. */
+   method void moveSnake() {
+      if (direction = 1) { do snake.moveUp(); }
+      if (direction = 2) { do snake.moveDown(); }
+      if (direction = 3) { do snake.moveLeft(); }
+      if (direction = 4) { do snake.moveRight(); }
+      do Sys.wait(500);  // delays the next movement
+      return;
+   }
+
+    method void drawFruit(int x, int y, int fruit_type) {
+        // draw a fruit on a location
+        // screen is 512 rows of 256 pixels
+        var int memAddress;
+        let memAddress = 16384+(y*512)+x;
+        // 0 - apple, 1 - banana, 2 - cherry
+        if (fruit_type = 1){
+            do Memory.poke(memAddress+0, 0);
+            do Memory.poke(memAddress+32, 3072);
+            do Memory.poke(memAddress+64, 1792);
+            do Memory.poke(memAddress+96, 960);
+            do Memory.poke(memAddress+128, 480);
+            do Memory.poke(memAddress+160, 4088);
+            do Memory.poke(memAddress+192, 8188);
+            do Memory.poke(memAddress+224, 16382);
+            do Memory.poke(memAddress+256, 32767);
+            do Memory.poke(memAddress+288, 32767);
+            do Memory.poke(memAddress+320, 32767);
+            do Memory.poke(memAddress+352, 32719);
+            do Memory.poke(memAddress+384, 32719);
+            do Memory.poke(memAddress+416, 16382);
+            do Memory.poke(memAddress+448, 8188);
+            do Memory.poke(memAddress+480, 4088);
+        } else {
+            if (fruit_type = 2) {
+                do Memory.poke(memAddress+0, 0);
+                do Memory.poke(memAddress+32, 0);
+                do Memory.poke(memAddress+64, 0);
+                do Memory.poke(memAddress+96, 12);
+                do Memory.poke(memAddress+128, 4);
+                do Memory.poke(memAddress+160, 7);
+                do Memory.poke(memAddress+192, 7);
+                do Memory.poke(memAddress+224, 15);
+                do Memory.poke(memAddress+256, 15);
+                do Memory.poke(memAddress+288, 30);
+                do Memory.poke(memAddress+320, 62);
+                do Memory.poke(memAddress+352, 7292);
+                do Memory.poke(memAddress+384, 8184);
+                do Memory.poke(memAddress+416, 8176);
+                do Memory.poke(memAddress+448, 2016);
+                do Memory.poke(memAddress+480, 0);
+            } else {
+                do Memory.poke(memAddress+0, 0);
+                do Memory.poke(memAddress+32, 0);
+                do Memory.poke(memAddress+64, 0);
+                do Memory.poke(memAddress+96, 0);
+                do Memory.poke(memAddress+128, 0);
+                do Memory.poke(memAddress+160, 0);
+                do Memory.poke(memAddress+192, 1536);
+                do Memory.poke(memAddress+224, 768);
+                do Memory.poke(memAddress+256, 384);
+                do Memory.poke(memAddress+288, 992);
+                do Memory.poke(memAddress+320, 2032);
+                do Memory.poke(memAddress+352, 4088);
+                do Memory.poke(memAddress+384, 3896);
+                do Memory.poke(memAddress+416, 3896);
+                do Memory.poke(memAddress+448, 2032);
+                do Memory.poke(memAddress+480, 992);
+                }
+            }
+        return;
+    }
+
+
+   /** Runs the game: handles the user's inputs and moves the snake accordingly */
+   method void run() {
+      var char key;  // the key currently pressed by the user
+      var int snake_x, snake_y;
+      var int size, max_screen_size_x, max_screen_size_y;
+      var int fruit_x, fruit_y, fruit_type;
+      var boolean exit;
+      let exit = false;
+      let snake_x = snake.getX();
+      let snake_y = snake.getY();
+      let size = snake.getSize();
+      let max_screen_size_x = 255; // screan is 512 rows of 256 pixels
+      let max_screen_size_y = 511; 
+      let fruit_x = 100; // first fruit is on 100, 100
+      let fruit_y = 100;
+      let fruit_type = 0;
+      do drawFruit(fruit_x, fruit_y, fruit_type);
+      
+      while (~exit) {
+         if ((snake_x > max_screen_size_x) | (snake_y > max_screen_size_y)){
+            // snake exited the screen
+            let exit = true;
+         } else {
+            if (((snake_x < fruit_x) & ((snake_x + size) > fruit_x )) & ((snake_y < fruit_y) & ((snake_y + size) > fruit_y))){
+                // snake touched fruit
+                // TODO put the fruit on random place, not on the snake
+                let fruit_x = 200;
+                let fruit_y = 200;
+                do drawFruit(fruit_x, fruit_y, fruit_type);
+                let fruit_type = fruit_type + 1;
+                if (fruit_type > 2) { let fruit_type = 0; }
+            }
+         }
+
+         // waits for a key to be pressed
+         while (key = 0) {
+            let key = Keyboard.keyPressed();
+            do moveSnake();
+         }
+
+         if (key = 81)  { let exit = true; }     // q key
+         if (key = 131) { let direction = 1; }   // up arrow
+         if (key = 133) { let direction = 2; }   // down arrow
+         if (key = 130) { let direction = 3; }   // left arrow
+         if (key = 132) { let direction = 4; }   // right arrow
+
+         // waits for the key to be released
+         while (~(key = 0)) {
+            let key = Keyboard.keyPressed();
+            do moveSnake();
+         }
+         let snake_x = snake.getX();
+         let snake_y = snake.getY();
+      } // while
+      return;
+   }
+}
+
+
+

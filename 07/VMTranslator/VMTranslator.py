@@ -39,7 +39,7 @@ class VMTranslator:
         if cmd in [CommandType.C_PUSH, CommandType.C_POP]:
             self.code.write_push_pop(self.parser.command, self.parser.arg_1, self.parser.arg_2)
         elif cmd == CommandType.C_LABEL:
-            self.code.label(self.parser.arg_1)
+            self.code.label(f"{self.code.name}${self.parser.arg_1}")
         # HW8
         elif cmd == CommandType.C_GOTO:
             self.code.write_goto(self.parser.arg_1)

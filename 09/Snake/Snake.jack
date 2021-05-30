@@ -2,10 +2,11 @@
 class Snake {
 
    field int x, y; // screen location of the snake's top-left corner
-   field int size = 30; // length of this snake, in pixels
+   field int size ; // length of this snake, in pixels
 
    /** Constructs a new snake with a given location. */
    constructor Snake new(int Ax, int Ay) {
+      let size = 30;
       let x = Ax;
       let y = Ay;
       do draw();

@@ -147,11 +147,11 @@ class CodeWriter:
 
     def write_if(self, location):
         self.pop_D_from_stack()
-        self.address(location)
+        self.address(f"{self.name}${location}")
         self.write('D;JNE')  # if D == 0, jump to location else continue
 
     def write_goto(self, location):
-        self.address(location)
+        self.address(f"{self.name}${location}")
         self.write('0;JMP')  # Jump to location
 
     def write_function(self, function_name, nb_locals):
@@ -162,23 +162,29 @@ class CodeWriter:
 
     def write_return(self):
         self.copy_memory_to_address(copy_to=get_address('frame'), copy_from=get_address('local'))
+
+        self.address(get_address('frame'))
+        self.write('D=M')
         self.address(5)
         self.write("A=D-A")
-        self.write("D=M")
+
+        self.write("A=D")
         self.copy_memory_to_address(copy_to=get_address('return'))
+
         self.pop_D_from_stack()
         self.D_to_ram(get_address('argument'))
-        self.copy_memory_to_address(get_address('argument'), get_address('SP'))
+        self.copy_memory_to_address(copy_from=get_address('argument'), copy_to=get_address('SP'))
         self.inc_sp()
 
-        self.copy_memory_to_address(copy_to=get_address('temp'), copy_from=get_address('local'))
+        self.copy_memory_to_address(copy_to='R15', copy_from=get_address('local'))
 
         for reg in ['local', 'argument', "this", "that"]:
-            self.D_from_ram(get_address('temp'))
+            self.D_from_ram("R15")
             self.write('D=D-1')
+            self.write('A=D')
             self.copy_memory_to_address(copy_to=get_address(reg))
 
-        self.write_goto(get_address('return'))  # goto RET
+        self.write_goto(get_address('return'))
 
     def write_call(self, function_name, num_args):
         return_address = f"{function_name}.call.{self.call_index}"
