@@ -39,9 +39,9 @@ class SnakeGame {
         // draw a fruit on a location
         // screen is 512 rows of 256 pixels
         var int memAddress;
-        let memAddress = 16384+(y*512)+x;
+        let memAddress = 16384+(y*256)+x;
         // 0 - apple, 1 - banana, 2 - cherry
-        if (fruit_type = 1){
+        if (fruit_type = 0){
             do Memory.poke(memAddress+0, 0);
             do Memory.poke(memAddress+32, 3072);
             do Memory.poke(memAddress+64, 1792);
@@ -59,7 +59,7 @@ class SnakeGame {
             do Memory.poke(memAddress+448, 8188);
             do Memory.poke(memAddress+480, 4088);
         } else {
-            if (fruit_type = 2) {
+            if (fruit_type = 1) {
                 do Memory.poke(memAddress+0, 0);
                 do Memory.poke(memAddress+32, 0);
                 do Memory.poke(memAddress+64, 0);
@@ -110,15 +110,15 @@ class SnakeGame {
       let snake_x = snake.getX();
       let snake_y = snake.getY();
       let size = snake.getSize();
-      let max_screen_size_x = 255; // screan is 512 rows of 256 pixels
-      let max_screen_size_y = 511; 
-      let fruit_x = 100; // first fruit is on 100, 100
-      let fruit_y = 100;
+      let max_screen_size_x = 255 - size; // screan is 512 rows of 256 pixels
+      let max_screen_size_y = 511 - size; 
+      let fruit_x = 20; // first fruit is on 100, 100
+      let fruit_y = 20;
       let fruit_type = 0;
       do drawFruit(fruit_x, fruit_y, fruit_type);
       
       while (~exit) {
-         if ((snake_x > max_screen_size_x) | (snake_y > max_screen_size_y)){
+         if ((snake_x > max_screen_size_x) | (snake_y > max_screen_size_y) | (snake_x < size) | (snake_x < size) ){
             // snake exited the screen
             let exit = true;
          } else {

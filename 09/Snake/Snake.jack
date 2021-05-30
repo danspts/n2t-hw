@@ -46,23 +46,23 @@ class Snake {
    }
 
 
-   /** Moves the snake up by 2 pixels. */
+   /** Moves the snake up by size pixels. */
    method void moveUp() {
-      do erase();
-      let y = y + size;
-      do draw();
-      return;
-   }
-
-   /** Moves the sqsnakeuare down by 2 pixels. */
-   method void moveDown() {
       do erase();
       let y = y - size;
       do draw();
       return;
    }
 
-   /** Moves the snake left by 2 pixels. */
+   /** Moves the sqsnakeuare down by size pixels. */
+   method void moveDown() {
+      do erase();
+      let y = y + size;
+      do draw();
+      return;
+   }
+
+   /** Moves the snake left by size pixels. */
    method void moveLeft() {
       do erase();
       let x = x - size;
@@ -70,7 +70,7 @@ class Snake {
       return;
    }
 
-   /** Moves the snake right by 2 pixels. */
+   /** Moves the snake right by size pixels. */
    method void moveRight() {
       do erase();
       let x = x + size;
