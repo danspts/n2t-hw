@@ -75,59 +75,6 @@ class JackTokenizer:
                 else:
                     self.tokens.append(Token(string, token_type=Types.IDENTIFIER))
 
-        #
-        # for text in white_space_split:
-        #     self.reset()
-        #     if self.is_keyword(text):
-        #         self.tokens.append(Token(text, token_type=Types.KEYWORD))
-        #     else:
-        #         splited = list(text)
-        #         const_string = ''
-        #         in_const_string = False
-        #         for element in splited:
-        #             # check if we saw quotes
-        #             if element == '"':
-        #                 if in_const_string:
-        #                     # if we are and we already saw one, those are the end, so append the string and
-        #                     # finish the token
-        #                     self.tokens.append(Token(const_string, token_type=Types.STRING_CONST))
-        #                     in_const_string = False
-        #                 else:
-        #                     # if we didn't saw one, resent the const string and start constructing
-        #                     const_string = ''
-        #                     in_const_string = True
-        #             if in_const_string:
-        #                 const_string += element
-        #             else:
-        #
-        #                 if self.reset_num:
-        #                     if self.number is not None:
-        #                         self.tokens.append(Token(self.number, token_type=Types.INT_CONST))
-        #                     self.number = None
-        #                     self.reset_num = False
-        #
-        #                 if self.reset_identifier:
-        #                     if self.identifier is not None:
-        #                         self.tokens.append(Token(self.identifier, token_type=Types.IDENTIFIER))
-        #                     self.identifier = None
-        #                     self.reset_identifier = False
-        #
-        #                 if self.is_symbol(element):
-        #                     self.reset()
-        #                     self.tokens.append(Token(element, token_type=Types.SYMBOL))
-        #                 elif text.isnumeric():
-        #                     if self.number is None:
-        #                         self.number = 0
-        #                     if self.identifier is not None:
-        #                         self.reset_identifier = True
-        #                     self.number = self.number * 10 + int(element)
-        #                 else:
-        #                     if self.identifier is None:
-        #                         self.identifier = ''
-        #                     if self.number is not None:
-        #                         self.reset_num = True
-        #                     self.identifier += element
-
     def parse(self):
         read = self.reader.readline()
         while read != '':
