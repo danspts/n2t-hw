@@ -99,9 +99,6 @@ class CompilationEngine:
             self.process('function')
         elif self.current_token.string == 'method':
             self.process('method')
-        else:
-            # end if there is not static or field
-            return
 
         # print type
         self.print_and_advance(self.current_token)
@@ -112,8 +109,6 @@ class CompilationEngine:
         self.process(')')
         self.compile_subroutine_body()
 
-        self.compile_subroutine()
-
         self.end_token('subroutineDec')
 
     def compile_parameter_list(self):
@@ -123,6 +118,7 @@ class CompilationEngine:
                 self.current_token.string == 'char' or
                 self.current_token.string == 'int' or
                 self.current_token.token_type == Types.IDENTIFIER):
+
             # print type
             self.print_and_advance(self.current_token)
             # print name
@@ -131,14 +127,18 @@ class CompilationEngine:
             # handle comma variables
             while self.current_token.string == ',':
                 self.process(',')
+                # print type
                 self.print_and_advance(self.current_token)
-            self.process(';')
+                # print name
+                self.print_and_advance(self.current_token)
         self.end_token('parameterList')
 
     def compile_subroutine_body(self):
         self.start_token('subroutineBody')
         self.process('{')
-        self.compile_var_dec()
+        if self.current_token.string == 'var':
+            self.compile_var_dec()
+
         self.compile_statements()
         self.process('}')
         self.end_token('subroutineBody')
