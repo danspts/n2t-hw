@@ -107,24 +107,22 @@ class CompilationEngine:
         self.writer.write('</subroutineDec>\n')
 
     def compile_parameter_list(self):
-        if not (
-                self.current_token.string == 'boolean' or
+        self.writer.write('<parameterList>\n')
+
+        if (self.current_token.string == 'boolean' or
                 self.current_token.string == 'char' or
                 self.current_token.string == 'int' or
                 self.current_token.token_type == Types.IDENTIFIER):
-            return
-        self.writer.write('<parameterList>\n')
-
-        # print type
-        self.print_and_advance(self.current_token)
-        # print name
-        self.print_and_advance(self.current_token)
-
-        # handle comma variables
-        while self.current_token.string == ',':
-            self.process(',')
+            # print type
             self.print_and_advance(self.current_token)
-        self.process(';')
+            # print name
+            self.print_and_advance(self.current_token)
+
+            # handle comma variables
+            while self.current_token.string == ',':
+                self.process(',')
+                self.print_and_advance(self.current_token)
+            self.process(';')
         self.writer.write('</parameterList>\n')
 
     def compile_subroutine_body(self):
