@@ -163,6 +163,8 @@ class CompilationEngine:
             self.compile_do()
         elif self.current_token.string == 'return':
             self.compile_return()
+        else:
+            return
         self.compile_statements()
         self.writer.write('</statements>\n')
 
