@@ -136,7 +136,7 @@ class CompilationEngine:
     def compile_subroutine_body(self):
         self.start_token('subroutineBody')
         self.process('{')
-        if self.current_token.string == 'var':
+        while self.current_token.string == 'var':
             self.compile_var_dec()
 
         self.compile_statements()
@@ -194,7 +194,7 @@ class CompilationEngine:
     def compile_if(self):
         self.start_token('ifStatement')
         self.process('if')
-        self.process(')')
+        self.process('(')
         self.compile_expression()
         self.process(')')
         self.process('{')
@@ -265,4 +265,10 @@ class CompilationEngine:
 
     def compile_expression_list(self):
         self.start_token('expressionList')
+
+        while self.current_token.token_type == Types.KEYWORD or self.current_token.token_type == Types.IDENTIFIER:
+            self.compile_expression()
+            if self.current_token.string != ',':
+                break
+            self.process(',')
         self.end_token('expressionList')

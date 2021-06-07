@@ -85,6 +85,7 @@
 <statements>
 <ifStatement>
 <keyword> if </keyword>
+<symbol> ( </symbol>
 <expression>
 <term>
 <identifier> b </identifier>
