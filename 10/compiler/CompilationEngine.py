@@ -6,24 +6,26 @@ class CompilationEngine:
     def __init__(self, tokenizer, writer):
         self.writer = writer
         self.tokenizer = tokenizer
-        self.current_token = self.tokenizer.advance()
+        if self.tokenizer.has_more_tokens():
+            self.current_token = self.tokenizer.advance()
         self.compile_class()
 
     def write(self, string):
-        self.writer.write(f'{string}\n')
+        self.writer.write(f'{string}')
 
     def start_token(self, string):
-        self.write(f"<{string}>")
+        self.write(f"<{string}>\n")
 
     def end_token(self, string):
-        self.write(f"</{string}>")
+        self.write(f"</{string}>\n")
 
     def process(self, token_str):
         if self.current_token.string == token_str:
             self.print_xml_token(self.current_token)
         else:
             print('error')
-        self.current_token = self.tokenizer.advance()
+        if self.tokenizer.has_more_tokens():
+            self.current_token = self.tokenizer.advance()
 
     def print_xml_token(self, token):
         # special chars of xml
@@ -52,7 +54,8 @@ class CompilationEngine:
 
     def print_and_advance(self, token):
         self.print_xml_token(token)
-        self.current_token = self.tokenizer.advance()
+        if self.tokenizer.has_more_tokens():
+            self.current_token = self.tokenizer.advance()
 
     def compile_class(self):
         self.start_token('class')
@@ -89,14 +92,12 @@ class CompilationEngine:
         self.end_token('classVarDec')
 
     def compile_subroutine(self):
+        self.start_token('subroutineDec')
         if self.current_token.string == 'constructor':
-            self.start_token('subroutineDec')
             self.process('constructor')
         elif self.current_token.string == 'function':
-            self.start_token('subroutineDec')
             self.process('function')
         elif self.current_token.string == 'method':
-            self.start_token('subroutineDec')
             self.process('method')
         else:
             # end if there is not static or field
@@ -160,19 +161,19 @@ class CompilationEngine:
 
     def compile_statements(self):
         self.start_token('statements')
-        if self.current_token.string == 'let':
-            self.compile_let()
-        elif self.current_token.string == 'if':
-            self.compile_if()
-        elif self.current_token.string == 'while':
-            self.compile_while()
-        elif self.current_token.string == 'do':
-            self.compile_do()
-        elif self.current_token.string == 'return':
-            self.compile_return()
-        else:
-            return
-        self.compile_statements()
+        while True:
+            if self.current_token.string == 'let':
+                self.compile_let()
+            elif self.current_token.string == 'if':
+                self.compile_if()
+            elif self.current_token.string == 'while':
+                self.compile_while()
+            elif self.current_token.string == 'do':
+                self.compile_do()
+            elif self.current_token.string == 'return':
+                self.compile_return()
+            else:
+                break
         self.end_token('statements')
 
 
@@ -236,14 +237,14 @@ class CompilationEngine:
     def compile_return(self):
         self.start_token('returnStatement')
         self.process('return')
-        self.compile_expression()
+        if self.current_token.string != ';':
+            self.compile_expression()
         self.process(';')
         self.end_token('returnStatement')
 
     def compile_expression(self):
         self.start_token('expression')
-        self.print_and_advance(self.current_token)
-        # self.compile_term()
+        self.compile_term()
         #
         # while self.current_token.string in list('+-*/&|<>='):
         #     self.print_and_advance(self.current_token)
@@ -252,6 +253,7 @@ class CompilationEngine:
 
     def compile_term(self):
         self.start_token('term')
+        self.print_and_advance(self.current_token)
 
         # if self.current_token.token_type == Types.INT_CONST or self.current_token.token_type == Types.STRING_CONST or \
         #     self.current_token.string == 'true' or \
