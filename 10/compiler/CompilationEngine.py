@@ -170,7 +170,7 @@ class CompilationEngine:
 
 
     def compile_let(self):
-        self.writer.write('<let>\n')
+        self.writer.write('<letStatement>\n')
         self.process('let')
         # print name
         self.print_and_advance(self.current_token)
@@ -181,10 +181,10 @@ class CompilationEngine:
         self.process('=')
         self.compile_expression()
         self.process(';')
-        self.writer.write('</let>\n')
+        self.writer.write('</letStatement>\n')
 
     def compile_if(self):
-        self.writer.write('<if>\n')
+        self.writer.write('<ifStatement>\n')
         self.process('if')
         self.process(')')
         self.compile_expression()
@@ -197,7 +197,7 @@ class CompilationEngine:
             self.process('{')
             self.compile_statements()
             self.process('}')
-        self.writer.write('</if>\n')
+        self.writer.write('</ifStatement>\n')
 
     def compile_while(self):
         self.writer.write('<whileStatement>\n')
@@ -211,11 +211,11 @@ class CompilationEngine:
         self.writer.write('</whileStatement>\n')
 
     def compile_do(self):
-        self.writer.write('<do>\n')
+        self.writer.write('<doStatement>\n')
         self.process('do')
         self.compile_subroutine_call()
         self.process(';')
-        self.writer.write('</do>\n')
+        self.writer.write('</doStatement>\n')
 
     def compile_subroutine_call(self):
         self.print_and_advance(self.current_token)
@@ -227,11 +227,11 @@ class CompilationEngine:
         self.process(')')
 
     def compile_return(self):
-        self.writer.write('<return>\n')
+        self.writer.write('<returnStatement>\n')
         self.process('return')
         self.compile_expression()
         self.process(';')
-        self.writer.write('</return>\n')
+        self.writer.write('</returnStatement>\n')
 
     def compile_expression(self):
         self.writer.write('<expression>\n')
