@@ -143,7 +143,6 @@ class CompilationEngine:
         self.process('}')
         self.end_token('subroutineBody')
 
-
     def compile_var_dec(self):
         self.start_token('varDec')
         self.process('var')
@@ -175,7 +174,6 @@ class CompilationEngine:
             else:
                 break
         self.end_token('statements')
-
 
     def compile_let(self):
         self.start_token('letStatement')
@@ -245,22 +243,25 @@ class CompilationEngine:
     def compile_expression(self):
         self.start_token('expression')
         self.compile_term()
-        #
-        # while self.current_token.string in list('+-*/&|<>='):
-        #     self.print_and_advance(self.current_token)
-        #     self.compile_term()
+        while self.current_token.string in list('+-*/&|<>='):
+            self.print_and_advance(self.current_token)
+            self.compile_term()
         self.end_token('expression')
 
     def compile_term(self):
         self.start_token('term')
-        self.print_and_advance(self.current_token)
 
-        # if self.current_token.token_type == Types.INT_CONST or self.current_token.token_type == Types.STRING_CONST or \
-        #     self.current_token.string == 'true' or \
-        #     self.current_token.string == 'false' or \
-        #     self.current_token.string == 'null' or \
-        #     self.current_token.string == 'this' or:
-        #     pass
+        if self.current_token.string == '(':
+            self.process('(')
+            self.compile_expression()
+            self.process(')')
+        else:
+            self.print_and_advance(self.current_token)
+            if self.current_token.string == '[':
+                self.process('[')
+                self.compile_expression()
+                self.process(']')
+                pass
         self.end_token('term')
 
     def compile_expression_list(self):
