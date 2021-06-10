@@ -1,13 +1,12 @@
 import sys
 from os import listdir
-from JackTokenizer import *
 from CompilationEngine import *
 
 
 def tokenize_file(file_name):
     tokens = JackTokenizer(file_name)
-    with open(file_name.replace('.jack', 'test.xml'), "w") as writer:
-        compilation_engine = CompilationEngine(tokens, writer)
+    with open(file_name.replace('.jack', '.xml'), "w") as writer:
+        CompilationEngine(tokens, writer)
 
 
 def dir_or_file(argument):

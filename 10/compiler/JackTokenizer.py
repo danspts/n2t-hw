@@ -45,10 +45,11 @@ class JackTokenizer:
 
     def tokenize_line(self, line):
         # split keywords, white space and symbols
-        regex_split = re.split(f"({self.symbols_regex_string + '|'.join(self.keywords_list)})", line)
+        regex_split = re.split(f"({self.symbols_regex_string + ' | '.join(self.keywords_list)})", line)
         string_const = None
         for string in regex_split:
             if string.strip() != '':
+                string = string.strip()
 
                 # edge case if there is a white space in a string const
                 if string_const is not None:
