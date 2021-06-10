@@ -1,643 +1,643 @@
 <class>
-  <keyword> class </keyword>
-  <identifier> SquareGame </identifier>
-  <symbol> { </symbol>
-  <classVarDec>
-    <keyword> field </keyword>
-    <identifier> Square </identifier>
-    <identifier> square </identifier>
-    <symbol> ; </symbol>
-  </classVarDec>
-  <classVarDec>
-    <keyword> field </keyword>
-    <keyword> int </keyword>
-    <identifier> direction </identifier>
-    <symbol> ; </symbol>
-  </classVarDec>
-  <subroutineDec>
-    <keyword> constructor </keyword>
-    <identifier> SquareGame </identifier>
-    <identifier> new </identifier>
-    <symbol> ( </symbol>
-    <parameterList>
-    </parameterList>
-    <symbol> ) </symbol>
-    <subroutineBody>
-      <symbol> { </symbol>
-      <statements>
-        <letStatement>
-          <keyword> let </keyword>
-          <identifier> square </identifier>
-          <symbol> = </symbol>
-          <expression>
-            <term>
-              <identifier> Square </identifier>
-              <symbol> . </symbol>
-              <identifier> new </identifier>
-              <symbol> ( </symbol>
-              <expressionList>
-                <expression>
-                  <term>
-                    <integerConstant> 0 </integerConstant>
-                  </term>
-                </expression>
-                <symbol> , </symbol>
-                <expression>
-                  <term>
-                    <integerConstant> 0 </integerConstant>
-                  </term>
-                </expression>
-                <symbol> , </symbol>
-                <expression>
-                  <term>
-                    <integerConstant> 30 </integerConstant>
-                  </term>
-                </expression>
-              </expressionList>
-              <symbol> ) </symbol>
-            </term>
-          </expression>
-          <symbol> ; </symbol>
-        </letStatement>
-        <letStatement>
-          <keyword> let </keyword>
-          <identifier> direction </identifier>
-          <symbol> = </symbol>
-          <expression>
-            <term>
-              <integerConstant> 0 </integerConstant>
-            </term>
-          </expression>
-          <symbol> ; </symbol>
-        </letStatement>
-        <returnStatement>
-          <keyword> return </keyword>
-          <expression>
-            <term>
-              <keyword> this </keyword>
-            </term>
-          </expression>
-          <symbol> ; </symbol>
-        </returnStatement>
-      </statements>
-      <symbol> } </symbol>
-    </subroutineBody>
-  </subroutineDec>
-  <subroutineDec>
-    <keyword> method </keyword>
-    <keyword> void </keyword>
-    <identifier> dispose </identifier>
-    <symbol> ( </symbol>
-    <parameterList>
-    </parameterList>
-    <symbol> ) </symbol>
-    <subroutineBody>
-      <symbol> { </symbol>
-      <statements>
-        <doStatement>
-          <keyword> do </keyword>
-          <identifier> square </identifier>
-          <symbol> . </symbol>
-          <identifier> dispose </identifier>
-          <symbol> ( </symbol>
-          <expressionList>
-          </expressionList>
-          <symbol> ) </symbol>
-          <symbol> ; </symbol>
-        </doStatement>
-        <doStatement>
-          <keyword> do </keyword>
-          <identifier> Memory </identifier>
-          <symbol> . </symbol>
-          <identifier> deAlloc </identifier>
-          <symbol> ( </symbol>
-          <expressionList>
-            <expression>
-              <term>
-                <keyword> this </keyword>
-              </term>
-            </expression>
-          </expressionList>
-          <symbol> ) </symbol>
-          <symbol> ; </symbol>
-        </doStatement>
-        <returnStatement>
-          <keyword> return </keyword>
-          <symbol> ; </symbol>
-        </returnStatement>
-      </statements>
-      <symbol> } </symbol>
-    </subroutineBody>
-  </subroutineDec>
-  <subroutineDec>
-    <keyword> method </keyword>
-    <keyword> void </keyword>
-    <identifier> moveSquare </identifier>
-    <symbol> ( </symbol>
-    <parameterList>
-    </parameterList>
-    <symbol> ) </symbol>
-    <subroutineBody>
-      <symbol> { </symbol>
-      <statements>
-        <ifStatement>
-          <keyword> if </keyword>
-          <symbol> ( </symbol>
-          <expression>
-            <term>
-              <identifier> direction </identifier>
-            </term>
-            <symbol> = </symbol>
-            <term>
-              <integerConstant> 1 </integerConstant>
-            </term>
-          </expression>
-          <symbol> ) </symbol>
-          <symbol> { </symbol>
-          <statements>
-            <doStatement>
-              <keyword> do </keyword>
-              <identifier> square </identifier>
-              <symbol> . </symbol>
-              <identifier> moveUp </identifier>
-              <symbol> ( </symbol>
-              <expressionList>
-              </expressionList>
-              <symbol> ) </symbol>
-              <symbol> ; </symbol>
-            </doStatement>
-          </statements>
-          <symbol> } </symbol>
-        </ifStatement>
-        <ifStatement>
-          <keyword> if </keyword>
-          <symbol> ( </symbol>
-          <expression>
-            <term>
-              <identifier> direction </identifier>
-            </term>
-            <symbol> = </symbol>
-            <term>
-              <integerConstant> 2 </integerConstant>
-            </term>
-          </expression>
-          <symbol> ) </symbol>
-          <symbol> { </symbol>
-          <statements>
-            <doStatement>
-              <keyword> do </keyword>
-              <identifier> square </identifier>
-              <symbol> . </symbol>
-              <identifier> moveDown </identifier>
-              <symbol> ( </symbol>
-              <expressionList>
-              </expressionList>
-              <symbol> ) </symbol>
-              <symbol> ; </symbol>
-            </doStatement>
-          </statements>
-          <symbol> } </symbol>
-        </ifStatement>
-        <ifStatement>
-          <keyword> if </keyword>
-          <symbol> ( </symbol>
-          <expression>
-            <term>
-              <identifier> direction </identifier>
-            </term>
-            <symbol> = </symbol>
-            <term>
-              <integerConstant> 3 </integerConstant>
-            </term>
-          </expression>
-          <symbol> ) </symbol>
-          <symbol> { </symbol>
-          <statements>
-            <doStatement>
-              <keyword> do </keyword>
-              <identifier> square </identifier>
-              <symbol> . </symbol>
-              <identifier> moveLeft </identifier>
-              <symbol> ( </symbol>
-              <expressionList>
-              </expressionList>
-              <symbol> ) </symbol>
-              <symbol> ; </symbol>
-            </doStatement>
-          </statements>
-          <symbol> } </symbol>
-        </ifStatement>
-        <ifStatement>
-          <keyword> if </keyword>
-          <symbol> ( </symbol>
-          <expression>
-            <term>
-              <identifier> direction </identifier>
-            </term>
-            <symbol> = </symbol>
-            <term>
-              <integerConstant> 4 </integerConstant>
-            </term>
-          </expression>
-          <symbol> ) </symbol>
-          <symbol> { </symbol>
-          <statements>
-            <doStatement>
-              <keyword> do </keyword>
-              <identifier> square </identifier>
-              <symbol> . </symbol>
-              <identifier> moveRight </identifier>
-              <symbol> ( </symbol>
-              <expressionList>
-              </expressionList>
-              <symbol> ) </symbol>
-              <symbol> ; </symbol>
-            </doStatement>
-          </statements>
-          <symbol> } </symbol>
-        </ifStatement>
-        <doStatement>
-          <keyword> do </keyword>
-          <identifier> Sys </identifier>
-          <symbol> . </symbol>
-          <identifier> wait </identifier>
-          <symbol> ( </symbol>
-          <expressionList>
-            <expression>
-              <term>
-                <integerConstant> 5 </integerConstant>
-              </term>
-            </expression>
-          </expressionList>
-          <symbol> ) </symbol>
-          <symbol> ; </symbol>
-        </doStatement>
-        <returnStatement>
-          <keyword> return </keyword>
-          <symbol> ; </symbol>
-        </returnStatement>
-      </statements>
-      <symbol> } </symbol>
-    </subroutineBody>
-  </subroutineDec>
-  <subroutineDec>
-    <keyword> method </keyword>
-    <keyword> void </keyword>
-    <identifier> run </identifier>
-    <symbol> ( </symbol>
-    <parameterList>
-    </parameterList>
-    <symbol> ) </symbol>
-    <subroutineBody>
-      <symbol> { </symbol>
-      <varDec>
-        <keyword> var </keyword>
-        <keyword> char </keyword>
-        <identifier> key </identifier>
-        <symbol> ; </symbol>
-      </varDec>
-      <varDec>
-        <keyword> var </keyword>
-        <keyword> boolean </keyword>
-        <identifier> exit </identifier>
-        <symbol> ; </symbol>
-      </varDec>
-      <statements>
-        <letStatement>
-          <keyword> let </keyword>
-          <identifier> exit </identifier>
-          <symbol> = </symbol>
-          <expression>
-            <term>
-              <keyword> false </keyword>
-            </term>
-          </expression>
-          <symbol> ; </symbol>
-        </letStatement>
-        <whileStatement>
-          <keyword> while </keyword>
-          <symbol> ( </symbol>
-          <expression>
-            <term>
-              <symbol> ~ </symbol>
-              <term>
-                <identifier> exit </identifier>
-              </term>
-            </term>
-          </expression>
-          <symbol> ) </symbol>
-          <symbol> { </symbol>
-          <statements>
-            <whileStatement>
-              <keyword> while </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 0 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> key </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <identifier> Keyboard </identifier>
-                      <symbol> . </symbol>
-                      <identifier> keyPressed </identifier>
-                      <symbol> ( </symbol>
-                      <expressionList>
-                      </expressionList>
-                      <symbol> ) </symbol>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-                <doStatement>
-                  <keyword> do </keyword>
-                  <identifier> moveSquare </identifier>
-                  <symbol> ( </symbol>
-                  <expressionList>
-                  </expressionList>
-                  <symbol> ) </symbol>
-                  <symbol> ; </symbol>
-                </doStatement>
-              </statements>
-              <symbol> } </symbol>
-            </whileStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 81 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> exit </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <keyword> true </keyword>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 90 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <doStatement>
-                  <keyword> do </keyword>
-                  <identifier> square </identifier>
-                  <symbol> . </symbol>
-                  <identifier> decSize </identifier>
-                  <symbol> ( </symbol>
-                  <expressionList>
-                  </expressionList>
-                  <symbol> ) </symbol>
-                  <symbol> ; </symbol>
-                </doStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 88 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <doStatement>
-                  <keyword> do </keyword>
-                  <identifier> square </identifier>
-                  <symbol> . </symbol>
-                  <identifier> incSize </identifier>
-                  <symbol> ( </symbol>
-                  <expressionList>
-                  </expressionList>
-                  <symbol> ) </symbol>
-                  <symbol> ; </symbol>
-                </doStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 131 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> direction </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <integerConstant> 1 </integerConstant>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 133 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> direction </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <integerConstant> 2 </integerConstant>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 130 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> direction </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <integerConstant> 3 </integerConstant>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <ifStatement>
-              <keyword> if </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <identifier> key </identifier>
-                </term>
-                <symbol> = </symbol>
-                <term>
-                  <integerConstant> 132 </integerConstant>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> direction </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <integerConstant> 4 </integerConstant>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-              </statements>
-              <symbol> } </symbol>
-            </ifStatement>
-            <whileStatement>
-              <keyword> while </keyword>
-              <symbol> ( </symbol>
-              <expression>
-                <term>
-                  <symbol> ~ </symbol>
-                  <term>
-                    <symbol> ( </symbol>
-                    <expression>
-                      <term>
-                        <identifier> key </identifier>
-                      </term>
-                      <symbol> = </symbol>
-                      <term>
-                        <integerConstant> 0 </integerConstant>
-                      </term>
-                    </expression>
-                    <symbol> ) </symbol>
-                  </term>
-                </term>
-              </expression>
-              <symbol> ) </symbol>
-              <symbol> { </symbol>
-              <statements>
-                <letStatement>
-                  <keyword> let </keyword>
-                  <identifier> key </identifier>
-                  <symbol> = </symbol>
-                  <expression>
-                    <term>
-                      <identifier> Keyboard </identifier>
-                      <symbol> . </symbol>
-                      <identifier> keyPressed </identifier>
-                      <symbol> ( </symbol>
-                      <expressionList>
-                      </expressionList>
-                      <symbol> ) </symbol>
-                    </term>
-                  </expression>
-                  <symbol> ; </symbol>
-                </letStatement>
-                <doStatement>
-                  <keyword> do </keyword>
-                  <identifier> moveSquare </identifier>
-                  <symbol> ( </symbol>
-                  <expressionList>
-                  </expressionList>
-                  <symbol> ) </symbol>
-                  <symbol> ; </symbol>
-                </doStatement>
-              </statements>
-              <symbol> } </symbol>
-            </whileStatement>
-          </statements>
-          <symbol> } </symbol>
-        </whileStatement>
-        <returnStatement>
-          <keyword> return </keyword>
-          <symbol> ; </symbol>
-        </returnStatement>
-      </statements>
-      <symbol> } </symbol>
-    </subroutineBody>
-  </subroutineDec>
-  <symbol> } </symbol>
+<Types.KEYWORD> class </Types.KEYWORD>
+<Types.IDENTIFIER> SquareGame </Types.IDENTIFIER>
+<Types.SYMBOL> { </Types.SYMBOL>
+<classVarDec>
+<Types.KEYWORD> field </Types.KEYWORD>
+<Types.IDENTIFIER> Square </Types.IDENTIFIER>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</classVarDec>
+<classVarDec>
+<Types.KEYWORD> field </Types.KEYWORD>
+<Types.KEYWORD> int </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</classVarDec>
+<subroutineDec>
+<Types.KEYWORD> constructor </Types.KEYWORD>
+<Types.IDENTIFIER> SquareGame </Types.IDENTIFIER>
+<Types.IDENTIFIER> new </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<parameterList>
+</parameterList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<subroutineBody>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> Square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> new </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+<expression>
+<term>
+<Types.INT_CONST> 0 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> , </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 0 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> , </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 30 </Types.INT_CONST>
+</term>
+</expression>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 0 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+<returnStatement>
+<Types.KEYWORD> return </Types.KEYWORD>
+<expression>
+<term>
+<Types.KEYWORD> this </Types.KEYWORD>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</returnStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</subroutineBody>
+</subroutineDec>
+<subroutineDec>
+<Types.KEYWORD> method </Types.KEYWORD>
+<Types.KEYWORD> void </Types.KEYWORD>
+<Types.IDENTIFIER> dispose </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<parameterList>
+</parameterList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<subroutineBody>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> dispose </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> Memory </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> deAlloc </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+<expression>
+<term>
+<Types.KEYWORD> this </Types.KEYWORD>
+</term>
+</expression>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+<returnStatement>
+<Types.KEYWORD> return </Types.KEYWORD>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</returnStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</subroutineBody>
+</subroutineDec>
+<subroutineDec>
+<Types.KEYWORD> method </Types.KEYWORD>
+<Types.KEYWORD> void </Types.KEYWORD>
+<Types.IDENTIFIER> moveSquare </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<parameterList>
+</parameterList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<subroutineBody>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 1 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> moveUp </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 2 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> moveDown </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 3 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> moveLeft </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 4 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> moveRight </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> Sys </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> wait </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+<expression>
+<term>
+<Types.INT_CONST> 5 </Types.INT_CONST>
+</term>
+</expression>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+<returnStatement>
+<Types.KEYWORD> return </Types.KEYWORD>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</returnStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</subroutineBody>
+</subroutineDec>
+<subroutineDec>
+<Types.KEYWORD> method </Types.KEYWORD>
+<Types.KEYWORD> void </Types.KEYWORD>
+<Types.IDENTIFIER> run </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<parameterList>
+</parameterList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<subroutineBody>
+<Types.SYMBOL> { </Types.SYMBOL>
+<varDec>
+<Types.KEYWORD> var </Types.KEYWORD>
+<Types.KEYWORD> char </Types.KEYWORD>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</varDec>
+<varDec>
+<Types.KEYWORD> var </Types.KEYWORD>
+<Types.KEYWORD> boolean </Types.KEYWORD>
+<Types.IDENTIFIER> exit </Types.IDENTIFIER>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</varDec>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> exit </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.KEYWORD> false </Types.KEYWORD>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+<whileStatement>
+<Types.KEYWORD> while </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.SYMBOL> ~ </Types.SYMBOL>
+<term>
+<Types.IDENTIFIER> exit </Types.IDENTIFIER>
+</term>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<whileStatement>
+<Types.KEYWORD> while </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 0 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> Keyboard </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> keyPressed </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> moveSquare </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</whileStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 81 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> exit </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.KEYWORD> true </Types.KEYWORD>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 90 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> decSize </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 88 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> square </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> incSize </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 131 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 1 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 133 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 2 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 130 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 3 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<ifStatement>
+<Types.KEYWORD> if </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 132 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> direction </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.INT_CONST> 4 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</ifStatement>
+<whileStatement>
+<Types.KEYWORD> while </Types.KEYWORD>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.SYMBOL> ~ </Types.SYMBOL>
+<term>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+</term>
+<Types.SYMBOL> = </Types.SYMBOL>
+<term>
+<Types.INT_CONST> 0 </Types.INT_CONST>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+</term>
+</term>
+</expression>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> { </Types.SYMBOL>
+<statements>
+<letStatement>
+<Types.KEYWORD> let </Types.KEYWORD>
+<Types.IDENTIFIER> key </Types.IDENTIFIER>
+<Types.SYMBOL> = </Types.SYMBOL>
+<expression>
+<term>
+<Types.IDENTIFIER> Keyboard </Types.IDENTIFIER>
+<Types.SYMBOL> . </Types.SYMBOL>
+<Types.IDENTIFIER> keyPressed </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+</term>
+</expression>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</letStatement>
+<doStatement>
+<Types.KEYWORD> do </Types.KEYWORD>
+<Types.IDENTIFIER> moveSquare </Types.IDENTIFIER>
+<Types.SYMBOL> ( </Types.SYMBOL>
+<expressionList>
+</expressionList>
+<Types.SYMBOL> ) </Types.SYMBOL>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</doStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</whileStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</whileStatement>
+<returnStatement>
+<Types.KEYWORD> return </Types.KEYWORD>
+<Types.SYMBOL> ; </Types.SYMBOL>
+</returnStatement>
+</statements>
+<Types.SYMBOL> } </Types.SYMBOL>
+</subroutineBody>
+</subroutineDec>
+<Types.SYMBOL> } </Types.SYMBOL>
 </class>

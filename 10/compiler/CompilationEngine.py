@@ -38,17 +38,6 @@ class CompilationEngine:
         elif token.string == '&':
             token.string = '&amp;'
 
-        if token.token_type == Types.SYMBOL:
-            token.token_type = "symbol"
-        elif token.token_type == Types.KEYWORD:
-            token.token_type = "keyword"
-        elif token.token_type == Types.IDENTIFIER:
-            token.token_type = "identifier"
-        elif token.token_type == Types.STRING_CONST:
-            token.token_type = "stringConstant"
-        elif token.token_type == Types.INT_CONST:
-            token.token_type = "integerConstant"
-
         line = f"<{token.token_type}> {token.string} </{token.token_type}>"
         self.write(line + '\n')
 
@@ -78,7 +67,7 @@ class CompilationEngine:
         else:
             # end if there is not static or field
             return
-            # print type
+        # print type
         self.print_and_advance(self.current_token)
         # print name
         self.print_and_advance(self.current_token)
