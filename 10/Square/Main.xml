@@ -1,244 +1,244 @@
 <class>
-<Types.KEYWORD> class </Types.KEYWORD>
-<Types.IDENTIFIER> Main </Types.IDENTIFIER>
-<Types.SYMBOL> { </Types.SYMBOL>
-<classVarDec>
-<Types.KEYWORD> static </Types.KEYWORD>
-<Types.KEYWORD> boolean </Types.KEYWORD>
-<Types.IDENTIFIER> test </Types.IDENTIFIER>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</classVarDec>
-<subroutineDec>
-<Types.KEYWORD> function </Types.KEYWORD>
-<Types.KEYWORD> void </Types.KEYWORD>
-<Types.IDENTIFIER> main </Types.IDENTIFIER>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<parameterList>
-</parameterList>
-<Types.SYMBOL> ) </Types.SYMBOL>
-<subroutineBody>
-<Types.SYMBOL> { </Types.SYMBOL>
-<varDec>
-<Types.KEYWORD> var </Types.KEYWORD>
-<Types.IDENTIFIER> SquareGame </Types.IDENTIFIER>
-<Types.IDENTIFIER> game </Types.IDENTIFIER>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</varDec>
-<statements>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> game </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.IDENTIFIER> SquareGame </Types.IDENTIFIER>
-<Types.SYMBOL> . </Types.SYMBOL>
-<Types.IDENTIFIER> new </Types.IDENTIFIER>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expressionList>
-</expressionList>
-<Types.SYMBOL> ) </Types.SYMBOL>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-<doStatement>
-<Types.KEYWORD> do </Types.KEYWORD>
-<Types.IDENTIFIER> game </Types.IDENTIFIER>
-<Types.SYMBOL> . </Types.SYMBOL>
-<Types.IDENTIFIER> run </Types.IDENTIFIER>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expressionList>
-</expressionList>
-<Types.SYMBOL> ) </Types.SYMBOL>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</doStatement>
-<doStatement>
-<Types.KEYWORD> do </Types.KEYWORD>
-<Types.IDENTIFIER> game </Types.IDENTIFIER>
-<Types.SYMBOL> . </Types.SYMBOL>
-<Types.IDENTIFIER> dispose </Types.IDENTIFIER>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expressionList>
-</expressionList>
-<Types.SYMBOL> ) </Types.SYMBOL>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</doStatement>
-<returnStatement>
-<Types.KEYWORD> return </Types.KEYWORD>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</returnStatement>
-</statements>
-<Types.SYMBOL> } </Types.SYMBOL>
-</subroutineBody>
-</subroutineDec>
-<subroutineDec>
-<Types.KEYWORD> function </Types.KEYWORD>
-<Types.KEYWORD> void </Types.KEYWORD>
-<Types.IDENTIFIER> more </Types.IDENTIFIER>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<parameterList>
-</parameterList>
-<Types.SYMBOL> ) </Types.SYMBOL>
-<subroutineBody>
-<Types.SYMBOL> { </Types.SYMBOL>
-<varDec>
-<Types.KEYWORD> var </Types.KEYWORD>
-<Types.KEYWORD> int </Types.KEYWORD>
-<Types.IDENTIFIER> i </Types.IDENTIFIER>
-<Types.SYMBOL> , </Types.SYMBOL>
-<Types.IDENTIFIER> j </Types.IDENTIFIER>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</varDec>
-<varDec>
-<Types.KEYWORD> var </Types.KEYWORD>
-<Types.IDENTIFIER> String </Types.IDENTIFIER>
-<Types.IDENTIFIER> s </Types.IDENTIFIER>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</varDec>
-<varDec>
-<Types.KEYWORD> var </Types.KEYWORD>
-<Types.IDENTIFIER> Array </Types.IDENTIFIER>
-<Types.IDENTIFIER> a </Types.IDENTIFIER>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</varDec>
-<statements>
-<ifStatement>
-<Types.KEYWORD> if </Types.KEYWORD>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expression>
-<term>
-<Types.KEYWORD> false </Types.KEYWORD>
-</term>
-</expression>
-<Types.SYMBOL> ) </Types.SYMBOL>
-<Types.SYMBOL> { </Types.SYMBOL>
-<statements>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> s </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.STRING_CONST> string constant </Types.STRING_CONST>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> s </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.KEYWORD> null </Types.KEYWORD>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> a </Types.IDENTIFIER>
-<Types.SYMBOL> [ </Types.SYMBOL>
-<expression>
-<term>
-<Types.INT_CONST> 1 </Types.INT_CONST>
-</term>
-</expression>
-<Types.SYMBOL> ] </Types.SYMBOL>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.IDENTIFIER> a </Types.IDENTIFIER>
-<Types.SYMBOL> [ </Types.SYMBOL>
-<expression>
-<term>
-<Types.INT_CONST> 2 </Types.INT_CONST>
-</term>
-</expression>
-<Types.SYMBOL> ] </Types.SYMBOL>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-</statements>
-<Types.SYMBOL> } </Types.SYMBOL>
-<Types.KEYWORD> else </Types.KEYWORD>
-<Types.SYMBOL> { </Types.SYMBOL>
-<statements>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> i </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.IDENTIFIER> i </Types.IDENTIFIER>
-</term>
-<Types.SYMBOL> * </Types.SYMBOL>
-<term>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expression>
-<term>
-<Types.SYMBOL> - </Types.SYMBOL>
-<term>
-<Types.IDENTIFIER> j </Types.IDENTIFIER>
-</term>
-</term>
-</expression>
-<Types.SYMBOL> ) </Types.SYMBOL>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> j </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.IDENTIFIER> j </Types.IDENTIFIER>
-</term>
-<Types.SYMBOL> / </Types.SYMBOL>
-<term>
-<Types.SYMBOL> ( </Types.SYMBOL>
-<expression>
-<term>
-<Types.SYMBOL> - </Types.SYMBOL>
-<term>
-<Types.INT_CONST> 2 </Types.INT_CONST>
-</term>
-</term>
-</expression>
-<Types.SYMBOL> ) </Types.SYMBOL>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-<letStatement>
-<Types.KEYWORD> let </Types.KEYWORD>
-<Types.IDENTIFIER> i </Types.IDENTIFIER>
-<Types.SYMBOL> = </Types.SYMBOL>
-<expression>
-<term>
-<Types.IDENTIFIER> i </Types.IDENTIFIER>
-</term>
-<Types.SYMBOL> | </Types.SYMBOL>
-<term>
-<Types.IDENTIFIER> j </Types.IDENTIFIER>
-</term>
-</expression>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</letStatement>
-</statements>
-<Types.SYMBOL> } </Types.SYMBOL>
-</ifStatement>
-<returnStatement>
-<Types.KEYWORD> return </Types.KEYWORD>
-<Types.SYMBOL> ; </Types.SYMBOL>
-</returnStatement>
-</statements>
-<Types.SYMBOL> } </Types.SYMBOL>
-</subroutineBody>
-</subroutineDec>
-<Types.SYMBOL> } </Types.SYMBOL>
+    <Types.KEYWORD>class</Types.KEYWORD>
+    <Types.IDENTIFIER>Main</Types.IDENTIFIER>
+    <Types.SYMBOL>{</Types.SYMBOL>
+    <classVarDec>
+        <Types.KEYWORD>static</Types.KEYWORD>
+        <Types.KEYWORD>boolean</Types.KEYWORD>
+        <Types.IDENTIFIER>test</Types.IDENTIFIER>
+        <Types.SYMBOL>;</Types.SYMBOL>
+    </classVarDec>
+    <subroutineDec>
+        <Types.KEYWORD>function</Types.KEYWORD>
+        <Types.KEYWORD>void</Types.KEYWORD>
+        <Types.IDENTIFIER>main</Types.IDENTIFIER>
+        <Types.SYMBOL>(</Types.SYMBOL>
+        <parameterList>
+        </parameterList>
+        <Types.SYMBOL>)</Types.SYMBOL>
+        <subroutineBody>
+            <Types.SYMBOL>{</Types.SYMBOL>
+            <varDec>
+                <Types.KEYWORD>var</Types.KEYWORD>
+                <Types.IDENTIFIER>SquareGame</Types.IDENTIFIER>
+                <Types.IDENTIFIER>game</Types.IDENTIFIER>
+                <Types.SYMBOL>;</Types.SYMBOL>
+            </varDec>
+            <statements>
+                <letStatement>
+                    <Types.KEYWORD>let</Types.KEYWORD>
+                    <Types.IDENTIFIER>game</Types.IDENTIFIER>
+                    <Types.SYMBOL>=</Types.SYMBOL>
+                    <expression>
+                        <term>
+                            <Types.IDENTIFIER>SquareGame</Types.IDENTIFIER>
+                            <Types.SYMBOL>.</Types.SYMBOL>
+                            <Types.IDENTIFIER>new</Types.IDENTIFIER>
+                            <Types.SYMBOL>(</Types.SYMBOL>
+                            <expressionList>
+                            </expressionList>
+                            <Types.SYMBOL>)</Types.SYMBOL>
+                        </term>
+                    </expression>
+                    <Types.SYMBOL>;</Types.SYMBOL>
+                </letStatement>
+                <doStatement>
+                    <Types.KEYWORD>do</Types.KEYWORD>
+                    <Types.IDENTIFIER>game</Types.IDENTIFIER>
+                    <Types.SYMBOL>.</Types.SYMBOL>
+                    <Types.IDENTIFIER>run</Types.IDENTIFIER>
+                    <Types.SYMBOL>(</Types.SYMBOL>
+                    <expressionList>
+                    </expressionList>
+                    <Types.SYMBOL>)</Types.SYMBOL>
+                    <Types.SYMBOL>;</Types.SYMBOL>
+                </doStatement>
+                <doStatement>
+                    <Types.KEYWORD>do</Types.KEYWORD>
+                    <Types.IDENTIFIER>game</Types.IDENTIFIER>
+                    <Types.SYMBOL>.</Types.SYMBOL>
+                    <Types.IDENTIFIER>dispose</Types.IDENTIFIER>
+                    <Types.SYMBOL>(</Types.SYMBOL>
+                    <expressionList>
+                    </expressionList>
+                    <Types.SYMBOL>)</Types.SYMBOL>
+                    <Types.SYMBOL>;</Types.SYMBOL>
+                </doStatement>
+                <returnStatement>
+                    <Types.KEYWORD>return</Types.KEYWORD>
+                    <Types.SYMBOL>;</Types.SYMBOL>
+                </returnStatement>
+            </statements>
+            <Types.SYMBOL>}</Types.SYMBOL>
+        </subroutineBody>
+    </subroutineDec>
+    <subroutineDec>
+        <Types.KEYWORD>function</Types.KEYWORD>
+        <Types.KEYWORD>void</Types.KEYWORD>
+        <Types.IDENTIFIER>more</Types.IDENTIFIER>
+        <Types.SYMBOL>(</Types.SYMBOL>
+        <parameterList>
+        </parameterList>
+        <Types.SYMBOL>)</Types.SYMBOL>
+        <subroutineBody>
+            <Types.SYMBOL>{</Types.SYMBOL>
+            <varDec>
+                <Types.KEYWORD>var</Types.KEYWORD>
+                <Types.KEYWORD>int</Types.KEYWORD>
+                <Types.IDENTIFIER>i</Types.IDENTIFIER>
+                <Types.SYMBOL>,</Types.SYMBOL>
+                <Types.IDENTIFIER>j</Types.IDENTIFIER>
+                <Types.SYMBOL>;</Types.SYMBOL>
+            </varDec>
+            <varDec>
+                <Types.KEYWORD>var</Types.KEYWORD>
+                <Types.IDENTIFIER>String</Types.IDENTIFIER>
+                <Types.IDENTIFIER>s</Types.IDENTIFIER>
+                <Types.SYMBOL>;</Types.SYMBOL>
+            </varDec>
+            <varDec>
+                <Types.KEYWORD>var</Types.KEYWORD>
+                <Types.IDENTIFIER>Array</Types.IDENTIFIER>
+                <Types.IDENTIFIER>a</Types.IDENTIFIER>
+                <Types.SYMBOL>;</Types.SYMBOL>
+            </varDec>
+            <statements>
+                <ifStatement>
+                    <Types.KEYWORD>if</Types.KEYWORD>
+                    <Types.SYMBOL>(</Types.SYMBOL>
+                    <expression>
+                        <term>
+                            <Types.KEYWORD>false</Types.KEYWORD>
+                        </term>
+                    </expression>
+                    <Types.SYMBOL>)</Types.SYMBOL>
+                    <Types.SYMBOL>{</Types.SYMBOL>
+                    <statements>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>s</Types.IDENTIFIER>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.STRING_CONST>string constant</Types.STRING_CONST>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>s</Types.IDENTIFIER>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.KEYWORD>null</Types.KEYWORD>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>a</Types.IDENTIFIER>
+                            <Types.SYMBOL>[</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.INT_CONST>1</Types.INT_CONST>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>]</Types.SYMBOL>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.IDENTIFIER>a</Types.IDENTIFIER>
+                                    <Types.SYMBOL>[</Types.SYMBOL>
+                                    <expression>
+                                        <term>
+                                            <Types.INT_CONST>2</Types.INT_CONST>
+                                        </term>
+                                    </expression>
+                                    <Types.SYMBOL>]</Types.SYMBOL>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                    </statements>
+                    <Types.SYMBOL>}</Types.SYMBOL>
+                    <Types.KEYWORD>else</Types.KEYWORD>
+                    <Types.SYMBOL>{</Types.SYMBOL>
+                    <statements>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>i</Types.IDENTIFIER>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.IDENTIFIER>i</Types.IDENTIFIER>
+                                </term>
+                                <Types.SYMBOL>*</Types.SYMBOL>
+                                <term>
+                                    <Types.SYMBOL>(</Types.SYMBOL>
+                                    <expression>
+                                        <term>
+                                            <Types.SYMBOL>-</Types.SYMBOL>
+                                            <term>
+                                                <Types.IDENTIFIER>j</Types.IDENTIFIER>
+                                            </term>
+                                        </term>
+                                    </expression>
+                                    <Types.SYMBOL>)</Types.SYMBOL>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>j</Types.IDENTIFIER>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.IDENTIFIER>j</Types.IDENTIFIER>
+                                </term>
+                                <Types.SYMBOL>/</Types.SYMBOL>
+                                <term>
+                                    <Types.SYMBOL>(</Types.SYMBOL>
+                                    <expression>
+                                        <term>
+                                            <Types.SYMBOL>-</Types.SYMBOL>
+                                            <term>
+                                                <Types.INT_CONST>2</Types.INT_CONST>
+                                            </term>
+                                        </term>
+                                    </expression>
+                                    <Types.SYMBOL>)</Types.SYMBOL>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                        <letStatement>
+                            <Types.KEYWORD>let</Types.KEYWORD>
+                            <Types.IDENTIFIER>i</Types.IDENTIFIER>
+                            <Types.SYMBOL>=</Types.SYMBOL>
+                            <expression>
+                                <term>
+                                    <Types.IDENTIFIER>i</Types.IDENTIFIER>
+                                </term>
+                                <Types.SYMBOL>|</Types.SYMBOL>
+                                <term>
+                                    <Types.IDENTIFIER>j</Types.IDENTIFIER>
+                                </term>
+                            </expression>
+                            <Types.SYMBOL>;</Types.SYMBOL>
+                        </letStatement>
+                    </statements>
+                    <Types.SYMBOL>}</Types.SYMBOL>
+                </ifStatement>
+                <returnStatement>
+                    <Types.KEYWORD>return</Types.KEYWORD>
+                    <Types.SYMBOL>;</Types.SYMBOL>
+                </returnStatement>
+            </statements>
+            <Types.SYMBOL>}</Types.SYMBOL>
+        </subroutineBody>
+    </subroutineDec>
+    <Types.SYMBOL>}</Types.SYMBOL>
 </class>
