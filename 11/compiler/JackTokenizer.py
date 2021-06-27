@@ -98,3 +98,9 @@ class JackTokenizer:
 
     def has_more_tokens(self):
         return self.index < len(self.tokens)
+
+    def find_identifier_class(self):
+        pass
+
+    def is_declared(self):
+        pass

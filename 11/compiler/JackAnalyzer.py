@@ -1,7 +1,7 @@
 import sys
 from os import listdir
 from CompilationEngine import *
-
+from JackTokenizer import JackTokenizer
 
 def tokenize_file(file_name):
     tokens = JackTokenizer(file_name)
