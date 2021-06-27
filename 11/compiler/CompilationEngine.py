@@ -1,7 +1,4 @@
-# from JackTokenizer.VMWriter import VMWriter
-import VMWriter
-from JackTokenizer import Types , JackTokenizer
-from SymbolTable import SymbolTable, IdentifierCategory
+from JackTokenizer.VMWriter import VMWriter
 
 
 class CompilationEngine:
@@ -9,7 +6,6 @@ class CompilationEngine:
     def __init__(self, tokenizer, writer):
         self.writer = writer
         self.tokenizer = tokenizer
-        self.symbol_table = SymbolTable()
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
         self.compile_class()
@@ -31,20 +27,6 @@ class CompilationEngine:
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
 
-    def handle_identifier(self, token):
-        category = self.tokenizer.find_identifier_class()
-        declared = self.tokenizer.is_declared()
-        running_index = self.symbol_table.define(token.string, category)
-        if category == IdentifierCategory.IDENTIFIER_VAR or \
-                category == IdentifierCategory.IDENTIFIER_ARGUMENT or \
-                category == IdentifierCategory.IDENTIFIER_STATIC or \
-                category == IdentifierCategory.IDENTIFIER_FIELD:
-            line = f"<{token.token_type}>{declared} {token.string}: {category}, {running_index}  </{token.token_type}>"
-            self.write(line + '\n')
-        else:
-            line = f"<{token.token_type}>{declared} {token.string}: {category} </{token.token_type}>"
-            self.write(line + '\n')
-
     def print_xml_token(self, token):
         # special chars of xml
         if token.string == '<':
@@ -55,10 +37,6 @@ class CompilationEngine:
             token.string = '&quot;'
         elif token.string == '&':
             token.string = '&amp;'
-
-        if token.token_type == Types.IDENTIFIER:
-            self.handle_identifier(token)
-            return
 
         line = f"<{token.token_type}> {token.string} </{token.token_type}>"
         self.write(line + '\n')
@@ -154,6 +132,7 @@ class CompilationEngine:
         self.process('}')
         self.end_token('subroutineBody')
 
+
     def compile_var_dec(self):
         self.start_token('varDec')
         self.process('var')
@@ -185,6 +164,7 @@ class CompilationEngine:
             else:
                 break
         self.end_token('statements')
+
 
     def compile_let(self):
         self.start_token('letStatement')
