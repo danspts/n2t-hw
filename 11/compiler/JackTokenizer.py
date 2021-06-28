@@ -10,10 +10,68 @@ class Types(Enum):
     STRING_CONST = 4
 
 
+class VariableType(Enum):
+    INT = 0
+    CHAR = 1
+    BOOLEAN = 2
+    CLASS_NAME = 3
+
+
+class VariableKind(Enum):
+    FIELD = 0
+    STATIC = 1
+    LOCAL = 2
+    ARGUMENT = 3
+
+
+class VariableScope(Enum):
+    SUBROUTINE = 0
+    CLASS = 1
+
+
+class VariableInfo:
+    def __init__(self):
+        self.type = None
+        self.kind = None
+        self.running_index = -1
+        self.scope = None
+
+    def set_kind(self, string):
+        if string == 'var':
+            self.kind = VariableKind.LOCAL
+        elif string == 'argument':
+            self.kind = VariableKind.ARGUMENT
+        elif string == 'field':
+            self.kind = VariableKind.FIELD
+        elif string == 'static':
+            self.kind = VariableKind.STATIC
+        else:
+            self.kind = string
+
+    def set_type(self, string):
+        if string == 'var':
+            self.type = VariableType.INT
+        elif string == 'argument':
+            self.type = VariableType.CHAR
+        elif string == 'field':
+            self.type = VariableType.BOOLEAN
+        elif type(string) == str:
+            self.type = VariableType.CLASS_NAME
+        else: # if its a number so its already defined put it here
+            self.type = string
+
+    def set_index(self, index):
+        self.running_index = index
+
+    def set_scope(self, string):
+        self.scope = string
+
 class Token:
     def __init__(self, string, token_type):
         self.string = string
         self.token_type = token_type
+        self.is_variable = False
+        self.variable_info = VariableInfo()
 
 
 class JackTokenizer:

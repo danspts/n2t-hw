@@ -1,5 +1,16 @@
 from VMWriter import VMWriter
 from JackTokenizer import *
+from SymbolTable import SymbolTable
+
+
+class VariableTracker:
+    def __init__(self):
+        self.running_index = 0
+        self.type = None
+        self.kind = None
+        self.variable_scope = None
+        self.variables = []
+
 
 class CompilationEngine:
 
@@ -7,6 +18,8 @@ class CompilationEngine:
         self.writer = VMWriter(writer)
         self.vm_writer = VMWriter(writer)
         self._class = ""
+        self.symbol_table = SymbolTable()
+        self.variable_tracker = VariableTracker()
         self.tokenizer = tokenizer
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
@@ -41,7 +54,14 @@ class CompilationEngine:
         elif token.string == '&':
             token.string = '&amp;'
 
-        line = f"<{token.token_type}> {token.string} </{token.token_type}>"
+        if token.is_variable:
+            if token.variable_info.running_index != -1:
+                line = f"<{token.token_type}>name: {token.string} category: {token.variable_info.kind} type: {token.variable_info.type} running index = {token.variable_info.running_index}</{token.token_type}>"
+            else:
+                line = f"<{token.token_type}>name: {token.string} category: {token.variable_info.kind} type: {token.variable_info.type}</{token.token_type}>"
+        else:
+            line = f"<{token.token_type}> {token.string} </{token.token_type}>"
+
         self.write(line + '\n')
 
     def print_and_advance(self, token):
@@ -66,28 +86,37 @@ class CompilationEngine:
         self.start_token('classVarDec')
         if self.current_token.string == 'static':
             self.process('static')
-            kind = 'static'
+            self.variable_tracker.kind = VariableKind.STATIC
         elif self.current_token.string == 'field':
             self.process('field')
-            kind = 'field'
+            self.variable_tracker.kind = VariableKind.FIELD
         else:
             # end if there is not static or field
             return
-        print('kind', kind)
         # print type
-        print("type", self.current_token.__dict__)
+        self.variable_tracker.type = self.current_token.string
         self.print_and_advance(self.current_token)
 
         # print name
         print("name", self.current_token.__dict__)
+        self.current_token.is_variable = True
+        self.current_token.variable_info.type = self.variable_tracker.type
+        self.current_token.variable_info.kind = self.variable_tracker.kind
+        self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                  self.variable_tracker.type,
+                                                                                  self.variable_tracker.kind)
         self.print_and_advance(self.current_token)
 
         # handle comma variables
         while self.current_token.string == ',':
             self.process(',')
-            print("name", self.current_token.__dict__)
+            self.current_token.is_variable = True
+            self.current_token.variable_info.type = self.variable_tracker.type
+            self.current_token.variable_info.kind = self.variable_tracker.kind
+            self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                      self.variable_tracker.type,
+                                                                                      self.variable_tracker.kind)
             self.print_and_advance(self.current_token)
-
 
         self.process(';')
 
@@ -123,17 +152,34 @@ class CompilationEngine:
                 self.current_token.string == 'int' or
                 self.current_token.token_type == Types.IDENTIFIER):
 
+            self.variable_tracker.kind = VariableKind.ARGUMENT
             # print type
             self.print_and_advance(self.current_token)
+            self.variable_tracker.type = self.current_token.string
             # print name
+            self.current_token.is_variable = True
+            self.current_token.variable_info.type = self.variable_tracker.type
+            self.current_token.variable_info.kind = self.variable_tracker.kind
+            self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                      self.variable_tracker.type,
+                                                                                      self.variable_tracker.kind)
+
             self.print_and_advance(self.current_token)
 
             # handle comma variables
             while self.current_token.string == ',':
                 self.process(',')
                 # print type
+                self.variable_tracker.type = self.current_token.string
                 self.print_and_advance(self.current_token)
                 # print name
+                self.current_token.is_variable = True
+                self.current_token.variable_info.type = self.variable_tracker.type
+                self.current_token.variable_info.kind = self.variable_tracker.kind
+                self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                          self.variable_tracker.type,
+                                                                                          self.variable_tracker.kind)
+
                 self.print_and_advance(self.current_token)
         self.end_token('parameterList')
 
@@ -154,21 +200,34 @@ class CompilationEngine:
         self.process('}')
         self.end_token('subroutineBody')
 
-
     def compile_var_dec(self):
         self.start_token('varDec')
         self.process('var')
+        self.variable_tracker.kind = VariableKind.LOCAL
         # print type
-        type = self.current_token.string
+        self.variable_tracker.type = self.current_token.string
         self.print_and_advance(self.current_token)
         # print name
         print(self.current_token.__dict__)
+        self.current_token.is_variable = True
+        self.current_token.variable_info.type = self.variable_tracker.type
+        self.current_token.variable_info.kind = self.variable_tracker.kind
+        self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                  self.variable_tracker.type,
+                                                                                  self.variable_tracker.kind)
+
         self.print_and_advance(self.current_token)
         nb_var = 1
         # handle comma variables
         while self.current_token.string == ',':
             self.process(',')
-            print(self.current_token.__dict__)
+            self.current_token.is_variable = True
+            self.current_token.variable_info.type = self.variable_tracker.type
+            self.current_token.variable_info.kind = self.variable_tracker.kind
+            self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                      self.variable_tracker.type,
+                                                                                      self.variable_tracker.kind)
+
             self.print_and_advance(self.current_token)
         self.process(';')
         self.end_token('varDec')
@@ -191,11 +250,14 @@ class CompilationEngine:
                 break
         self.end_token('statements')
 
-
     def compile_let(self):
         self.start_token('letStatement')
         self.process('let')
         # print name
+        self.current_token.is_variable = True
+        self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
+        self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
+        self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)['index']
         self.print_and_advance(self.current_token)
         if self.current_token.string == '[':
             self.process('[')
@@ -241,6 +303,14 @@ class CompilationEngine:
         self.end_token('doStatement')
 
     def compile_subroutine_call(self):
+        var = self.symbol_table.get_var(self.current_token.string)
+        if var is not None:
+            self.current_token.is_variable = True
+            self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
+            self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
+            self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)[
+                'index']
+
         self.print_and_advance(self.current_token)
         if self.current_token.string == '.':
             self.process('.')
@@ -278,6 +348,14 @@ class CompilationEngine:
                 self.print_and_advance(self.current_token)
                 self.compile_term()
             else:
+                var = self.symbol_table.get_var(self.current_token.string)
+                if var is not None:
+                    self.current_token.is_variable = True
+                    self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
+                    self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
+                    self.current_token.variable_info.running_index = \
+                    self.symbol_table.get_var(self.current_token.string)[
+                        'index']
                 self.print_and_advance(self.current_token)
                 if self.current_token.string == '[':
                     self.process('[')
