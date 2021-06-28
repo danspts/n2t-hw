@@ -1,6 +1,10 @@
-class VMWriter():
+from JackTokenizer import VariableKind
 
+
+class VMWriter():
     __arithmetic_symbols = {
+        '/': 'call Math.divide 2',
+        '*': 'call Math.multiply 2',
         '+': 'add',
         '-': 'sub',
         '>': 'gt',
@@ -21,11 +25,38 @@ class VMWriter():
     def write(self, string):
         self.writer.write(f'{string}\n')
 
+    def kind_to_print(self, kind):
+        if kind == VariableKind.LOCAL:
+            return 'local'
+        elif kind == VariableKind.ARGUMENT:
+            return 'argument'
+        elif kind == VariableKind.FIELD:
+            return 'field'
+        elif kind == VariableKind.STATIC:
+            return 'static'
+        return 'none'
+
+    def write_push_var(self, token):
+        kind = token.variable_info.kind
+        kind_to_print = self.kind_to_print(kind)
+        self.write(f"push {kind_to_print} {token.variable_info.running_index}")
+
+    def write_push_const(self, const):
+        self.write(f"push constant {const}")
+
     def write_push(self, segment, index):
         self.write(f"push {segment} {index}")
 
     def write_pop(self, segment, index):
         self.write(f"pop {segment} {index}")
+
+    def write_pop_var(self, token):
+        kind = token.variable_info.kind
+        kind_to_print = self.kind_to_print(kind)
+        self.write(f"pop {kind_to_print} {token.variable_info.running_index}")
+
+    def write_pop_const(self, const):
+        self.write(f"pop constant {const}")
 
     def write_arithmetic(self, command):
         self.write(VMWriter.__arithmetic_symbols.get(command, command))
@@ -45,7 +76,7 @@ class VMWriter():
     def write_call(self, name, nb_vars):
         self.write(f"call {name} {nb_vars}")
 
-    def write_function(self, name, nb_locals):
+    def write_function(self, name, nb_locals=''):
         self.write(f"function {name} {nb_locals}")
 
     def write_return(self):

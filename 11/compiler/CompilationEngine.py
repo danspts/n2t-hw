@@ -21,6 +21,7 @@ class CompilationEngine:
         self.symbol_table = SymbolTable()
         self.variable_tracker = VariableTracker()
         self.tokenizer = tokenizer
+        self.label_index = 0
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
         self.compile_class()
@@ -30,10 +31,12 @@ class CompilationEngine:
         self.writer.write(f'{string}')
 
     def start_token(self, string):
-        self.write(f"<{string}>\n")
+        pass
+        # self.write(f"<{string}>\n")
 
     def end_token(self, string):
-        self.write(f"</{string}>\n")
+        pass
+        # self.write(f"</{string}>\n")
 
     def process(self, token_str):
         if self.current_token.string == token_str:
@@ -62,10 +65,11 @@ class CompilationEngine:
         else:
             line = f"<{token.token_type}> {token.string} </{token.token_type}>"
 
-        self.write(line + '\n')
+        # self.write(line + '\n')
 
-    def print_and_advance(self, token):
-        self.print_xml_token(token)
+    def advance(self, token):
+        # self.print_xml_token(token)
+
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
 
@@ -73,7 +77,7 @@ class CompilationEngine:
         self.start_token('class')
         self.process('class')
         self._class = self.current_token.string
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
         self.process('{')
         while self.current_token.string == 'static' or self.current_token.string == 'field':
             self.compile_class_var_dec()
@@ -95,7 +99,7 @@ class CompilationEngine:
             return
         # print type
         self.variable_tracker.type = self.current_token.string
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
 
         # print name
         print("name", self.current_token.__dict__)
@@ -105,7 +109,7 @@ class CompilationEngine:
         self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
                                                                                   self.variable_tracker.type,
                                                                                   self.variable_tracker.kind)
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
 
         # handle comma variables
         while self.current_token.string == ',':
@@ -116,36 +120,64 @@ class CompilationEngine:
             self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
                                                                                       self.variable_tracker.type,
                                                                                       self.variable_tracker.kind)
-            self.print_and_advance(self.current_token)
+            self.advance(self.current_token)
 
         self.process(';')
 
         self.end_token('classVarDec')
 
     def compile_subroutine(self):
+        is_void = False
         self.start_token('subroutineDec')
-        if self.current_token.string == 'constructor':
+        subroutine = self.current_token.string
+        if subroutine == 'constructor':
             self.process('constructor')
-        elif self.current_token.string == 'function':
+        elif subroutine == 'function':
             self.process('function')
-        elif self.current_token.string == 'method':
+        elif subroutine == 'method':
             self.process('method')
 
+        if self.current_token.string == 'void':
+            is_void = True
         # print type
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
         # print name
         name = self.current_token.string
-        print("subroutine name", name)
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
         self.process('(')
-        self.compile_parameter_list()
+        num_of_params = self.compile_parameter_list()
         self.process(')')
+
+        if subroutine == 'constructor':
+            self.writer.write_function(f"{self._class}.{name}.new", num_of_params)
+            self.writer.write(f"push constant {num_of_params}")
+            self.writer.write(f"Memory.alloc 1")
+            self.writer.write(f"pop pointer 0")
+        elif subroutine == 'function':
+            self.writer.write_function(f"{self._class}.{name}", num_of_params)
+        elif subroutine == 'method':
+            self.writer.write_function(f"{self._class}.{name}", num_of_params + 1)
+
+
         self.compile_subroutine_body(name)
+
+        if subroutine == 'constructor':
+            self.vm_writer.writer('pop pointer 0')
+            self.vm_writer.write_return()
+        elif subroutine == 'function':
+            pass
+        elif subroutine == 'method':
+            pass
+
+
+        # if is_void:
+        #     self.vm_writer.write('pop temp 0')
 
         self.end_token('subroutineDec')
 
     def compile_parameter_list(self):
         self.start_token('parameterList')
+        numb_of_param = 0
 
         if (self.current_token.string == 'boolean' or
                 self.current_token.string == 'char' or
@@ -154,24 +186,24 @@ class CompilationEngine:
 
             self.variable_tracker.kind = VariableKind.ARGUMENT
             # print type
-            self.print_and_advance(self.current_token)
+            self.advance(self.current_token)
             self.variable_tracker.type = self.current_token.string
             # print name
             self.current_token.is_variable = True
             self.current_token.variable_info.type = self.variable_tracker.type
             self.current_token.variable_info.kind = self.variable_tracker.kind
             self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
-                                                                                      self.variable_tracker.type,
                                                                                       self.variable_tracker.kind)
 
-            self.print_and_advance(self.current_token)
+            self.advance(self.current_token)
+            numb_of_param += 1
 
             # handle comma variables
             while self.current_token.string == ',':
                 self.process(',')
                 # print type
                 self.variable_tracker.type = self.current_token.string
-                self.print_and_advance(self.current_token)
+                self.advance(self.current_token)
                 # print name
                 self.current_token.is_variable = True
                 self.current_token.variable_info.type = self.variable_tracker.type
@@ -180,22 +212,15 @@ class CompilationEngine:
                                                                                           self.variable_tracker.type,
                                                                                           self.variable_tracker.kind)
 
-                self.print_and_advance(self.current_token)
+                self.advance(self.current_token)
+                numb_of_param += 1
+
         self.end_token('parameterList')
+        return numb_of_param
 
     def compile_subroutine_body(self, subroutine_name):
         self.start_token('subroutineBody')
         self.process('{')
-        nb_var = 0
-
-        while self.current_token.string == 'var':
-            nb_var += self.compile_var_dec()
-
-        self.vm_writer.write_function(
-            name=f'{self._class}.{subroutine_name}',
-            nb_locals=nb_var
-        )
-
         self.compile_statements()
         self.process('}')
         self.end_token('subroutineBody')
@@ -206,7 +231,7 @@ class CompilationEngine:
         self.variable_tracker.kind = VariableKind.LOCAL
         # print type
         self.variable_tracker.type = self.current_token.string
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
         # print name
         print(self.current_token.__dict__)
         self.current_token.is_variable = True
@@ -216,7 +241,7 @@ class CompilationEngine:
                                                                                   self.variable_tracker.type,
                                                                                   self.variable_tracker.kind)
 
-        self.print_and_advance(self.current_token)
+        self.advance(self.current_token)
         nb_var = 1
         # handle comma variables
         while self.current_token.string == ',':
@@ -228,7 +253,7 @@ class CompilationEngine:
                                                                                       self.variable_tracker.type,
                                                                                       self.variable_tracker.kind)
 
-            self.print_and_advance(self.current_token)
+            self.advance(self.current_token)
         self.process(';')
         self.end_token('varDec')
         return nb_var
@@ -258,7 +283,8 @@ class CompilationEngine:
         self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
         self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
         self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)['index']
-        self.print_and_advance(self.current_token)
+        token = self.current_token
+        self.advance(self.current_token)
         if self.current_token.string == '[':
             self.process('[')
             self.compile_expression()
@@ -267,32 +293,53 @@ class CompilationEngine:
         self.compile_expression()
         self.process(';')
         self.end_token('letStatement')
+        self.vm_writer.write_pop_var(token)
 
     def compile_if(self):
+        label_1 = f'LABEL{self.label_index}'
+        self.label_index += 1
+        label_2 = f'LABEL{self.label_index}'
+        self.label_index += 1
         self.start_token('ifStatement')
         self.process('if')
         self.process('(')
         self.compile_expression()
         self.process(')')
+        self.vm_writer.write('not')
+        self.vm_writer.write_if_goto(label_1)
         self.process('{')
         self.compile_statements()
         self.process('}')
+        self.vm_writer.write_goto(label_2)
+        self.vm_writer.write_label(label_1)
         if self.current_token.string == 'else':
             self.process('else')
+            self.vm_writer.write_label(label_1)
             self.process('{')
             self.compile_statements()
             self.process('}')
         self.end_token('ifStatement')
+        self.vm_writer.write_label(label_2)
 
     def compile_while(self):
+        label_1 = f'LABEL{self.label_index}'
+        self.label_index += 1
+        label_2 = f'LABEL{self.label_index}'
+        self.label_index += 1
+        self.vm_writer.write_label(label_1)
         self.start_token('whileStatement')
         self.process('while')
         self.process('(')
         self.compile_expression()
         self.process(')')
+        self.vm_writer.write('not')
+        self.vm_writer.write_if_goto(label_2)
+
         self.process('{')
         self.compile_statements()
         self.process('}')
+        self.vm_writer.write_goto(label_1)
+        self.vm_writer.write_label(label_2)
         self.end_token('whileStatement')
 
     def compile_do(self):
@@ -301,8 +348,11 @@ class CompilationEngine:
         self.compile_subroutine_call()
         self.process(';')
         self.end_token('doStatement')
+        self.vm_writer.write('pop temp 0')
 
     def compile_subroutine_call(self):
+        num_of_exp = 0
+        is_sys_call = False
         var = self.symbol_table.get_var(self.current_token.string)
         if var is not None:
             self.current_token.is_variable = True
@@ -310,30 +360,49 @@ class CompilationEngine:
             self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
             self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)[
                 'index']
+            self.vm_writer.write_push_var(self.current_token)
+            num_of_exp += 1
 
-        self.print_and_advance(self.current_token)
+        sub_name = self.current_token.string
+        self.advance(self.current_token)
         if self.current_token.string == '.':
             self.process('.')
-            self.print_and_advance(self.current_token)
+            if var is None:
+                is_sys_call = True
+                # for system functions
+                sub_name = sub_name + '.' + self.current_token.string
+            else:
+                sub_name =  self.current_token.string
+            self.advance(self.current_token)
         self.process('(')
-        self.compile_expression_list()
+        num_of_exp += self.compile_expression_list()
         self.process(')')
+        if is_sys_call:
+            self.vm_writer.write_call(sub_name, num_of_exp)
+        else:
+            self.vm_writer.write_call(f'{self._class}.{sub_name}', num_of_exp)
 
     def compile_return(self):
         self.start_token('returnStatement')
         self.process('return')
         if self.current_token.string != ';':
             self.compile_expression()
+        else:
+            self.vm_writer.write_push_const('0')
         self.process(';')
         self.end_token('returnStatement')
+        self.vm_writer.write_return()
 
     def compile_expression(self):
         self.start_token('expression')
         self.compile_term()
 
         while self.current_token.string in list('+-*/&|<>='):
-            self.print_and_advance(self.current_token)
+            op = self.current_token.string
+            self.advance(self.current_token)
             self.compile_term()
+            self.vm_writer.write_arithmetic(op)
+
         self.end_token('expression')
 
     def compile_term(self):
@@ -345,18 +414,24 @@ class CompilationEngine:
             self.process(')')
         else:
             if self.current_token.string == '-' or self.current_token.string == '~':
-                self.print_and_advance(self.current_token)
+                op = self.current_token.string
+                self.advance(self.current_token)
                 self.compile_term()
+                self.vm_writer.write_unary(op)
             else:
+                function_name = self.current_token.string
                 var = self.symbol_table.get_var(self.current_token.string)
                 if var is not None:
                     self.current_token.is_variable = True
                     self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
                     self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
                     self.current_token.variable_info.running_index = \
-                    self.symbol_table.get_var(self.current_token.string)[
-                        'index']
-                self.print_and_advance(self.current_token)
+                        self.symbol_table.get_var(self.current_token.string)[
+                            'index']
+                    self.vm_writer.write_push_var(self.current_token)
+                else:
+                    self.vm_writer.write_push_const(self.current_token.string)
+                self.advance(self.current_token)
                 if self.current_token.string == '[':
                     self.process('[')
                     self.compile_expression()
@@ -365,21 +440,27 @@ class CompilationEngine:
                     self.process('(')
                     self.compile_expression_list()
                     self.process(')')
+                    self.vm_writer.write_call(function_name)
                 elif self.current_token.string == '.':
                     self.process('.')
-                    self.print_and_advance(self.current_token)
+                    self.advance(self.current_token)
                     self.process('(')
                     self.compile_expression_list()
                     self.process(')')
+                    self.vm_writer.write_call(function_name)
 
         self.end_token('term')
 
     def compile_expression_list(self):
         self.start_token('expressionList')
+        num_of_exp = 0
+
 
         while self.current_token.string != ')':
+            num_of_exp += 1
             self.compile_expression()
             if self.current_token.string != ',':
                 break
             self.process(',')
         self.end_token('expressionList')
+        return num_of_exp

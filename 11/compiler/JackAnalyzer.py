@@ -5,7 +5,7 @@ from JackTokenizer import JackTokenizer
 
 def tokenize_file(file_name):
     tokens = JackTokenizer(file_name)
-    with open(file_name.replace('.jack', '.xml'), "w") as writer:
+    with open(file_name.replace('.jack', '.vm'), "w") as writer:
         CompilationEngine(tokens, writer)
 
 
