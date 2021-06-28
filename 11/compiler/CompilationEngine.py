@@ -1,16 +1,19 @@
-from JackTokenizer.VMWriter import VMWriter
-
+from VMWriter import VMWriter
+from JackTokenizer import *
 
 class CompilationEngine:
 
     def __init__(self, tokenizer, writer):
-        self.writer = writer
+        self.writer = VMWriter(writer)
+        self.vm_writer = VMWriter(writer)
+        self._class = ""
         self.tokenizer = tokenizer
         if self.tokenizer.has_more_tokens():
             self.current_token = self.tokenizer.advance()
         self.compile_class()
 
     def write(self, string):
+        # print(string)
         self.writer.write(f'{string}')
 
     def start_token(self, string):
@@ -49,6 +52,7 @@ class CompilationEngine:
     def compile_class(self):
         self.start_token('class')
         self.process('class')
+        self._class = self.current_token.string
         self.print_and_advance(self.current_token)
         self.process('{')
         while self.current_token.string == 'static' or self.current_token.string == 'field':
@@ -62,20 +66,29 @@ class CompilationEngine:
         self.start_token('classVarDec')
         if self.current_token.string == 'static':
             self.process('static')
+            kind = 'static'
         elif self.current_token.string == 'field':
             self.process('field')
+            kind = 'field'
         else:
             # end if there is not static or field
             return
+        print('kind', kind)
         # print type
+        print("type", self.current_token.__dict__)
         self.print_and_advance(self.current_token)
+
         # print name
+        print("name", self.current_token.__dict__)
         self.print_and_advance(self.current_token)
 
         # handle comma variables
         while self.current_token.string == ',':
             self.process(',')
+            print("name", self.current_token.__dict__)
             self.print_and_advance(self.current_token)
+
+
         self.process(';')
 
         self.end_token('classVarDec')
@@ -92,11 +105,13 @@ class CompilationEngine:
         # print type
         self.print_and_advance(self.current_token)
         # print name
+        name = self.current_token.string
+        print("subroutine name", name)
         self.print_and_advance(self.current_token)
         self.process('(')
         self.compile_parameter_list()
         self.process(')')
-        self.compile_subroutine_body()
+        self.compile_subroutine_body(name)
 
         self.end_token('subroutineDec')
 
@@ -122,11 +137,18 @@ class CompilationEngine:
                 self.print_and_advance(self.current_token)
         self.end_token('parameterList')
 
-    def compile_subroutine_body(self):
+    def compile_subroutine_body(self, subroutine_name):
         self.start_token('subroutineBody')
         self.process('{')
+        nb_var = 0
+
         while self.current_token.string == 'var':
-            self.compile_var_dec()
+            nb_var += self.compile_var_dec()
+
+        self.vm_writer.write_function(
+            name=f'{self._class}.{subroutine_name}',
+            nb_locals=nb_var
+        )
 
         self.compile_statements()
         self.process('}')
@@ -137,16 +159,20 @@ class CompilationEngine:
         self.start_token('varDec')
         self.process('var')
         # print type
+        type = self.current_token.string
         self.print_and_advance(self.current_token)
         # print name
+        print(self.current_token.__dict__)
         self.print_and_advance(self.current_token)
-
+        nb_var = 1
         # handle comma variables
         while self.current_token.string == ',':
             self.process(',')
+            print(self.current_token.__dict__)
             self.print_and_advance(self.current_token)
         self.process(';')
         self.end_token('varDec')
+        return nb_var
 
     def compile_statements(self):
         self.start_token('statements')
