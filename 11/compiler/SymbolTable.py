@@ -10,6 +10,9 @@ class SymbolTable:
         self.static_index_value = 0
         self.field_index_value = 0
 
+    def get_num_class(self):
+        return self.static_index_value + self.field_index_value
+
     def get_var(self, name):
         if self.subroutine_symbol_table.is_in_table(name):
             return self.subroutine_symbol_table.symbols[name]

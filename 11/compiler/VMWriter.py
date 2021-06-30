@@ -31,7 +31,7 @@ class VMWriter():
         elif kind == VariableKind.ARGUMENT:
             return 'argument'
         elif kind == VariableKind.FIELD:
-            return 'field'
+            return 'this'
         elif kind == VariableKind.STATIC:
             return 'static'
         return 'none'

@@ -158,17 +158,6 @@ class CompilationEngine:
         self.function_tracker.num_of_vars = num_of_params
         self.compile_subroutine_body(name)
 
-        if self.function_tracker.subroutine == 'constructor':
-            self.vm_writer.write('pop pointer 0')
-            self.vm_writer.write_return()
-        elif self.function_tracker.subroutine == 'function':
-            pass
-        elif self.function_tracker.subroutine == 'method':
-            pass
-
-        # if is_void:
-        #     self.vm_writer.write('pop temp 0')
-
         self.end_token('subroutineDec')
 
     def compile_parameter_list(self):
@@ -223,14 +212,16 @@ class CompilationEngine:
             nb_var += self.compile_var_dec()
 
         if self.function_tracker.subroutine == 'constructor':
-            self.writer.write_function(f"{self._class}.{self.function_tracker.name}.new", nb_var)
-            self.writer.write(f"push constant {self.function_tracker.num_of_vars}")
-            self.writer.write(f"Memory.alloc 1")
+            self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
+            self.writer.write(f"push constant { self.symbol_table.get_num_class()}")
+            self.writer.write(f"call Memory.alloc 1")
             self.writer.write(f"pop pointer 0")
         elif self.function_tracker.subroutine == 'function':
             self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
         elif self.function_tracker.subroutine == 'method':
-            self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var + 1)
+            self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
+            self.vm_writer.write('push argument 0\npop pointer 0')
+
 
         self.compile_statements()
         self.process('}')
@@ -361,9 +352,49 @@ class CompilationEngine:
         self.end_token('doStatement')
         self.vm_writer.write('pop temp 0')
 
+    # def compile_subroutine_call(self):
+    #     num_of_exp = 0
+    #     is_sys_call = False
+    #     is_obj_call = True
+    #     var = self.symbol_table.get_var(self.current_token.string)
+    #     if var is not None:
+    #         self.current_token.is_variable = True
+    #         self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
+    #         self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
+    #         self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)[
+    #             'index']
+    #         self.vm_writer.write_push_var(self.current_token)
+    #         num_of_exp += 1
+    #         self.variable_tracker.type = self.current_token.token_type
+    #
+    #     sub_name = self.current_token.string
+    #     self.advance(self.current_token)
+    #     if self.current_token.string == '.':
+    #         is_obj_call = False
+    #         self.process('.')
+    #         if var is None:
+    #             is_sys_call = True
+    #             # for system functions
+    #             sub_name = sub_name + '.' + self.current_token.string
+    #         else:
+    #             sub_name = self.current_token.string
+    #         self.advance(self.current_token)
+    #     self.process('(')
+    #     num_of_exp += self.compile_expression_list()
+    #     self.process(')')
+    #     if is_sys_call:
+    #         self.vm_writer.write_call(sub_name, num_of_exp)
+    #     else:
+    #         if is_obj_call:
+    #             self.vm_writer.write('push pointer 0')
+    #             num_of_exp += 1
+    #             self.vm_writer.write_call(f'{self._class}.{sub_name}', num_of_exp)
+    #         else:
+    #             self.vm_writer.write_call(f'{self.variable_tracker.type}.{sub_name}', num_of_exp)
+
     def compile_subroutine_call(self):
+        have_point = False
         num_of_exp = 0
-        is_sys_call = False
         var = self.symbol_table.get_var(self.current_token.string)
         if var is not None:
             self.current_token.is_variable = True
@@ -373,25 +404,27 @@ class CompilationEngine:
                 'index']
             self.vm_writer.write_push_var(self.current_token)
             num_of_exp += 1
-
-        sub_name = self.current_token.string
+            self.variable_tracker.type = self.current_token.token_type
+            sub_name = self.current_token.variable_info.type
+        else:
+            sub_name = self.current_token.string
         self.advance(self.current_token)
         if self.current_token.string == '.':
+            have_point = True
             self.process('.')
-            if var is None:
-                is_sys_call = True
-                # for system functions
-                sub_name = sub_name + '.' + self.current_token.string
-            else:
-                sub_name = self.current_token.string
+            sub_name += '.' + self.current_token.string
             self.advance(self.current_token)
+        else:
+            sub_name = self._class + '.' + sub_name
         self.process('(')
         num_of_exp += self.compile_expression_list()
         self.process(')')
-        if is_sys_call:
-            self.vm_writer.write_call(sub_name, num_of_exp)
-        else:
-            self.vm_writer.write_call(f'{self._class}.{sub_name}', num_of_exp)
+        if not have_point and var is None:
+            # method call in object
+            self.vm_writer.write('push pointer 0')
+            num_of_exp += 1
+        self.vm_writer.write_call(sub_name, num_of_exp)
+
 
     def compile_return(self):
         self.start_token('returnStatement')
@@ -448,8 +481,10 @@ class CompilationEngine:
                         if self.current_token.string == 'true':
                             self.vm_writer.write_push_const('0')
                             self.vm_writer.write_unary('~')
-                        elif self.current_token.string == 'false':
+                        elif self.current_token.string == 'false' or self.current_token.string == 'null':
                             self.vm_writer.write_push_const('0')
+                        elif self.current_token.string == 'this':
+                            self.vm_writer.write('push pointer 0')
                         else:
                             self.vm_writer.write_push_const(self.current_token.string)
                         self.advance(self.current_token)
