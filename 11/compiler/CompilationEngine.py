@@ -3,6 +3,13 @@ from JackTokenizer import *
 from SymbolTable import SymbolTable
 
 
+class FunctionTracker:
+    def __init__(self):
+        self.subroutine = ""
+        self.name = ""
+        self.num_of_vars = ""
+
+
 class VariableTracker:
     def __init__(self):
         self.running_index = 0
@@ -18,6 +25,7 @@ class CompilationEngine:
         self.writer = VMWriter(writer)
         self.vm_writer = VMWriter(writer)
         self._class = ""
+        self.function_tracker = FunctionTracker()
         self.symbol_table = SymbolTable()
         self.variable_tracker = VariableTracker()
         self.tokenizer = tokenizer
@@ -102,7 +110,6 @@ class CompilationEngine:
         self.advance(self.current_token)
 
         # print name
-        print("name", self.current_token.__dict__)
         self.current_token.is_variable = True
         self.current_token.variable_info.type = self.variable_tracker.type
         self.current_token.variable_info.kind = self.variable_tracker.kind
@@ -127,48 +134,34 @@ class CompilationEngine:
         self.end_token('classVarDec')
 
     def compile_subroutine(self):
-        is_void = False
         self.start_token('subroutineDec')
-        subroutine = self.current_token.string
-        if subroutine == 'constructor':
+        self.function_tracker.subroutine = self.current_token.string
+        if self.function_tracker.subroutine == 'constructor':
             self.process('constructor')
-        elif subroutine == 'function':
+        elif self.function_tracker.subroutine == 'function':
             self.process('function')
-        elif subroutine == 'method':
+        elif self.function_tracker.subroutine == 'method':
             self.process('method')
 
-        if self.current_token.string == 'void':
-            is_void = True
         # print type
         self.advance(self.current_token)
         # print name
         name = self.current_token.string
+        self.function_tracker.name = name
         self.advance(self.current_token)
         self.process('(')
         num_of_params = self.compile_parameter_list()
         self.process(')')
-
-        if subroutine == 'constructor':
-            self.writer.write_function(f"{self._class}.{name}.new", num_of_params)
-            self.writer.write(f"push constant {num_of_params}")
-            self.writer.write(f"Memory.alloc 1")
-            self.writer.write(f"pop pointer 0")
-        elif subroutine == 'function':
-            self.writer.write_function(f"{self._class}.{name}", num_of_params)
-        elif subroutine == 'method':
-            self.writer.write_function(f"{self._class}.{name}", num_of_params + 1)
-
-
+        self.function_tracker.num_of_vars = num_of_params
         self.compile_subroutine_body(name)
 
-        if subroutine == 'constructor':
+        if self.function_tracker.subroutine == 'constructor':
             self.vm_writer.writer('pop pointer 0')
             self.vm_writer.write_return()
-        elif subroutine == 'function':
+        elif self.function_tracker.subroutine == 'function':
             pass
-        elif subroutine == 'method':
+        elif self.function_tracker.subroutine == 'method':
             pass
-
 
         # if is_void:
         #     self.vm_writer.write('pop temp 0')
@@ -193,6 +186,7 @@ class CompilationEngine:
             self.current_token.variable_info.type = self.variable_tracker.type
             self.current_token.variable_info.kind = self.variable_tracker.kind
             self.current_token.variable_info.running_index = self.symbol_table.define(self.current_token.string,
+                                                                                      self.variable_tracker.type,
                                                                                       self.variable_tracker.kind)
 
             self.advance(self.current_token)
@@ -221,6 +215,20 @@ class CompilationEngine:
     def compile_subroutine_body(self, subroutine_name):
         self.start_token('subroutineBody')
         self.process('{')
+        nb_var = 0
+        while self.current_token.string == 'var':
+            nb_var += self.compile_var_dec()
+
+        if self.function_tracker.subroutine == 'constructor':
+            self.writer.write_function(f"{self._class}.{self.function_tracker.name}.new", nb_var)
+            self.writer.write(f"push constant {self.function_tracker.num_of_vars}")
+            self.writer.write(f"Memory.alloc 1")
+            self.writer.write(f"pop pointer 0")
+        elif self.function_tracker.subroutine == 'function':
+            self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
+        elif self.function_tracker.subroutine == 'method':
+            self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var + 1)
+
         self.compile_statements()
         self.process('}')
         self.end_token('subroutineBody')
@@ -233,7 +241,7 @@ class CompilationEngine:
         self.variable_tracker.type = self.current_token.string
         self.advance(self.current_token)
         # print name
-        print(self.current_token.__dict__)
+        # print(self.current_token.__dict__)
         self.current_token.is_variable = True
         self.current_token.variable_info.type = self.variable_tracker.type
         self.current_token.variable_info.kind = self.variable_tracker.kind
@@ -245,6 +253,7 @@ class CompilationEngine:
         nb_var = 1
         # handle comma variables
         while self.current_token.string == ',':
+            nb_var += 1
             self.process(',')
             self.current_token.is_variable = True
             self.current_token.variable_info.type = self.variable_tracker.type
@@ -372,7 +381,7 @@ class CompilationEngine:
                 # for system functions
                 sub_name = sub_name + '.' + self.current_token.string
             else:
-                sub_name =  self.current_token.string
+                sub_name = self.current_token.string
             self.advance(self.current_token)
         self.process('(')
         num_of_exp += self.compile_expression_list()
@@ -429,32 +438,42 @@ class CompilationEngine:
                         self.symbol_table.get_var(self.current_token.string)[
                             'index']
                     self.vm_writer.write_push_var(self.current_token)
+                    self.advance(self.current_token)
                 else:
-                    self.vm_writer.write_push_const(self.current_token.string)
-                self.advance(self.current_token)
+                    if not self.current_token.string.isnumeric() and self.current_token.string != "" and self.current_token.token_type != Types.KEYWORD:
+                        self.compile_subroutine_call()
+                    else:
+                        if self.current_token.string == 'true':
+                            self.vm_writer.write_push_const('0')
+                            self.vm_writer.write_unary('~')
+                        elif self.current_token.string == 'false':
+                            self.vm_writer.write_push_const('0')
+                        else:
+                            self.vm_writer.write_push_const(self.current_token.string)
+                        self.advance(self.current_token)
+
                 if self.current_token.string == '[':
                     self.process('[')
                     self.compile_expression()
                     self.process(']')
                 elif self.current_token.string == '(':
                     self.process('(')
-                    self.compile_expression_list()
+                    num_of_vars = self.compile_expression_list()
                     self.process(')')
-                    self.vm_writer.write_call(function_name)
+                    self.vm_writer.write_call(function_name, num_of_vars)
                 elif self.current_token.string == '.':
                     self.process('.')
                     self.advance(self.current_token)
                     self.process('(')
-                    self.compile_expression_list()
+                    num_of_vars = self.compile_expression_list()
                     self.process(')')
-                    self.vm_writer.write_call(function_name)
+                    self.vm_writer.write_call(function_name, num_of_vars + 1)
 
         self.end_token('term')
 
     def compile_expression_list(self):
         self.start_token('expressionList')
         num_of_exp = 0
-
 
         while self.current_token.string != ')':
             num_of_exp += 1
