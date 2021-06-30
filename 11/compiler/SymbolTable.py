@@ -18,6 +18,13 @@ class SymbolTable:
         else:
             return None
 
+    def reset_sub(self):
+        self.subroutine_symbol_table = SymbolTableSt()
+        self.var_index_value = 0
+        self.argument_index_value = 0
+        self.static_index_value = 0
+        self.field_index_value = 0
+
     def define(self, name, symbol_type, kind):
         if kind == VariableKind.LOCAL:
             self.subroutine_symbol_table.symbols[name] = dict(

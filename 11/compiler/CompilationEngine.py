@@ -140,8 +140,11 @@ class CompilationEngine:
             self.process('constructor')
         elif self.function_tracker.subroutine == 'function':
             self.process('function')
+            self.symbol_table.reset_sub()
         elif self.function_tracker.subroutine == 'method':
             self.process('method')
+            self.symbol_table.reset_sub()
+
 
         # print type
         self.advance(self.current_token)
@@ -156,7 +159,7 @@ class CompilationEngine:
         self.compile_subroutine_body(name)
 
         if self.function_tracker.subroutine == 'constructor':
-            self.vm_writer.writer('pop pointer 0')
+            self.vm_writer.write('pop pointer 0')
             self.vm_writer.write_return()
         elif self.function_tracker.subroutine == 'function':
             pass
@@ -305,9 +308,9 @@ class CompilationEngine:
         self.vm_writer.write_pop_var(token)
 
     def compile_if(self):
-        label_1 = f'LABEL{self.label_index}'
+        label_1 = f'IF_TRUE{self.label_index}'
         self.label_index += 1
-        label_2 = f'LABEL{self.label_index}'
+        label_2 = f'IF_FALSE{self.label_index}'
         self.label_index += 1
         self.start_token('ifStatement')
         self.process('if')
@@ -323,7 +326,6 @@ class CompilationEngine:
         self.vm_writer.write_label(label_1)
         if self.current_token.string == 'else':
             self.process('else')
-            self.vm_writer.write_label(label_1)
             self.process('{')
             self.compile_statements()
             self.process('}')
@@ -331,9 +333,9 @@ class CompilationEngine:
         self.vm_writer.write_label(label_2)
 
     def compile_while(self):
-        label_1 = f'LABEL{self.label_index}'
+        label_1 = f'WHILE_EXP{self.label_index}'
         self.label_index += 1
-        label_2 = f'LABEL{self.label_index}'
+        label_2 = f'WHILE_END{self.label_index}'
         self.label_index += 1
         self.vm_writer.write_label(label_1)
         self.start_token('whileStatement')
