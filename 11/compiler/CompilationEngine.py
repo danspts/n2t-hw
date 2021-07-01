@@ -279,6 +279,7 @@ class CompilationEngine:
         self.end_token('statements')
 
     def compile_let(self):
+        is_array = False
         self.start_token('letStatement')
         self.process('let')
         # print name
@@ -289,14 +290,21 @@ class CompilationEngine:
         token = self.current_token
         self.advance(self.current_token)
         if self.current_token.string == '[':
+            is_array = True
             self.process('[')
             self.compile_expression()
             self.process(']')
+            self.vm_writer.write_push_var(token)
+            self.vm_writer.write('add')
         self.process('=')
         self.compile_expression()
+        if is_array:
+            self.vm_writer.write('pop temp 0\npop pointer 1\npush temp 0\npop that 0')
+        else:
+            self.vm_writer.write_pop_var(token)
+
         self.process(';')
         self.end_token('letStatement')
-        self.vm_writer.write_pop_var(token)
 
     def compile_if(self):
         label_1 = f'IF_TRUE{self.label_index}'
@@ -423,7 +431,7 @@ class CompilationEngine:
                 self.compile_term()
                 self.vm_writer.write_unary(op)
             else:
-                function_name = self.current_token.string
+                main_token = self.current_token
                 var = self.symbol_table.get_var(self.current_token.string)
                 if var is not None:
                     self.current_token.is_variable = True
@@ -460,18 +468,21 @@ class CompilationEngine:
                     self.process('[')
                     self.compile_expression()
                     self.process(']')
+                    # self.vm_writer.write_push_var(main_token)
+                    self.vm_writer.write('add')
+                    self.vm_writer.write('pop pointer 1\npush that 0')
                 elif self.current_token.string == '(':
                     self.process('(')
                     num_of_vars = self.compile_expression_list()
                     self.process(')')
-                    self.vm_writer.write_call(function_name, num_of_vars)
+                    self.vm_writer.write_call(main_token.string, num_of_vars)
                 elif self.current_token.string == '.':
                     self.process('.')
                     self.advance(self.current_token)
                     self.process('(')
                     num_of_vars = self.compile_expression_list()
                     self.process(')')
-                    self.vm_writer.write_call(function_name, num_of_vars + 1)
+                    self.vm_writer.write_call(main_token.string, num_of_vars + 1)
 
         self.end_token('term')
 
