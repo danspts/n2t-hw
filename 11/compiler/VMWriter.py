@@ -37,9 +37,12 @@ class VMWriter():
         return 'none'
 
     def write_push_var(self, token):
-        kind = token.variable_info.kind
-        kind_to_print = self.kind_to_print(kind)
-        self.write(f"push {kind_to_print} {token.variable_info.running_index}")
+        if token.string == 'this':
+            self.write('push pointer 0')
+        else:
+            kind = token.variable_info.kind
+            kind_to_print = self.kind_to_print(kind)
+            self.write(f"push {kind_to_print} {token.variable_info.running_index}")
 
     def write_push_const(self, const):
         self.write(f"push constant {const}")
@@ -51,9 +54,12 @@ class VMWriter():
         self.write(f"pop {segment} {index}")
 
     def write_pop_var(self, token):
-        kind = token.variable_info.kind
-        kind_to_print = self.kind_to_print(kind)
-        self.write(f"pop {kind_to_print} {token.variable_info.running_index}")
+        if token.string == 'this':
+            self.write('pop pointer 0')
+        else:
+            kind = token.variable_info.kind
+            kind_to_print = self.kind_to_print(kind)
+            self.write(f"pop {kind_to_print} {token.variable_info.running_index}")
 
     def write_pop_const(self, const):
         self.write(f"pop constant {const}")

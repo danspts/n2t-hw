@@ -144,7 +144,9 @@ class CompilationEngine:
         elif self.function_tracker.subroutine == 'method':
             self.process('method')
             self.symbol_table.reset_sub()
-
+            self.symbol_table.define('this',
+                                     self.current_token.string,
+                                     VariableKind.ARGUMENT)
 
         # print type
         self.advance(self.current_token)
@@ -213,7 +215,7 @@ class CompilationEngine:
 
         if self.function_tracker.subroutine == 'constructor':
             self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
-            self.writer.write(f"push constant { self.symbol_table.get_num_class()}")
+            self.writer.write(f"push constant {self.symbol_table.get_num_class()}")
             self.writer.write(f"call Memory.alloc 1")
             self.writer.write(f"pop pointer 0")
         elif self.function_tracker.subroutine == 'function':
@@ -221,7 +223,6 @@ class CompilationEngine:
         elif self.function_tracker.subroutine == 'method':
             self.writer.write_function(f"{self._class}.{self.function_tracker.name}", nb_var)
             self.vm_writer.write('push argument 0\npop pointer 0')
-
 
         self.compile_statements()
         self.process('}')
@@ -384,15 +385,14 @@ class CompilationEngine:
             self.advance(self.current_token)
         else:
             sub_name = self._class + '.' + sub_name
-        self.process('(')
-        num_of_exp += self.compile_expression_list()
-        self.process(')')
         if not have_point and var is None:
             # method call in object
             self.vm_writer.write('push pointer 0')
             num_of_exp += 1
+        self.process('(')
+        num_of_exp += self.compile_expression_list()
+        self.process(')')
         self.vm_writer.write_call(sub_name, num_of_exp)
-
 
     def compile_return(self):
         self.start_token('returnStatement')
@@ -478,11 +478,12 @@ class CompilationEngine:
                     self.vm_writer.write_call(main_token.string, num_of_vars)
                 elif self.current_token.string == '.':
                     self.process('.')
+                    name = self.current_token.string
                     self.advance(self.current_token)
                     self.process('(')
                     num_of_vars = self.compile_expression_list()
                     self.process(')')
-                    self.vm_writer.write_call(main_token.string, num_of_vars + 1)
+                    self.vm_writer.write_call(f'{main_token.variable_info.type}.{name}', num_of_vars + 1)
 
         self.end_token('term')
 
