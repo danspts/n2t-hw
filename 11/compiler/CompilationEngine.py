@@ -352,46 +352,6 @@ class CompilationEngine:
         self.end_token('doStatement')
         self.vm_writer.write('pop temp 0')
 
-    # def compile_subroutine_call(self):
-    #     num_of_exp = 0
-    #     is_sys_call = False
-    #     is_obj_call = True
-    #     var = self.symbol_table.get_var(self.current_token.string)
-    #     if var is not None:
-    #         self.current_token.is_variable = True
-    #         self.current_token.variable_info.type = self.symbol_table.get_var(self.current_token.string)['type']
-    #         self.current_token.variable_info.kind = self.symbol_table.get_var(self.current_token.string)['kind']
-    #         self.current_token.variable_info.running_index = self.symbol_table.get_var(self.current_token.string)[
-    #             'index']
-    #         self.vm_writer.write_push_var(self.current_token)
-    #         num_of_exp += 1
-    #         self.variable_tracker.type = self.current_token.token_type
-    #
-    #     sub_name = self.current_token.string
-    #     self.advance(self.current_token)
-    #     if self.current_token.string == '.':
-    #         is_obj_call = False
-    #         self.process('.')
-    #         if var is None:
-    #             is_sys_call = True
-    #             # for system functions
-    #             sub_name = sub_name + '.' + self.current_token.string
-    #         else:
-    #             sub_name = self.current_token.string
-    #         self.advance(self.current_token)
-    #     self.process('(')
-    #     num_of_exp += self.compile_expression_list()
-    #     self.process(')')
-    #     if is_sys_call:
-    #         self.vm_writer.write_call(sub_name, num_of_exp)
-    #     else:
-    #         if is_obj_call:
-    #             self.vm_writer.write('push pointer 0')
-    #             num_of_exp += 1
-    #             self.vm_writer.write_call(f'{self._class}.{sub_name}', num_of_exp)
-    #         else:
-    #             self.vm_writer.write_call(f'{self.variable_tracker.type}.{sub_name}', num_of_exp)
-
     def compile_subroutine_call(self):
         have_point = False
         num_of_exp = 0
@@ -475,7 +435,7 @@ class CompilationEngine:
                     self.vm_writer.write_push_var(self.current_token)
                     self.advance(self.current_token)
                 else:
-                    if not self.current_token.string.isnumeric() and self.current_token.string != "" and self.current_token.token_type != Types.KEYWORD:
+                    if not self.current_token.string.isnumeric() and self.current_token.token_type != Types.STRING_CONST and self.current_token.token_type != Types.KEYWORD:
                         self.compile_subroutine_call()
                     else:
                         if self.current_token.string == 'true':
@@ -486,7 +446,14 @@ class CompilationEngine:
                         elif self.current_token.string == 'this':
                             self.vm_writer.write('push pointer 0')
                         else:
-                            self.vm_writer.write_push_const(self.current_token.string)
+                            if self.current_token.token_type == Types.STRING_CONST:
+                                self.vm_writer.write_push_const(len(self.current_token.string))
+                                self.vm_writer.write('call String.new 1')
+                                for i in self.current_token.string:
+                                    self.vm_writer.write_push_const(ord(i))
+                                    self.vm_writer.write('call String.appendChar 2')
+                            else:
+                                self.vm_writer.write_push_const(self.current_token.string)
                         self.advance(self.current_token)
 
                 if self.current_token.string == '[':
