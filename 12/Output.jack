@@ -234,7 +234,7 @@ class Output {
      *  and advances the cursor appropriately. */
     function void printInt(int i) {
         var String str;
-        let str = String.new(6); // 65535 is the biggest absolute number, including "-" that's 6 char
+        let str = String.new(6); // 65535 is the biggest absolute number, including "-" that's 6 digits
         do str.setInt(i);
         do Output.printString(str);
         do str.dispose();

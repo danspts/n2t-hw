@@ -18,7 +18,7 @@ class String {
     /** constructs a new empty string with a maximum length of maxLength
      *  and initial length of 0. */
     constructor String new(int maxLength) {
-    	if(~maxLength) {
+    	if(maxLength < 1) {
 			let maxLength = 1;
 		}
 		let char_array = Array.new(maxLength);
@@ -58,6 +58,7 @@ class String {
     /** Erases the last character from this string. */
     method void eraseLastChar() {
     	let length = length - 1;
+    	let char_array[length] = 0;
 		return;
     }
 
@@ -82,22 +83,26 @@ class String {
 
     /** Sets this string to hold a representation of the given value. */
     method void setInt(int val) {
-        var int digit, c;
         let length = 0;
     	if(val < 0) {
+    	    let val = -val;
 			do appendChar(45);
-			val = -val;
 		}
-		let digit = val - ((val / 10) * 10);
-		let c = digit + 48;
-		if(val < 10) {
-			do appendChar(c);
-		} else {
-			let val = val / 10;
-			do setInt(val);
-			do appendChar(c);
-		}
+		do setNatural(val);
 		return;
+    }
+
+    method void setNatural(int nat) {
+        var int digit, c;
+        let digit = nat - ((nat / 10) * 10);
+        let c = digit + 48;
+        if(nat < 10) {
+            do appendChar(c);
+        } else {
+            do setNatural(nat / 10);
+            do appendChar(c);
+        }
+        return;
     }
 
     /** Returns the new line character. */

@@ -43,12 +43,12 @@ class Screen {
 
     /** Draws the (x,y) pixel, using the current color. */
     function void drawPixel(int x, int y) {
-    	var int addr;
-		let addr =  (32 * y) + (x / 16);
+    	var int address;
+		let address =  (32 * y) + (x / 16);
 		if(color) {
-			let screen[addr] = screen[addr] | Math.two_to_the_i(x & 15);
+			let screen[address] = screen[address] | Math.two_to_the_i(x & 15);
 		} else {
-			let screen[addr] = screen[addr] & (~Math.two_to_the_i(x & 15));
+			let screen[address] = screen[address] & (~Math.two_to_the_i(x & 15));
 		}
 		return;
     }
@@ -72,6 +72,7 @@ class Screen {
 				let next_a = 1;
 			}
 		}
+
 		if(dy < 0) {
 			let dy = -dy;
 			let next_b = -1;
