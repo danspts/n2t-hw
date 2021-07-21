@@ -87,9 +87,9 @@ class CompilationEngine:
         self._class = self.current_token.string
         self.advance(self.current_token)
         self.process('{')
-        while self.current_token.string == 'static' or self.current_token.string == 'field':
+        while self.current_token.string in ['static', 'field']:
             self.compile_class_var_dec()
-        while self.current_token.string == 'constructor' or self.current_token.string == 'function' or self.current_token.string == 'method':
+        while self.current_token.string in ['constructor','function','method']:
             self.compile_subroutine()
         self.process('}')
         self.end_token('class')

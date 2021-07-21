@@ -8,8 +8,12 @@
  */
 class Keyboard {
 
+    static int keyboard_pointer;
+
     /** Initializes the keyboard. */
     function void init() {
+        let keyboard_pointer = 24576;
+        return;
     } 
 
     /**
@@ -33,6 +37,7 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
+        return Memory.peek(keyboard_pointer);
     }
 
     /**								
@@ -41,6 +46,12 @@ class Keyboard {
      * of the pressed key.
      */
     function char readChar() {
+        var int input;
+		while(Keyboard.keyPressed() = 0) {}
+		let input = Keyboard.keyPressed();
+		while(~(Keyboard.keyPressed() = 0)) {}
+		do Output.printChar(input);
+		return input;
     }
 
     /**								
@@ -58,5 +69,8 @@ class Keyboard {
      * entered text is detected). Also handles user backspaces. 
      */
     function int readInt(String message) {
+    	var String line;
+		let line = Keyboard.readLine(message);
+		return line.intValue();
     }
 }
