@@ -19,8 +19,10 @@ class Memory {
         let memory = 0;
         let length_index = 1;
         let next_index = 0;
+        let free_list = 2048;
         let free_list[length_index] = 16384 - 2048;
         let free_list[next_index] = null;
+        return;
     }
 
     /** Returns the RAM value at the given address. */
@@ -39,18 +41,18 @@ class Memory {
     function int alloc(int size) {
         var Array block, newBlock;
         var int block_next, block_size;
-        let block = freeList;
+        let block = free_list;
         let block_size = block[length_index];
         let block_next = block[next_index];
         if (block_size > (size + 2)) {
-            let freeList = freeList + size + 2;
-            let freeList[next_index] = 0;
-            let freeList[length_index] = block_size - size - 2;
+            let free_list = free_list + size + 2;
+            let free_list[next_index] = 0;
+            let free_list[length_index] = block_size - size - 2;
             let block[next_index] = 0;
             let block[length_index] = size;
             return block + 2;
         }
-        while (~(block_next = null)) {
+        while (~block_next) {
             let block = block_next;
             let block_size = block[length_index];
             let block_next = block[next_index];
@@ -70,13 +72,14 @@ class Memory {
      *  it available for future allocations. */
     function void deAlloc(Array object) {
     	var Array current;
-		let current = freeList;
-		while(~(current = null)) {
-			if(current[0] = 0) {
-				let current[0] = o;
-				let o[0] = null;
+		let current = free_list;
+		while(~current) {
+			if(~current[0]) {
+				let current[0] = object;
+				let object[0] = null;
 			}
-			let curr = curr[0];
+			let current = current[0];
+		}
 		return;
     }    
 }
