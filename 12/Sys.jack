@@ -37,6 +37,7 @@ class Sys {
             }
             let outer = outer + 1;
 	    }
+	    return;
     }
 
     /** Displays the given error code in the form "ERR<errorCode>",
@@ -45,5 +46,6 @@ class Sys {
         do Output.printString("ERR");
         do Output.printInt(errorCode);
         do Sys.halt();
+        return;
     }
 }

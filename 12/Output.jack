@@ -200,7 +200,7 @@ class Output {
             let cur_col = 0;
 			while(cur_col < 8) {
 				if(map[cur_row] & Math.two_to_the_i(cur_col)) {
-					do Screen.setColor(1);
+					do Screen.setColor(-1);
 				} else {
 					do Screen.setColor(0);
 				}
@@ -234,7 +234,7 @@ class Output {
      *  and advances the cursor appropriately. */
     function void printInt(int i) {
         var String str;
-        let str = String.new(6); // 65535 is the biggest absolute number, including "-" that's 6
+        let str = String.new(6); // 65535 is the biggest absolute number, including "-" that's 6 char
         do str.setInt(i);
         do Output.printString(str);
         do str.dispose();

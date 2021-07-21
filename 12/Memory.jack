@@ -46,10 +46,10 @@ class Memory {
         let block_next = block[next_index];
         if (block_size > (size + 2)) {
             let free_list = free_list + size + 2;
-            let free_list[next_index] = 0;
             let free_list[length_index] = block_size - size - 2;
-            let block[next_index] = 0;
+            let free_list[next_index] = 0;
             let block[length_index] = size;
+            let block[next_index] = 0;
             return block + 2;
         }
         while (~block_next) {

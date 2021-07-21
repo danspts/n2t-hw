@@ -37,10 +37,10 @@ class Keyboard {
      * F1 - F12 = 141 - 152
      */
     function char keyPressed() {
-		var int key;
-		let key = Memory.peek(keyboard_pointer);
-		if(key < 153) {
-			return key;
+		var char c;
+		let c = Memory.peek(keyboard_pointer);
+		if(c < 153) {
+			return c;
 		}
 		return 0;
 	}

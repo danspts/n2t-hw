@@ -61,7 +61,8 @@ class Math {
      *  program's code, it handles it by invoking this method. In other words,
      *  the Jack expressions x/y and divide(x,y) return the same value.
      */
-    function int divide(int x, int y) {		var int q, output;	//quotient, result
+    function int divide(int x, int y) {
+        var int q, res;
 		var bool neg;
 		let neg = (x < 0) = (y < 0);
 		let x = Math.abs(x);
@@ -71,14 +72,14 @@ class Math {
 		}
 		let q = Math.divide(x, y + y);
 		if((x - (2 * y * q)) < y) {
-			let output = 2 * q;
+			let res = 2 * q;
 		} else {
-			let output = 2 * q + 1;
+			let res = 2 * q + 1;
 		}
 		if(neg) {
-			return output;
+			return res;
 		} else {
-			return -output;
+			return -res;
 		}
     }
 
